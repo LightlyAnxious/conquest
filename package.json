@@ -1,0 +1,69 @@
+{
+  "name": "web0.6",
+  "version": "1.0.0",
+  "description": "Стартовый шаблон сборки Лиги А",
+  "devDependencies": {
+    "@htmlacademy/editorconfig-cli": "1.x",
+    "autoprefixer": "^9.7.4",
+    "browser-sync": "^2.26.7",
+    "compression": "1.7.4",
+    "eslint": "^6.8.0",
+    "eslint-config-htmlacademy": "0.4.x",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "gulp": "4.0.x",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^3.0.1",
+    "gulp-dart-sass": "^1.0.2",
+    "gulp-favicons": "2.4.0",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-plumber": "1.2.x",
+    "gulp-postcss": "8.0.x",
+    "gulp-posthtml": "^3.0.4",
+    "gulp-pretty-html": "^2.0.10",
+    "gulp-rename": "^1.4.0",
+    "gulp-sourcemaps": "2.6.x",
+    "gulp-svgstore": "^7.0.1",
+    "gulp-uglify-es": "2.0.0",
+    "gulp-webp": "^4.0.1",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-zopfli": "^6.0.0",
+    "posthtml-include": "^1.2.0",
+    "stylelint": "^13.5.0",
+    "stylelint-config-htmlacademy": "0.1.x"
+  },
+  "scripts": {
+    "editorconfig": "editorconfig-cli",
+    "stylelint": "stylelint \"source/sass/**/*.scss\" --syntax scss",
+    "prettyhtml": "prettyhtml \"build/**/*.html\"",
+    "test": "npm run editorconfig && npm run stylelint && eslint source/js/",
+    "build": "gulp build",
+    "start": "gulp start",
+    "webp": "gulp webp",
+    "sprite": "gulp sprite"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "IE 11",
+    "Firefox ESR"
+  ],
+  "editorconfig-cli": [
+    "*.json",
+    "*.js",
+    "source/*.html",
+    "source/js/**/*.js",
+    "source/img/**/*.svg",
+    "source/sass/**/*.{sass,scss}"
+  ],
+  "engines": {
+    "node": "8.15"
+  },
+  "dependencies": {
+    "cli": "^1.0.1",
+    "del": "^4.1.1"
+  }
+}

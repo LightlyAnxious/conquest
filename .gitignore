@@ -1,0 +1,15 @@
+.DS_Store
+.idea
+.vscode
+package-lock.json
+*.ai
+*.log
+*.pdf
+*.psd
+*.sublime*
+node_modules/
+npm-debug.*
+template/
+source/css/*.css
+source/css/*.map
+Thumbs.db

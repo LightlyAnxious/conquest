@@ -1,0 +1,13 @@
+.container {
+  padding: 0 2%;
+
+  &--main {
+    width: 92%;
+    // max-width: 1258px;
+  }
+
+  &--catalog {
+    width: 84.77%;
+    // max-width: 1158px;
+  }
+}

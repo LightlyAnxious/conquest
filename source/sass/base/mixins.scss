@@ -1,0 +1,48 @@
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin button-reset {
+  padding: 0;
+  border: none;
+  box-sizing: content-box;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+
+  &:active {
+    outline: 0;
+  }
+}
+
+@mixin center {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+@mixin roboto {
+  font-family: "Roboto", "Verdana", sans-serif;
+  font-weight: 400;
+}
+
+@mixin roboto-b {
+  font-family: "Roboto", "Verdana", sans-serif;
+  font-weight: 600;
+}
+
+@mixin playfair {
+  font-family: "Playfair Display", "Garamond", serif;
+  font-weight: 400;
+}
+
+@mixin playfair-b {
+  font-family: "Playfair Display", "Garamond", serif;
+  font-weight: 600;
+}
