@@ -4,13 +4,20 @@
   list-style: none;
 }
 
-@mixin button-reset {
+@mixin btn-reset {
   padding: 0;
   border: none;
   box-sizing: content-box;
   font: inherit;
   color: inherit;
   background-color: transparent;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
 
   &:active {
     outline: 0;
@@ -27,7 +34,24 @@
   transform: translate(-50%, -50%);
 }
 
-@mixin roboto {
+@mixin form-reset {
+  display: inline-block;
+  width: auto;
+  margin: 0;
+  padding: 0;
+
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  vertical-align: middle;
+  color: inherit;
+  white-space: normal;
+
+  background: none;
+  border: 0;
+}
+
+@mixin roboto-r {
   font-family: "Roboto", "Verdana", sans-serif;
   font-weight: 400;
 }

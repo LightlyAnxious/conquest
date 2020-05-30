@@ -1,0 +1,117 @@
+.main-nav__wrap {
+  position: relative;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  padding-top: 31px;
+  padding-bottom: 31px;
+}
+
+.main-nav__burger {
+  width: 18px;
+  height: 16px;
+  margin-top: 4px;
+  margin-right: 24px;
+}
+
+.main-nav__logo-link {
+  position: relative;
+  z-index: 15;
+
+  width: 105px;
+  height: 27px;
+
+  fill: none;
+
+  transition: $trans;
+
+  &[href]:hover,
+  &[href]:focus {
+    opacity: 0.5;
+  }
+
+  &[href]:active {
+    opacity: 0.3;
+  }
+}
+
+.main-nav__user-section {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-left: auto;
+  margin-top: 8px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.main-nav__search {
+  margin-right: 23px;
+}
+
+.main-nav__link {
+  margin-right: 23px;
+
+  transition: $trans;
+
+  outline: none;
+
+  &--likes {
+    stroke: $black;
+
+    &:hover,
+    &:focus {
+      stroke: $silver;
+    }
+
+    &:active {
+      stroke: $silver;
+      opacity: 0.5;
+    }
+  }
+
+  &--cart {
+    fill: $black;
+
+    &:hover,
+    &:focus {
+      fill: $silver;
+    }
+
+    &:active {
+      fill: $silver;
+      fill-opacity: 0.5;
+    }
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.main-nav__menu {
+  position: absolute;
+  content: "";
+  z-index: 10;
+  top: 0;
+  left: 2%;
+
+  display: none;
+
+  &--shown {
+    display: block;
+
+    animation: dropdown 0.15s ease-in-out;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .main-nav__user-section {
+    position: relative;
+    z-index: 15;
+  }
+}

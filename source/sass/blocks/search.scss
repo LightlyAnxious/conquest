@@ -1,0 +1,30 @@
+.search {
+  @include form-reset;
+}
+
+.search__field {
+  border: none;
+  outline: none;
+
+  transition: $trans;
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+.search__icon {
+  fill: $black;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    fill: $silver;
+  }
+
+  &:active {
+    fill: $silver;
+    fill-opacity: 0.5;
+  }
+}

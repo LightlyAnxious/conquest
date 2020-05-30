@@ -1,16 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Conquest часы премиум брендов с доставкой"
-    />
-    <title>Conquest часы премиум брендов</title>
-    <link rel="stylesheet" href="css/style.min.css" />
-  </head>
-  <body>
-    <header></header>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conquest часы премиум брендов с доставкой" />
+  <title>Conquest часы премиум брендов</title>
+  <link rel="stylesheet" href="css/style.min.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="main-header">
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <div class="main-nav__wrap container container--main">
+        <button class="main-nav__burger burger" aria-label="Открыть меню">
+          <span></span>
+        </button>
+        <!-- Logo -->
+        <a class="main-nav__logo-link">
+          <object data="img/logo.svg" type="image/svg+xml"></object>
+        </a>
+        <!-- User section -->
+        <div class="main-nav__user-section">
+          <!-- Search -->
+          <form action="#" method="post" class="main-nav__search search">
+            <label class="search__label">
+              <span>
+                <input class="search__field visually-hidden" type="search" name="nav-search" autocomplete="off">
+                <svg class="search__icon" width="17" height="17">
+                  <use xlink:href="img/sprite_auto.svg#icon-search"></use>
+                </svg>
+              </span>
+              <span class="visually-hidden">Поиск</span>
+            </label>
+          </form>
+          <!-- Likes -->
+          <a href="#" class="main-nav__link main-nav__link--likes" aria-label="Избранное">
+            <svg width="20" height="17">
+              <use xlink:href="img/sprite_auto.svg#icon-like"></use>
+            </svg>
+          </a>
+          <!-- Cart -->
+          <a href="#" class="main-nav__link main-nav__link--cart" aria-label="Корзина">
+            <svg width="19" height="17">
+              <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
+            </svg>
+          </a>
+        </div>
+        <!-- Menu -->
+        <div class="main-nav__menu main-menu">
+          <ul class="main-menu__list">
+            <!-- Item 1 -->
+            <li class="main-menu__item">
+              <a class="main-menu__link" href="#" aria-label="Главная">Главная</a>
+            </li>
+            <!-- Item 2 -->
+            <li class="main-menu__item">
+              <a class="main-menu__link" href="#" aria-label="Каталог">Каталог</a>
+            </li>
+            <!-- Item 3 -->
+            <li class="main-menu__item">
+              <a class="main-menu__link" href="#" aria-label="Акции">Акции</a>
+            </li>
+            <!-- Item 4 -->
+            <li class="main-menu__item">
+              <a class="main-menu__link" href="#" aria-label="Доставка">Доставка</a>
+            </li>
+            <!-- Item 5 -->
+            <li class="main-menu__item">
+              <a class="main-menu__link" href="#" aria-label="Контакты">Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <script src="js/main/main.js"></script>
+</body>
+
 </html>
