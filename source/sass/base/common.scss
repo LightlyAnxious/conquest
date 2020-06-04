@@ -1,4 +1,6 @@
 body {
+  position: relative;
+
   display: flex;
   flex-direction: column;
 
@@ -9,7 +11,7 @@ body {
 
   font-family: "Roboto", "Verdana", sans-serif;
   font-weight: 400;
-  color: green;
+  color: #1b1a17;
 
   background-color: #fdfdfb;
 }
@@ -63,8 +65,17 @@ img {
   text-transform: uppercase;
 
   appearance: none;
-
+  transition: all 0.15s ease-in-out;
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
 
   &--grey {
     background-color: #444240;
@@ -93,5 +104,20 @@ img {
     display: block;
 
     opacity: 1;
+  }
+}
+
+@media (max-width: $tablet-width) {
+  .btn {
+    padding: 20px 30px;
+
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .btn {
+    padding: 18px 25px;
   }
 }

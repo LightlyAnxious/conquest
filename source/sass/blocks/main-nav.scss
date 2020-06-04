@@ -109,6 +109,16 @@
   }
 }
 
+// ! Планшетная версия
+
+@media (max-width: $tablet-width) {
+  .main-nav__menu {
+    left: 2.2%;
+
+    animation: unset;
+  }
+}
+
 @media (max-width: $mobile-width) {
   .main-nav__user-section {
     position: relative;

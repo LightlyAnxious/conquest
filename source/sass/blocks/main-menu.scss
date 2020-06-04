@@ -39,6 +39,20 @@
   }
 }
 
+.main-menu__socials {
+  display: none;
+}
+
+// ! Планшетная версия
+
+@media (max-width: $tablet-width) {
+  .main-menu {
+    padding: 70px 27px 27px 48px;
+  }
+}
+
+// ! Мобильная версия
+
 @media (max-width: $mobile-width) {
   .main-menu {
     left: 0;
@@ -46,10 +60,27 @@
     box-sizing: border-box;
     padding: 70px 0 27px;
     width: 100vw;
+    height: 100vh;
   }
 
   .main-menu__link {
     padding: 15px 2%;
     text-align: center;
+  }
+
+  .main-menu__socials {
+    display: block;
+
+    & .main-menu__social-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      padding: 30px;
+    }
+  }
+
+  .main-menu__social-item {
+    margin: 13px;
   }
 }

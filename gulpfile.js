@@ -1,44 +1,31 @@
 "use strict";
 
-var gulp = require("gulp");
-var plumber = require("gulp-plumber");
-var sourcemap = require("gulp-sourcemaps");
-var sass = require("gulp-dart-sass");
-var postcss = require("gulp-postcss");
-var autoprefixer = require("autoprefixer");
-var server = require("browser-sync").create();
-var csso = require("gulp-csso");
-var rename = require("gulp-rename");
-var imagemin = require("gulp-imagemin");
-var pngquant = require("imagemin-pngquant");
-var zopfli = require("imagemin-zopfli");
-var mozjpeg = require("imagemin-mozjpeg");
-var webp = require("gulp-webp");
-var svgstore = require("gulp-svgstore");
-var posthtml = require("gulp-posthtml");
-var include = require("posthtml-include");
-var del = require("del");
-var uglify = require("gulp-uglify-es").default;
-var favicons = require("gulp-favicons");
+const gulp = require("gulp");
+const plumber = require("gulp-plumber");
+const sourcemap = require("gulp-sourcemaps");
+const sass = require("gulp-dart-sass");
+const postcss = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
+const server = require("browser-sync").create();
+const csso = require("gulp-csso");
+const rename = require("gulp-rename");
+const imagemin = require("gulp-imagemin");
+const pngquant = require("imagemin-pngquant");
+const zopfli = require("imagemin-zopfli");
+const mozjpeg = require("imagemin-mozjpeg");
+const webp = require("gulp-webp");
+const svgstore = require("gulp-svgstore");
+const posthtml = require("gulp-posthtml");
+const include = require("posthtml-include");
+const del = require("del");
+const uglify = require("gulp-uglify-es").default;
+const favicons = require("gulp-favicons");
+const concat = require("gulp-concat");
 
 function onError(err) {
   console.log(err);
   this.emit("end");
 }
-
-gulp.task("uglify", function () {
-  return (
-    gulp
-      .src("source/js/*.js")
-      .pipe(sourcemap.init())
-      .pipe(uglify())
-      .pipe(rename({ suffix: ".min" }))
-      .pipe(sourcemap.write()) // Inline source maps.
-      // For external source map file:
-      //.pipe(sourcemaps.write("./maps")) // In this case: lib/maps/bundle.min.js.map
-      .pipe(gulp.dest("build/js"))
-  );
-});
 
 gulp.task("css", function () {
   return gulp
@@ -60,41 +47,32 @@ gulp.task("css", function () {
     .pipe(server.stream());
 });
 
-gulp.task("server", function () {
-  server.init({
-    server: "build/",
-    injectChanges: true,
-    middleware: [
-      require("compression")(),
-      {
-        route: "/api", // per-route
-        handle: function (req, res, next) {
-          // handle any requests at /api
-        },
-      },
-    ],
-    notify: false,
-    open: true,
-    cors: true,
-    ui: false,
-  });
+gulp.task("concat-js-main", function () {
+  return gulp
+    .src("source/js/main/*.js")
+    .pipe(concat("main.js"))
+    .pipe(gulp.dest("build/js"));
+});
 
-  gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("css"));
-  gulp.watch(
-    "source/img/icons/*.svg",
-    gulp.series("sprite", "html", "refresh")
+gulp.task("concat-js-vendor", function () {
+  return gulp
+    .src("source/js/vendor/*.js")
+    .pipe(concat("vendor.js"))
+    .pipe(gulp.dest("build/js"));
+});
+
+gulp.task("uglify", function () {
+  return (
+    gulp
+      .src("build/js/*.js")
+      .pipe(sourcemap.init())
+      .pipe(uglify())
+      .pipe(rename({ suffix: ".min" }))
+      .pipe(sourcemap.write()) // Inline source maps.
+      // For external source map file:
+      //.pipe(sourcemaps.write("./maps")) // In this case: lib/maps/bundle.min.js.map
+      .pipe(gulp.dest("build/js"))
   );
-  gulp.watch("source/*.html", gulp.series("html", "refresh"));
-  gulp.watch("source/js/**/*.js", gulp.series("jscopy", "refresh"));
-});
-
-gulp.task("refresh", function (done) {
-  server.reload();
-  done();
-});
-
-gulp.task("jscopy", function () {
-  return gulp.src("source/js/**/*.js").pipe(gulp.dest("build/js"));
 });
 
 gulp.task("images", function () {
@@ -206,6 +184,42 @@ gulp.task("copy", function () {
 
 gulp.task("clean", function () {
   return del("build");
+});
+
+gulp.task("server", function () {
+  server.init({
+    server: "build/",
+    injectChanges: true,
+    middleware: [
+      require("compression")(),
+      {
+        route: "/api", // per-route
+        handle: function (req, res, next) {
+          // handle any requests at /api
+        },
+      },
+    ],
+    notify: false,
+    open: true,
+    cors: true,
+    ui: false,
+  });
+
+  gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("css"));
+  gulp.watch(
+    "source/img/icons/*.svg",
+    gulp.series("sprite", "html", "refresh")
+  );
+  gulp.watch("source/*.html", gulp.series("html", "refresh"));
+  gulp.watch(
+    "source/js/**/*.js",
+    gulp.series("concat-js-main", "concat-js-vendor", "refresh")
+  );
+});
+
+gulp.task("refresh", function (done) {
+  server.reload();
+  done();
 });
 
 gulp.task(
