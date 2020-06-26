@@ -43,6 +43,10 @@
   display: none;
 }
 
+.main-menu__social-list {
+  flex-direction: column;
+}
+
 // ! Планшетная версия
 
 @media (max-width: $tablet-width) {

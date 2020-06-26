@@ -1,0 +1,271 @@
+.advantages {
+  /* prettier-ignore */
+  background: url("../img/advantages/advantages-bg.png") no-repeat 0 0/34.26% 519px,
+    url("../img/advantages/advantages-ellipse.svg") no-repeat 100% 50%;
+}
+
+.advantages__wrap {
+  display: flex;
+  flex-direction: column;
+
+  width: 88%;
+  max-width: 1000px;
+  min-height: 519px;
+  padding: 50px 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.advantages__list {
+  @include list-reset;
+}
+
+.advantages__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  width: 100%;
+}
+
+.advantages__media-wrap {
+  display: inline-block;
+
+  width: 51.48%;
+  height: 414px;
+}
+
+.advantages__image {
+  display: inline-block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.advantages__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: 48.51%;
+  min-height: 390px;
+  padding: 88px 0 20px 5.2%;
+  box-sizing: border-box;
+}
+
+.advantages__title {
+  @include title;
+
+  margin: 0 0 38px 0;
+}
+
+.advantages__desc {
+  @include roboto-r;
+
+  flex-grow: 1;
+
+  max-width: 380px;
+  margin-top: 0;
+  margin-bottom: 45px;
+
+  line-height: 150%;
+}
+
+.advantages__btn {
+  margin-bottom: 18px;
+}
+
+.advantages__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 63px;
+  min-height: 30px;
+  margin: 20px auto 20px 37.055%;
+}
+
+.advantages__control-btn {
+  @include btn-reset;
+
+  position: relative;
+
+  width: 5px;
+  height: 10px;
+  padding: 5px;
+
+  outline: none;
+  transition: $trans;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+
+    width: 15px;
+    height: 1px;
+
+    background-color: $black;
+
+    outline: none;
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+
+  &--prev {
+    &::before,
+    &::after {
+      left: 0;
+      top: 50%;
+
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      transform-origin: left;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+
+    &::after {
+      transform-origin: left;
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+
+  &--next {
+    &::before,
+    &::after {
+      right: 0;
+      top: 50%;
+
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      transform-origin: right;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+
+    &::after {
+      transform-origin: right;
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+}
+
+.advantages__slider-progress {
+  @include prata;
+
+  display: inline-block;
+
+  margin: 0;
+  width: unset;
+  min-width: 20px;
+  min-height: 20px;
+
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: $pale-black;
+}
+
+// ! Планшетная версия
+
+@media (max-width: $tablet-width) {
+  .advantages__wrap {
+    min-height: auto;
+    box-sizing: content-box;
+    width: 88%;
+    padding: 35px 0 0;
+  }
+
+  .advantages__item {
+    padding-top: 25px;
+  }
+
+  .advantages__content {
+    min-height: 300px;
+    padding-top: 25px;
+  }
+
+  .advantages__desc {
+    max-width: 285px;
+
+    font-size: 14px;
+  }
+
+  .advantages__media-wrap {
+    height: 300px;
+  }
+
+  .advantages__controls {
+    margin-top: 0;
+  }
+
+  .advantages__slider-progress {
+    font-size: 14px;
+  }
+}
+
+// ! Мобильная версия
+
+@media (max-width: $mobile-width) {
+  .advantages {
+    background-position: 50% -250px, 100% 0;
+    background-size: auto, 30% 100%;
+  }
+
+  .advantages__item {
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 460px;
+    padding-top: 0;
+  }
+
+  .advantages__media-wrap {
+    width: 255px;
+    height: 203px;
+  }
+
+  .advantages__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    padding: 35px 0 0;
+
+    text-align: center;
+  }
+
+  .advantages__title {
+    margin-bottom: 15px;
+  }
+
+  .advantages__desc {
+    margin: 0 auto 25px;
+  }
+
+  .advantages__controls {
+    margin: 15px auto 25px;
+  }
+
+  .advantages__slider-progress {
+    font-size: 12px;
+  }
+
+  .advantages__btn {
+    margin-top: auto;
+  }
+}

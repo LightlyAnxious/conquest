@@ -58,6 +58,11 @@
   font-weight: 600;
 }
 
+@mixin prata {
+  font-family: "Prata", "Garamond", serif;
+  font-weight: 400;
+}
+
 @mixin playfair-r {
   font-family: "Playfair Display", "Garamond", serif;
   font-weight: 400;
@@ -102,4 +107,13 @@
   &--beige {
     background-color: #d4b098;
   }
+}
+
+@mixin title {
+  font-family: "Playfair Display", "Garamond", serif;
+  font-weight: 400;
+  font-size: var(--titleSize);
+  line-height: var(--titleHeight);
+
+  color: $black;
 }

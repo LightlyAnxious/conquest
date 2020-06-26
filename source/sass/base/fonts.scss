@@ -9,11 +9,31 @@
 }
 
 @font-face {
+  font-family: "Prata";
+  src: local("Prata"),
+    url("../fonts/prata-v11-cyrillic-regular.woff2") format("woff2"),
+    url("../fonts/prata-v11-cyrillic-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Playfair Display";
   src: local("Playfair Display"),
     url("../fonts/playfair-display-v20-cyrillic-regular.woff2") format("woff2"),
     url("../fonts/playfair-display-v20-cyrillic-regular.woff") format("woff");
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: local("Playfair Display"),
+    url("../fonts/playfair-display-v20-cyrillic-600.woff2") format("woff2"),
+    url("../fonts/playfair-display-v20-cyrillic-600.woff") format("woff");
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }

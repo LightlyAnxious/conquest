@@ -1,5 +1,11 @@
+.socials {
+  max-width: 100%;
+}
+
 .socials__list {
   @include list-reset;
+
+  display: flex;
 }
 
 .socials__item {

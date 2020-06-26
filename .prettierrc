@@ -1,0 +1,23 @@
+{
+  "tabWidth": 2,
+  "disableLanguages": ["html"],
+  "useTabs": false,
+  "singleQuote": false,
+  "overrides": [
+    {
+      "files": "*.js",
+      "options": {
+        "tabWidth": 2,
+        "singleQuote": true
+      }
+    },
+    {
+      "files": "*.pug",
+      "options": {
+        "singleQuote": false,
+        "parser": "html",
+        "attributeSeparator": "always"
+      }
+    }
+  ]
+}

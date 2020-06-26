@@ -1,0 +1,175 @@
+.page-footer {
+  font-size: 12px;
+  line-height: 14px;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  background-color: $grey-dark;
+}
+
+.page-footer__wrap {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 86%;
+  min-height: 162px;
+  padding: 67px 6%;
+}
+
+.page-footer__inner {
+  display: flex;
+  flex-direction: column;
+
+  width: 28%;
+}
+
+.page-footer__logo-link {
+  position: relative;
+  z-index: 15;
+
+  width: 130px;
+  height: 34px;
+  margin-bottom: 23px;
+
+  fill: none;
+
+  transition: $trans;
+  cursor: pointer;
+  outline: none;
+
+  &[href]:hover,
+  &[href]:focus {
+    opacity: 0.5;
+  }
+
+  &[href]:active {
+    opacity: 0.3;
+  }
+}
+
+.page-footer__link {
+  margin-bottom: 15px;
+  color: inherit;
+
+  outline: none;
+
+  &:hover,
+  &:focus {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  &:active {
+    color: rgba(255, 255, 255, 0.1);
+  }
+
+  transition: $trans;
+}
+
+.page-footer__menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  width: 72%;
+  padding: 10px 0 0;
+}
+
+.page-footer__title {
+  margin: 0;
+  margin-bottom: 15px;
+
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #ffffff;
+}
+
+.page-footer__list {
+  @include list-reset;
+
+  & .page-footer__item {
+    padding: 7.5px 0;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .page-footer__wrap {
+    flex-direction: column;
+  }
+
+  .page-footer__inner {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%;
+  }
+
+  .page-footer__logo-link {
+    width: 33.3%;
+  }
+
+  .page-footer__menu {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .page-footer__link {
+    &--mail,
+    &--tel {
+      width: 33%;
+      padding-right: 3%;
+      box-sizing: border-box;
+    }
+  }
+
+  .page-footer__container {
+    width: 33%;
+    padding-right: 3%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 530px) {
+  .page-footer__wrap {
+    width: 88%;
+    align-items: center;
+    box-sizing: content-box;
+  }
+
+  .page-footer__inner {
+    width: auto;
+    flex-direction: column;
+  }
+
+  .page-footer__logo-link {
+    width: 100%;
+  }
+
+  .page-footer__link {
+    &--mail,
+    &--tel {
+      width: 100%;
+      padding-right: 0;
+
+      text-align: left;
+    }
+  }
+
+  .page-footer__menu {
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page-footer__container {
+    width: auto;
+    min-width: 175px;
+    padding-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .page-footer__logo-body {
+    pointer-events: pointed;
+  }
+}

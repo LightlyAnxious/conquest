@@ -1,4 +1,4 @@
-@import "base/normalize.scss";
+@import "../../node_modules/normalize.css/normalize";
 @import "base/fonts.scss";
 @import "base/variables.scss";
 @import "base/mixins.scss";
@@ -12,3 +12,9 @@
 @import "blocks/main-menu.scss";
 @import "blocks/promo.scss";
 @import "blocks/socials.scss";
+@import "blocks/bestsellers.scss";
+@import "blocks/advantages.scss";
+@import "blocks/news.scss";
+@import "blocks/page-footer.scss";
+@import "../components/scss/accordion.scss";
+// @import "blocks/catalog.scss";

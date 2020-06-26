@@ -1,98 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Conquest - часы премиум брендов с доставкой">
-  <title>Conquest - часы премиум брендов</title>
-  <link rel="stylesheet" href="css/style.min.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Conquest - часы премиум брендов с доставкой">
+    <title>Conquest - часы премиум брендов</title>
+    <link rel="stylesheet preload" href="css/style.min.css" as="style">
+  </head>
 
-<body>
-  <!-- Header -->
-  <header class="main-header">
-    <!-- Navigation -->
-    <nav class="main-nav">
-      <div class="main-nav__wrap container container--main">
-        <button class="main-nav__burger burger" aria-label="Открыть меню">
-          <span class="burger__body"></span>
-        </button>
-        <!-- Logo -->
-        <a class="main-nav__logo-link">
-          <object data="img/logo.svg" type="image/svg+xml"></object>
-        </a>
-        <!-- User section -->
-        <div class="main-nav__user-section">
-          <!-- Search -->
-          <form action="#" method="post" class="main-nav__search search">
-            <label class="search__label">
-              <span>
-                <input class="search__field visually-hidden" type="search" name="nav-search" autocomplete="off">
-                <svg class="search__icon" width="17" height="17">
-                  <use xlink:href="img/sprite_auto.svg#icon-search"></use>
-                </svg>
-              </span>
-              <span class="visually-hidden">Поиск</span>
-            </label>
-          </form>
-          <!-- Likes -->
-          <a href="#" class="main-nav__link main-nav__link--likes" aria-label="Избранное">
-            <svg width="20" height="17">
-              <use xlink:href="img/sprite_auto.svg#icon-like"></use>
-            </svg>
+  <body>
+    <!-- Header -->
+    <header class="main-header">
+      <!-- Navigation -->
+      <nav class="main-nav">
+        <div class="main-nav__wrap container container--main">
+          <button type="button" class="main-nav__burger burger" aria-label="Открыть меню">
+            <span class="burger__body"></span>
+          </button>
+          <!-- Logo -->
+          <a class="main-nav__logo-link">
+            <object data="img/logo.svg" type="image/svg+xml" width="130" height="34">
+              <span class="visually-hidden">Логотип Conquest</span>
+            </object>
           </a>
-          <!-- Cart -->
-          <a href="#" class="main-nav__link main-nav__link--cart" aria-label="Корзина">
-            <svg width="19" height="17">
-              <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
-            </svg>
-          </a>
+          <!-- User section -->
+          <div class="main-nav__user-section">
+            <!-- Search -->
+            <form action="#" method="post" class="main-nav__search search">
+              <label class="search__label">
+                <span>
+                  <input class="search__field visually-hidden" type="search" name="nav-search" autocomplete="off">
+                  <svg class="search__icon" width="17" height="17">
+                    <use xlink:href="img/sprite_auto.svg#icon-search"></use>
+                  </svg>
+                </span>
+                <span class="visually-hidden">Поиск</span>
+              </label>
+            </form>
+            <!-- Likes -->
+            <a href="#" class="main-nav__link main-nav__link--likes" aria-label="Избранное">
+              <svg width="20" height="17">
+                <use xlink:href="img/sprite_auto.svg#icon-like"></use>
+              </svg>
+            </a>
+            <!-- Cart -->
+            <a href="#" class="main-nav__link main-nav__link--cart" aria-label="Корзина">
+              <svg width="19" height="17">
+                <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
+              </svg>
+            </a>
+          </div>
+          <!-- Menu -->
+          <div class="main-nav__menu main-menu">
+            <ul class="main-menu__list">
+              <!-- Item 1 -->
+              <li class="main-menu__item">
+                <a class="main-menu__link" href="#" aria-label="Главная">Главная</a>
+              </li>
+              <!-- Item 2 -->
+              <li class="main-menu__item">
+                <a class="main-menu__link" href="#" aria-label="Каталог">Каталог</a>
+              </li>
+              <!-- Item 3 -->
+              <li class="main-menu__item">
+                <a class="main-menu__link" href="#" aria-label="Акции">Акции</a>
+              </li>
+              <!-- Item 4 -->
+              <li class="main-menu__item">
+                <a class="main-menu__link" href="#" aria-label="Доставка">Доставка</a>
+              </li>
+              <!-- Item 5 -->
+              <li class="main-menu__item">
+                <a class="main-menu__link" href="#" aria-label="Контакты">Контакты</a>
+              </li>
+            </ul>
+            <div class="main-menu__socials socials">
+              <ul class="main-menu__social-list socials__list">
+                <!-- Social item 1 -->
+                <li class="main-menu__social-item socials__item">
+                  <a href="#" class="socials__link" target="_blank" aria-label="Conquest в instagram">
+                    <svg class="socials__icon socials__icon--instagram" width="18" height="18">
+                      <use xlink:href="img/sprite_auto.svg#icon-instagram"></use>
+                    </svg>
+                  </a>
+                </li>
+                <!-- Social item 2 -->
+                <li class="main-menu__social-item socials__item">
+                  <a href="#" class="socials__link" target="_blank" aria-label="Conquest в facebook">
+                    <svg class="socials__icon socials__icon--facebook" width="9" height="17">
+                      <use xlink:href="img/sprite_auto.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <!-- Social item 3 -->
+                <li class="main-menu__social-item socials__item">
+                  <a href="#" class="socials__link" target="_blank" aria-label="Conquest в twitter">
+                    <svg class="socials__icon socials__icon--twitter" width="17" height="14">
+                      <use xlink:href="img/sprite_auto.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <!-- Menu -->
-        <div class="main-nav__menu main-menu">
-          <ul class="main-menu__list">
-            <!-- Item 1 -->
-            <li class="main-menu__item">
-              <a class="main-menu__link" href="#" aria-label="Главная">Главная</a>
-            </li>
-            <!-- Item 2 -->
-            <li class="main-menu__item">
-              <a class="main-menu__link" href="#" aria-label="Каталог">Каталог</a>
-            </li>
-            <!-- Item 3 -->
-            <li class="main-menu__item">
-              <a class="main-menu__link" href="#" aria-label="Акции">Акции</a>
-            </li>
-            <!-- Item 4 -->
-            <li class="main-menu__item">
-              <a class="main-menu__link" href="#" aria-label="Доставка">Доставка</a>
-            </li>
-            <!-- Item 5 -->
-            <li class="main-menu__item">
-              <a class="main-menu__link" href="#" aria-label="Контакты">Контакты</a></li>
-          </ul>
-          <div class="main-menu__socials socials">
-            <ul class="main-menu__social-list socials__list">
+      </nav>
+    </header>
+    <main class="site-content">
+      <!-- Promo -->
+      <section class="promo">
+        <div class="promo__wrap container container--main">
+          <h1 class="visually-hidden">Conquest - часы премиум брендов с доставкой</h1>
+          <!-- Socials -->
+          <div class="promo__socials socials">
+            <ul class="promo__social-list socials__list">
               <!-- Social item 1 -->
-              <li class="main-menu__social-item socials__item">
-                <a href="#" class="socials__link" target="_blank">
+              <li class="socials__item">
+                <a href="#" class="socials__link" target="_blank" aria-label="Conquest в instagram">
                   <svg class="socials__icon socials__icon--instagram" width="18" height="18">
                     <use xlink:href="img/sprite_auto.svg#icon-instagram"></use>
                   </svg>
                 </a>
               </li>
               <!-- Social item 2 -->
-              <li class="main-menu__social-item socials__item">
-                <a href="#" class="socials__link" target="_blank">
+              <li class="socials__item">
+                <a href="#" class="socials__link" target="_blank" aria-label="Conquest в facebook">
                   <svg class="socials__icon socials__icon--facebook" width="9" height="17">
                     <use xlink:href="img/sprite_auto.svg#icon-facebook"></use>
                   </svg>
                 </a>
               </li>
               <!-- Social item 3 -->
-              <li class="main-menu__social-item socials__item">
-                <a href="#" class="socials__link" target="_blank">
+              <li class="socials__item">
+                <a href="#" class="socials__link" target="_blank" aria-label="Conquest в twitter">
                   <svg class="socials__icon socials__icon--twitter" width="17" height="14">
                     <use xlink:href="img/sprite_auto.svg#icon-twitter"></use>
                   </svg>
@@ -100,95 +141,440 @@
               </li>
             </ul>
           </div>
+          <!-- New collection -->
+          <div class="promo__collection">
+            <h2 class="promo__title">Весна/Лето 2019</h2>
+            <span class="promo__subtitle">Коллекция</span>
+            <p class="promo__desc">Швейцарские часы в наличии в Москве и с доставкой по всему миру</p>
+            <a href="#" class="promo__btn btn btn--grey" target="_blank">Смотреть каталог</a>
+          </div>
         </div>
-      </div>
-    </nav>
-  </header>
-  <main class="site-content">
-    <!-- Promo -->
-    <section class="promo">
-      <div class="promo__wrap container container--main">
-        <h1 class="visually-hidden">
-          Conquest - часы премиум брендов с доставкой
-        </h1>
-        <!-- Socials -->
-        <div class="promo__socials socials">
-          <ul class="socials__list">
-            <!-- Social item 1 -->
-            <li class="socials__item">
-              <a href="#" class="socials__link" target="_blank">
-                <svg class="socials__icon socials__icon--instagram" width="18" height="18">
-                  <use xlink:href="img/sprite_auto.svg#icon-instagram"></use>
-                </svg>
-              </a>
+        <!-- Slider -->
+        <div class="promo__slider swiper-container swiper1">
+          <ul class="promo__list swiper-wrapper">
+            <li class="swiper-slide">
+              <picture class="promo__slide">
+                <source media="(min-width: 1140px)" type="image/webp" srcset="img/promo/promo-slide-1@2x.webp 2x, img/promo/promo-slide-1.webp">
+                <source media="(min-width: 768px)" type="image/webp" srcset="img/promo/tablet/promo-slide-1--tablet@2x.webp 2x, img/promo/tablet/promo-slide-1--tablet.webp">
+                <source type="image/webp" srcset="img/promo/mobile/promo-slide-1--mobile@2x.webp 2x, img/promo/mobile/promo-slide-1--mobile.webp">
+                <source media="(min-width: 1140px)" srcset="img/promo/promo-slide-1@2x.png 2x, img/promo/promo-slide-1.png">
+                <source media="(min-width: 768px)" srcset="img/promo/tablet/promo-slide-1--tablet@2x.png 2x, img/promo/tablet/promo-slide-1--tablet.png">
+                <img class="promo__image" src="img/promo/mobile/promo-slide-1--mobile.png" srcset="img/promo/mobile/promo-slide-1--mobile@2x.png 2x" alt="Часы Rado 28мм">
+              </picture>
             </li>
-            <!-- Social item 2 -->
-            <li class="socials__item">
-              <a href="#" class="socials__link" target="_blank">
-                <svg class="socials__icon socials__icon--facebook" width="9" height="17">
-                  <use xlink:href="img/sprite_auto.svg#icon-facebook"></use>
-                </svg>
-              </a>
+            <li class="swiper-slide">
+              <picture class="promo__slide">
+                <source media="(min-width: 1140px)" type="image/webp" srcset="img/promo/promo-slide-2@2x.webp 2x, img/promo/promo-slide-2.webp">
+                <source media="(min-width: 768px)" type="image/webp" srcset="img/promo/tablet/promo-slide-2--tablet@2x.webp 2x, img/promo/tablet/promo-slide-2--tablet.webp">
+                <source type="image/webp" srcset="img/promo/mobile/promo-slide-2--mobile@2x.webp 2x, img/promo/mobile/promo-slide-2--mobile.webp">
+                <source media="(min-width: 1140px)" srcset="img/promo/promo-slide-2@2x.png 2x, img/promo/promo-slide-2.png">
+                <source media="(min-width: 768px)" srcset="img/promo/tablet/promo-slide-2--tablet@2x.png 2x, img/promo/tablet/promo-slide-2--tablet.png">
+                <img class="promo__image" src="img/promo/mobile/promo-slide-2--mobile.png" srcset="img/promo/mobile/promo-slide-2--mobile@2x.png 2x" alt="Часы Rado 28мм">
+              </picture>
             </li>
-            <!-- Social item 3 -->
-            <li class="socials__item">
-              <a href="#" class="socials__link" target="_blank">
-                <svg class="socials__icon socials__icon--twitter" width="17" height="14">
-                  <use xlink:href="img/sprite_auto.svg#icon-twitter"></use>
-                </svg>
-              </a>
+            <li class="swiper-slide">
+              <picture class="promo__slide">
+                <source media="(min-width: 1140px)" type="image/webp" srcset="img/promo/promo-slide-3@2x.webp 2x, img/promo/promo-slide-3.webp">
+                <source media="(min-width: 768px)" type="image/webp" srcset="img/promo/tablet/promo-slide-3--tablet@2x.webp 2x, img/promo/tablet/promo-slide-3--tablet.webp">
+                <source type="image/webp" srcset="img/promo/mobile/promo-slide-3--mobile@2x.webp 2x, img/promo/mobile/promo-slide-3--mobile.webp">
+                <source media="(min-width: 1140px)" srcset="img/promo/promo-slide-3@2x.png 2x, img/promo/promo-slide-3.png">
+                <source media="(min-width: 768px)" srcset="img/promo/tablet/promo-slide-3--tablet@2x.png 2x, img/promo/tablet/promo-slide-3--tablet.png">
+                <img class="promo__image" src="img/promo/mobile/promo-slide-3--mobile.png" srcset="img/promo/mobile/promo-slide-3--mobile@2x.png 2x" alt="Часы Rado 28мм">
+              </picture>
             </li>
           </ul>
         </div>
-        <!-- New collection -->
-        <div class="promo__collection">
-          <h2 class="promo__title">Весна/Лето 2019</h2>
-          <span class="promo__subtitle">Коллекция</span>
-          <p class="promo__desc">Швейцарские часы в наличии в Москве
-            и с доставкой по всему миру
-          </p>
-          <a href="#" class="promo__btn btn btn--grey" target="_blank">Смотреть каталог</a>
+      </section>
+      <!-- Bestsellers -->
+      <section class="bestsellers">
+        <div class="bestsellers__wrap container container--main">
+          <h2 class="bestsellers__title">Популярные модели</h2>
+          <a class="bestsellers__link" href="#" aria-label="Смотреть все популярные модели">Смотреть все</a>
+          <!-- Inner top -->
+          <div class="bestsellers__inner bestsellers__inner--top">
+            <ul class="bestsellers__list">
+              <!-- Item 1 -->
+              <li class="bestsellers__item">
+                <h3 class="bestsellers__item-title">
+                  <a href="#" class="bestsellers__brand-link" aria-label="Вся продукция бренда">Rado</a>
+                </h3>
+                <p class="bestsellers__price">65300 ₽</p>
+                <!-- Picture -->
+                <picture class="bestsellers__media-wrap">
+                  <!-- Webp desktop -->
+                  <source media="(min-width: 1140px)" type="image/webp" srcset="img/catalog/rado-1@2x.webp 2x, img/catalog/rado-1.webp">
+                  <!-- Webp tablet -->
+                  <source media="(min-width: 768px)" type="image/webp" srcset="img/catalog/tablet/rado-1--tablet@2x.webp 2x, img/catalog/tablet/rado-1--tablet.webp">
+                  <!-- Webp mobile -->
+                  <source type="image/webp" srcset="img/catalog/mobile/rado-1--mobile@2x.webp 2x, img/catalog/mobile/rado-1--mobile.webp">
+                  <!-- Png desktop -->
+                  <source media="(min-width: 1140px)" srcset="img/catalog/rado-1@2x.png 2x, img/catalog/rado-1.png">
+                  <!-- Png tablet -->
+                  <source media="(min-width: 768px)" srcset="img/catalog/tablet/rado-1--tablet@2x.png 2x, img/catalog/tablet/rado-1--tablet.png">
+                  <!-- Png mobile -->
+                  <img class="bestsellers__image" src="img/catalog/mobile/rado-1--mobile.png" srcset="img/catalog/mobile/rado-1--mobile@2x.png 2x" alt="Часы Rado Harriet">
+                </picture>
+                <a href="#" class="bestsellers__details-link" aria-label="К карточке товара">Подробнее</a>
+              </li>
+              <!-- Item 2 -->
+              <li class="bestsellers__item">
+                <h3 class="bestsellers__item-title">
+                  <a href="#" class="bestsellers__brand-link" aria-label="Вся продукция бренда">Rado</a>
+                </h3>
+                <p class="bestsellers__price">65300 ₽</p>
+                <!-- Picture -->
+                <picture class="bestsellers__media-wrap">
+                  <!-- Webp desktop -->
+                  <source media="(min-width: 1140px)" type="image/webp" srcset="img/catalog/rado-2@2x.webp 2x, img/catalog/rado-2.webp">
+                  <!-- Webp tablet -->
+                  <source media="(min-width: 768px)" type="image/webp" srcset="img/catalog/tablet/rado-2--tablet@2x.webp 2x, img/catalog/tablet/rado-2--tablet.webp">
+                  <!-- Webp mobile -->
+                  <source type="image/webp" srcset="img/catalog/mobile/rado-2--mobile@2x.webp 2x, img/catalog/mobile/rado-2--mobile.webp">
+                  <!-- Png desktop -->
+                  <source media="(min-width: 1140px)" srcset="img/catalog/rado-2@2x.png 2x, img/catalog/rado-2.png">
+                  <!-- Png tablet -->
+                  <source media="(min-width: 768px)" srcset="img/catalog/tablet/rado-2--tablet@2x.png 2x, img/catalog/tablet/rado-2--tablet.png">
+                  <!-- Png mobile -->
+                  <img class="bestsellers__image" src="img/catalog/mobile/rado-2--mobile.png" srcset="img/catalog/mobile/rado-2--mobile@2x.png 2x" alt="Часы Rado Harriet">
+                </picture>
+                <a href="#" class="bestsellers__details-link" aria-label="К карточке товара">Подробнее</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Inner bottom -->
+          <div class="bestsellers__inner bestsellers__inner--bottom">
+            <ul class="bestsellers__list">
+              <!-- Item 1 -->
+              <li class="bestsellers__item">
+                <h3 class="bestsellers__item-title">
+                  <a href="#" class="bestsellers__brand-link" aria-label="Вся продукция бренда">Bulgari</a>
+                </h3>
+                <p class="bestsellers__price">81700 ₽</p>
+                <!-- Picture -->
+                <picture class="bestsellers__media-wrap">
+                  <!-- Webp desktop -->
+                  <source media="(min-width: 1140px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/catalog/bulgari-1@2x.webp 2x, img/catalog/bulgari-1.webp 1x">
+                  <!-- Webp tablet -->
+                  <source media="(min-width: 768px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/catalog/bulgari-1@2x.webp 2x, img/catalog/bulgari-1.webp 1x">
+                  <!-- Webp mobile -->
+                  <source type="image/webp" srcset="img/placeholder.png" data-srcset="img/catalog/mobile/bulgari-1--mobile@2x.webp 2x, img/catalog/mobile/bulgari-1--mobile.webp 1x">
+                  <!-- Png desktop -->
+                  <source media="(min-width: 1140px)" srcset="img/placeholder.png" data-srcset="img/catalog/bulgari-1@2x.png 2x, img/catalog/bulgari-1.png 1x">
+                  <!-- Png tablet -->
+                  <source media="(min-width: 768px)" srcset="img/placeholder.png" data-srcset="img/catalog/bulgari-1@2x.png 2x, img/catalog/bulgari-1.png 1x">
+                  <!-- Png mobile -->
+                  <img class="bestsellers__image lazy" src="placeholder.png" data-srcset="img/catalog/mobile/bulgari-1--mobile@2x.png 2x" data-src="img/catalog/mobile/bulgari-1--mobile.png" alt="Часы Bulgarш Solotempo">
+                </picture>
+                <a href="#" class="bestsellers__details-link" aria-label="К карточке товара">Подробнее</a>
+              </li>
+              <!-- Item 2 -->
+              <li class="bestsellers__item">
+                <h3 class="bestsellers__item-title">
+                  <a href="#" class="bestsellers__brand-link" aria-label="Вся продукция бренда">Rado</a>
+                </h3>
+                <p class="bestsellers__price">72700 ₽</p>
+                <!-- Picture -->
+                <picture class="bestsellers__media-wrap">
+                  <!-- Webp desktop -->
+                  <source media="(min-width: 1140px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/catalog/bulgari-2@2x.webp 2x, img/catalog/bulgari-2.webp 1x">
+                  <!-- Webp tablet -->
+                  <source media="(min-width: 768px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/catalog/bulgari-2@2x.webp 2x, img/catalog/bulgari-2.webp 1x">
+                  <!-- Webp mobile -->
+                  <source type="image/webp" srcset="img/placeholder.png" data-srcset="img/catalog/mobile/bulgari-2--mobile@2x.webp 2x, img/catalog/mobile/bulgari-2--mobile.webp 1x">
+                  <!-- Png desktop -->
+                  <source media="(min-width: 1140px)" srcset="img/placeholder.png" data-srcset="img/catalog/bulgari-2@2x.png 2x, img/catalog/bulgari-2.png 1x">
+                  <!-- Png tablet -->
+                  <source media="(min-width: 768px)" srcset="img/placeholder.png" data-srcset="img/catalog/bulgari-2@2x.png 2x, img/catalog/bulgari-2.png 1x">
+                  <!-- Png mobile -->
+                  <img class="bestsellers__image lazy" src="placeholder.png" data-srcset="img/catalog/mobile/bulgari-2--mobile@2x.png 2x" data-src="img/catalog/mobile/bulgari-2--mobile.png" alt="Часы Bulgari Octo">
+                </picture>
+                <a href="#" class="bestsellers__details-link" aria-label="К карточке товара">Подробнее</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <!-- Slider -->
-      <div class="promo__slider swiper-container swiper1">
-        <ul class="promo__list swiper-wrapper">
-          <li class="swiper-slide">
-            <picture class="promo__slide">
-              <source media="(min-width: 1140px)" type="image/webp" srcset="img/promo/promo-slide-1@2x.webp 2x, img/promo/promo-slide-1.webp 1x">
-              <source media="(min-width: 768px)" type="image/webp" srcset="img/promo/tablet/promo-slide-1--tablet@2x.webp 2x, img/promo/tablet/promo-slide-1--tablet.webp 1x">
-              <source type="image/webp" srcset="img/promo/mobile/promo-slide-1--mobile@2x.webp 2x, img/promo/mobile/promo-slide-1--mobile.webp 1x">
-              <source media="(min-width: 1140px)" srcset="img/promo/promo-slide-1@2x.png 2x, img/promo/promo-slide-1.png 1x">
-              <source media="(min-width: 768px)" srcset="img/promo/tablet/promo-slide-1--tablet@2x.png 2x, img/promo/tablet/promo-slide-1--tablet.png 1x">
-              <img class="promo__image" src="img/promo/mobile/promo-slide-1--mobile.png" srcset="img/promo/mobile/promo-slide-1--mobile@2x.png 2x" alt="Часы Rado 28мм">
-            </picture>
+      </section>
+      <!-- Advantages -->
+      <section class="advantages">
+        <h2 class="visually-hidden">Наши преимущества</h2>
+        <!-- Slider -->
+        <div class="advantages__wrap swiper-container swiper2">
+          <ul class="advantages__list swiper-wrapper">
+            <!-- Item 1 -->
+            <li class="advantages__item swiper-slide">
+              <picture class="advantages__media-wrap">
+                <!-- Webp desktop -->
+                <source media="(min-width: 1140px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/advantages/advantages-1@2x.webp 2x, img/advantages/advantages-1.webp 1x">
+                <!-- Webp tablet -->
+                <source media="(min-width: 768px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/advantages/tablet/advantages-1--tablet@2x.webp 2x, img/advantages/tablet/advantages-1--tablet.webp 1x">
+                <!-- Webp mobile -->
+                <source type="image/webp" srcset="img/placeholder.png" data-srcset="img/advantages/mobile/advantages-1--mobile@2x.webp 2x, img/advantages/mobile/advantages-1--mobile.webp 1x">
+                <!-- Png desktop -->
+                <source media="(min-width: 1140px)" srcset="img/placeholder.png" data-srcset="img/advantages/advantages-1@2x.png 2x, img/advantages/advantages-1.png 1x">
+                <!-- Png tablet -->
+                <source media="(min-width: 768px)" srcset="img/placeholder.png" data-srcset="img/advantages/tablet/advantages-1--tablet@2x.png 2x, img/advantages/tablet/advantages-1--tablet.png 1x">
+                <!-- Png mobile -->
+                <img class="advantages__image lazy" src="img/placeholder.png" data-srcset="img/advantages/mobile/advantages-1--mobile@2x.png 2x" data-src="img/advantages/mobile/advantages-1--mobile.png" alt="Подлинное качество">
+              </picture>
+              <div class="advantages__content">
+                <h3 class="advantages__title">Подлинное качество</h3>
+                <p class="advantages__desc">
+                  Все часы производятся в&nbsp;Швейцарии и&nbsp;имеют сертификаты качества.
+                  Настоящие швейцарские часы&nbsp;&mdash; это предмет гордости и&nbsp;престижа.
+                </p>
+                <a href="#" aria-label="Смотреть каталог" class="btn btn--beige advantages__btn">Смотреть каталог</a>
+              </div>
+            </li>
+            <!-- Item 2 -->
+            <li class="advantages__item swiper-slide">
+              <picture class="advantages__media-wrap">
+                <!-- Webp desktop -->
+                <source media="(min-width: 1140px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/advantages/advantages-2@2x.webp 2x, img/advantages/advantages-2.webp 1x">
+                <!-- Webp tablet -->
+                <source media="(min-width: 768px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/advantages/tablet/advantages-2--tablet@2x.webp 2x, img/advantages/tablet/advantages-2--tablet.webp 1x">
+                <!-- Webp mobile -->
+                <source type="image/webp" srcset="img/placeholder.png" data-srcset="img/advantages/mobile/advantages-2--mobile@2x.webp 2x, img/advantages/mobile/advantages-2--mobile.webp 1x">
+                <!-- Png desktop -->
+                <source media="(min-width: 1140px)" srcset="img/placeholder.png" data-srcset="img/advantages/advantages-2@2x.jpg 2x, img/advantages/advantages-2.jpg 1x">
+                <!-- Png tablet -->
+                <source media="(min-width: 768px)" srcset="img/placeholder.png" data-srcset="img/advantages/tablet/advantages-2--tablet@2x.jpg 2x, img/advantages/tablet/advantages-2--tablet.jpg 1x">
+                <!-- Png mobile -->
+                <img class="advantages__image lazy" src="img/placeholder" data-srcset="img/advantages/mobile/advantages-2--mobile@2x.jpg 2x" data-src="img/advantages/mobile/advantages-2--mobile.jpg" alt="Подлинное качество">
+              </picture>
+              <div class="advantages__content">
+                <h3 class="advantages__title">Оперативная доставка</h3>
+                <p class="advantages__desc">
+                  Бесплатная доставка в&nbsp;пределах МКАД. А&nbsp;так&nbsp;же транспортной
+                  компанией по&nbsp;Росии и&nbsp;всему миру.
+                </p>
+                <a href="#" aria-label="Смотреть каталог" class="btn btn--beige advantages__btn">Смотреть каталог</a>
+              </div>
+            </li>
+            <!-- Item 3 -->
+            <li class="advantages__item swiper-slide">
+              <picture class="advantages__media-wrap">
+                <!-- Webp desktop -->
+                <source media="(min-width: 1140px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/advantages/advantages-3@2x.webp 2x, img/advantages/advantages-3.webp 1x">
+                <!-- Webp tablet -->
+                <source media="(min-width: 768px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/advantages/tablet/advantages-3--tablet@2x.webp 2x, img/advantages/tablet/advantages-3--tablet.webp 1x">
+                <!-- Webp mobile -->
+                <source type="image/webp" srcset="img/placeholder.png" data-srcset="img/advantages/mobile/advantages-3--mobile@2x.webp 2x, img/advantages/mobile/advantages-3--mobile.webp 1x">
+                <!-- Png desktop -->
+                <source media="(min-width: 1140px)" srcset="img/placeholder.png" data-srcset="img/advantages/advantages-3@2x.jpg 2x, img/advantages/advantages-3.jpg 1x">
+                <!-- Png tablet -->
+                <source media="(min-width: 768px)" srcset="img/placeholder.png" data-srcset="img/advantages/tablet/advantages-3--tablet@2x.jpg 2x, img/advantages/tablet/advantages-3--tablet.jpg 1x">
+                <!-- Png mobile -->
+                <img class="advantages__image lazy" src="img/placeholder.png" data-srcset="img/advantages/mobile/advantages-3--mobile@2x.jpg 2x" data-src="img/advantages/mobile/advantages-3--mobile.jpg" alt="Подлинное качество">
+              </picture>
+              <div class="advantages__content">
+                <h3 class="advantages__title">Новые коллекции</h3>
+                <p class="advantages__desc">
+                  В&nbsp;нашем магазине вы&nbsp;всегда можете приобрести актуальные модели
+                  из&nbsp;последних коллекций.
+                </p>
+                <a href="#" aria-label="Смотреть каталог" class="btn btn--beige advantages__btn">Смотреть каталог</a>
+              </div>
+            </li>
+          </ul>
+          <div class="advantages__controls">
+            <button type="button" class="advantages__control-btn advantages__control-btn--prev">
+              <span class="visually-hidden">
+                К предыдущему
+                слайду
+              </span>
+            </button>
+            <p class="advantages__slider-progress"></p>
+            <button type="button" class="advantages__control-btn advantages__control-btn--next">
+              <span class="visually-hidden">
+                К следующему
+                слайду
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- News -->
+      <section class="news">
+        <div class="news__wrap">
+          <div class="news__content">
+            <h2 class="news__title">Следите за новостями</h2>
+            <p class="news__desc">
+              Подписывайтесь на
+              <a class="news__link" href="#">@conquest_watch</a> в&nbsp;соцсетях
+              и&nbsp;узнавайте о&nbsp;новинках и&nbsp;акциях первыми.
+            </p>
+          </div>
+          <div class="news__socials socials">
+            <ul class="news__social-list socials__list">
+              <!-- Social item 1 -->
+              <li class="news__social-item socials__item">
+                <a href="#" class="news__social-link socials__link" target="_blank" aria-label="Conquest в instagram">
+                  <svg class="socials__icon socials__icon--instagram" width="23" height="24">
+                    <use xlink:href="img/sprite_auto.svg#icon-instagram"></use>
+                  </svg>
+                </a>
+              </li>
+              <!-- Social item 2 -->
+              <li class="news__social-item socials__item">
+                <a href="#" class="news__social-link socials__link" target="_blank" aria-label="Conquest в facebook">
+                  <svg class="socials__icon socials__icon--facebook" width="12" height="22">
+                    <use xlink:href="img/sprite_auto.svg#icon-facebook"></use>
+                  </svg>
+                </a>
+              </li>
+              <!-- Social item 3 -->
+              <li class="news__social-item socials__item">
+                <a href="#" class="news__social-link socials__link" target="_blank" aria-label="Conquest в twitter">
+                  <svg class="socials__icon socials__icon--twitter" width="22" height="18">
+                    <use xlink:href="img/sprite_auto.svg#icon-twitter"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <picture class="news__media-wrap">
+            <!-- Webp desktop -->
+            <source media="(min-width: 1140px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/news/news-bg-masonry@2x.webp 2x, img/news/news-bg-masonry.webp 1x">
+            <!-- Webp tablet -->
+            <source media="(min-width: 768px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/news/tablet/news-bg-masonry--tablet@2x.webp 2x, img/news/tablet/news-bg-masonry--tablet.webp 1x">
+            <!-- Webp mobile -->
+            <source type="image/webp" srcset="img/placeholder.png" data-srcset="img/news/mobile/news-bg-masonry--mobile@2x.webp 2x, img/news/mobile/news-bg-masonry--mobile.webp 1x">
+            <!-- Png desktop -->
+            <source media="(min-width: 1140px)" srcset="img/placeholder.png" data-srcset="img/news/news-bg-masonry@2x.jpg 2x, img/news/news-bg-masonry.jpg 1x">
+            <!-- Png tablet -->
+            <source media="(min-width: 768px)" srcset="img/placeholder.png" data-srcset="img/news/tablet/news-bg-masonry--tablet@2x.jpg 2x, img/news/tablet/news-bg-masonry--tablet.jpg 1x">
+            <!-- Png mobile -->
+            <img class="news__image lazy" src="placeholder.png" data-srcset="img/news/mobile/news-bg-masonry--mobile@2x.jpg 2x" data-src="img/news/mobile/news-bg-masonry--mobile.jpg" alt="Подписывайтесь на наши новости">
+          </picture>
+        </div>
+      </section>
+    </main>
+    <footer class="page-footer">
+  <div class="page-footer__wrap">
+    <div class="page-footer__inner">
+      <a href="index.html" class="page-footer__logo-link">
+        <object data="img/logo-footer.svg" class="page-footer__logo-body" type="image/svg+xml" width="130" height="34">
+          <span class="visually-hidden">Логотип Conquest</span>
+        </object>
+      </a>
+      <a class="page-footer__link page-footer__link--tel" href="tel:+74994504797">
+        8 (499) 450-47-97
+      </a>
+      <a class="page-footer__link page-footer__link--mail" href="mailto:info@conquest.watch.ru">
+        info@conquest.watch.ru
+      </a>
+    </div>
+
+    <!-- Footer menu -->
+    <nav class="page-footer__menu">
+      <!-- About -->
+      <div class="accordion page-footer__container page-footer__container--about">
+        <h3 class="page-footer__title">
+          <button id="accordion-header-1" class="accordion__button" aria-expanded="true" aria-controls="accordion-panel-1" data-accordion-header="">
+            О компании
+          </button>
+        </h3>
+        <ul id="accordion-panel-1" class="page-footer__list accordion__panel" aria-labelledby="accordion-header-1" aria-hidden="false">
+          <!-- Item-1 -->
+          <li class="page-footer__item">
+            <a class="page-footer__link" href="#" aria-label="Наши магазины">
+              Наши магазины
+            </a>
           </li>
-          <li class="swiper-slide">
-            <picture class="promo__slide">
-              <source media="(min-width: 1140px)" type="image/webp" srcset="img/promo/promo-slide-2@2x.webp 2x, img/promo/promo-slide-2.webp 1x">
-              <source media="(min-width: 768px)" type="image/webp" srcset="img/promo/tablet/promo-slide-2--tablet@2x.webp 2x, img/promo/tablet/promo-slide-2--tablet.webp 1x">
-              <source type="image/webp" srcset="img/promo/mobile/promo-slide-2--mobile@2x.webp 2x, img/promo/mobile/promo-slide-2--mobile.webp 1x">
-              <source media="(min-width: 1140px)" srcset="img/promo/promo-slide-2@2x.png 2x, img/promo/promo-slide-2.png 1x">
-              <source media="(min-width: 768px)" srcset="img/promo/tablet/promo-slide-2--tablet@2x.png 2x, img/promo/tablet/promo-slide-2--tablet.png 1x">
-              <img class="promo__image" src="img/promo/mobile/promo-slide-2--mobile.png" srcset="img/promo/mobile/promo-slide-2--mobile@2x.png 2x" alt="Часы Rado 28мм">
-            </picture>
+          <li class="page-footer__item">
+            <!-- Item-2 -->
+            <a class="page-footer__link" href="#" aria-label="Вакансии">
+              Вакансии
+            </a>
           </li>
-          <li class="swiper-slide">
-            <picture class="promo__slide">
-              <source media="(min-width: 1140px)" type="image/webp" srcset="img/promo/promo-slide-3@2x.webp 2x, img/promo/promo-slide-3.webp 1x">
-              <source media="(min-width: 768px)" type="image/webp" srcset="img/promo/tablet/promo-slide-3--tablet@2x.webp 2x, img/promo/tablet/promo-slide-3--tablet.webp 1x">
-              <source type="image/webp" srcset="img/promo/mobile/promo-slide-3--mobile@2x.webp 2x, img/promo/mobile/promo-slide-3--mobile.webp 1x">
-              <source media="(min-width: 1140px)" srcset="img/promo/promo-slide-3@2x.png 2x, img/promo/promo-slide-3.png 1x">
-              <source media="(min-width: 768px)" srcset="img/promo/tablet/promo-slide-3--tablet@2x.png 2x, img/promo/tablet/promo-slide-3--tablet.png 1x">
-              <img class="promo__image" src="img/promo/mobile/promo-slide-3--mobile.png" srcset="img/promo/mobile/promo-slide-3--mobile@2x.png 2x" alt="Часы Rado 28мм">
-            </picture>
+          <li class="page-footer__item">
+            <!-- Item-3 -->
+            <a class="page-footer__link" href="#" aria-label="Сертификаты">
+              Сертификаты
+            </a>
+          </li>
+          <li class="page-footer__item">
+            <!-- Item-4 -->
+            <a class="page-footer__link" href="#" aria-label="Отзывы">
+              Отзывы
+            </a>
           </li>
         </ul>
       </div>
-    </section>
-  </main>
-  <script src="js/vendor.js"></script>
-  <script defer="" src="js/main.js"></script>
-</body>
+      <!-- To buyers -->
+      <div class="accordion page-footer__container page-footer__container--to-buyers">
+        <h3 class="page-footer__title">
+          <button id="accordion-header-2" class="accordion__button" aria-expanded="true" aria-controls="accordion-panel-2" data-accordion-header="">
+            Покупателям
+          </button>
+        </h3>
+        <ul id="accordion-panel-2" class="page-footer__list accordion__panel" aria-labelledby="accordion-header-2" aria-hidden="false">
+          <li class="page-footer__item">
+            <!-- Item-1 -->
+            <a class="page-footer__link" href="#" aria-label="Каталог товаров">
+              Каталог товаров
+            </a>
+          </li>
+          <li class="page-footer__item">
+            <!-- Item-2 -->
+            <a class="page-footer__link" href="#" aria-label="Как заказать?">
+              Как заказать?
+            </a>
+          </li>
+          <li class="page-footer__item">
+            <!-- Item-3 -->
+            <a class="page-footer__link" href="#" aria-label="FAQ">
+              FAQ
+            </a>
+          </li>
+          <li class="page-footer__item">
+            <!-- Item-4 -->
+            <a class="page-footer__link" href="#" aria-label="Корпоративным клиентам">
+              Корпоративным клиентам
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Delivery -->
+      <div class="accordion page-footer__container page-footer__container--delivery">
+        <h3 class="page-footer__title">
+          <button id="accordion-header-3" class="accordion__button" aria-expanded="true" aria-controls="accordion-panel-3" data-accordion-header="">
+            Оплата и доставка
+          </button>
+        </h3>
+        <ul id="accordion-panel-3" class="page-footer__list accordion__panel" aria-labelledby="accordion-header-3" aria-hidden="false">
+          <li class="page-footer__item">
+            <!-- Item-1 -->
+            <a class="page-footer__link" href="#" aria-label="Способы оплаты">
+              Способы оплаты
+            </a>
+          </li>
+          <li class="page-footer__item">
+            <!-- Item-2 -->
+            <a class="page-footer__link" href="#" aria-label="Время доставки">
+              Время доставки
+            </a>
+          </li>
+          <li class="page-footer__item">
+            <!-- Item-3 -->
+            <a class="page-footer__link" href="#" aria-label="Гарантии и ремонт">
+              Гарантии и ремонт
+            </a>
+          </li>
+          <li class="page-footer__item">
+            <!-- Item-4 -->
+            <a class="page-footer__link" href="#" aria-label="Возврат и компенсация">
+              Возврат и компенсация
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</footer>
+
+    <script src="js/vendor.min.js"></script>
+    <script src="js/main.min.js"></script>
+  </body>
 
 </html>

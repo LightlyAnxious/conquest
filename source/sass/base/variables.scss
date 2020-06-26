@@ -5,7 +5,27 @@ $retina-dppx: 1.5dppx;
 $pale-black: rgba(27, 26, 23, 0.82);
 $black: #1b1a17;
 $beige: #d4b098;
+$light-beige: #fdfdfb;
 $grey-dark: #444240;
 $grey-light: #636261;
 $silver: #818d92;
 $trans: all 0.15s ease-in-out;
+
+:root {
+  --titleSize: 32px;
+  --titleHeight: 43px;
+}
+
+@media (max-width: $tablet-width) {
+  :root {
+    --titleSize: 27px;
+    --titleHeight: 37px;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  :root {
+    --titleSize: 24px;
+    --titleHeight: 32px;
+  }
+}

@@ -1,13 +1,15 @@
-let burger = document.querySelector(".burger");
-let menu = document.querySelector(".main-nav__menu");
+import '../../components/js/accordion';
+
+const burger = document.querySelector('.burger');
+const menu = document.querySelector('.main-nav__menu');
 
 if (burger && menu) {
   // * Функция-обработчик нажатия на кнопку меню
 
-  let oncBurgerClickMenuToggle = () => {
-    burger.classList.toggle("burger--active");
-    menu.classList.toggle("main-nav__menu--shown");
+  const oncBurgerClickMenuToggle = () => {
+    burger.classList.toggle('burger--active');
+    menu.classList.toggle('main-nav__menu--shown');
   };
 
-  burger.addEventListener("click", oncBurgerClickMenuToggle);
+  burger.addEventListener('click', oncBurgerClickMenuToggle);
 }
