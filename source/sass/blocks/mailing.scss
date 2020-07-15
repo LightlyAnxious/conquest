@@ -1,0 +1,156 @@
+.mailing {
+  min-height: 293px;
+
+  background: url("../../img/svg/ellipse-2.svg") no-repeat 0 0,
+    url("../../img/svg/circles.svg") no-repeat 100% 0 rgba(234, 228, 213, 0.5);
+
+  & form {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: 66px 0;
+  }
+}
+
+.mailing__wrap {
+  width: 50%;
+  max-width: 580px;
+  box-sizing: border-box;
+  padding-left: 6%;
+
+  &--left {
+    margin-left: auto;
+  }
+
+  &--right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    padding-top: 90px;
+    margin-right: auto;
+  }
+}
+
+.mailing__subtitle {
+  display: inline-block;
+
+  margin-bottom: 15px;
+
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  color: #818181;
+}
+
+.mailing__desc {
+  @include playfair-b;
+
+  margin: 0;
+
+  font-size: 45px;
+  line-height: 60px;
+  letter-spacing: 0.03em;
+
+  color: #1b1a17;
+}
+
+.mailing__field {
+  @include form-reset;
+
+  width: 48%;
+  padding-bottom: 15px;
+  margin-right: 6%;
+
+  border-bottom: 1px solid $black;
+  box-sizing: border-box;
+
+  outline: none;
+}
+
+.mailing__btn {
+  padding: 24px 12px;
+  width: 32%;
+}
+
+// !Планшетная версия
+
+@media (max-width: $tablet-width) {
+  .mailing__wrap {
+    padding-left: 4%;
+
+    &--right {
+      padding-top: 55px;
+    }
+  }
+
+  .mailing__desc {
+    max-width: 390px;
+
+    font-size: 32px;
+    line-height: 42px;
+  }
+}
+
+// ! Мобильная версия
+
+@media (max-width: $mobile-width) {
+  .mailing {
+    & form {
+      flex-direction: column;
+      align-items: center;
+
+      padding: 40px 4%;
+    }
+  }
+
+  .mailing__wrap {
+    width: auto;
+    padding-left: 0;
+
+    &--left {
+      margin-left: 0;
+    }
+
+    &--right {
+      width: 100%;
+      max-width: 360px;
+
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      margin-right: 0;
+    }
+  }
+
+  .mailing__desc {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .mailing__field {
+    width: 57%;
+  }
+
+  .mailing__btn {
+    width: auto;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 380px) {
+  .mailing__wrap {
+    &--right {
+      flex-direction: column;
+    }
+  }
+
+  .mailing__field {
+    width: 100%;
+
+    margin-bottom: 30px;
+  }
+}

@@ -62,7 +62,7 @@
   },
   "scripts": {
     "test": "editorconfig-cli && stylelint ./source/sass/**/*.scss --syntax scss && eslint ./source/js",
-    "prettyhtml": "prettyhtml source/**/*.html && prettyhtml build/*.html",
+    "prettyhtml": "prettyhtml source/*.html && prettyhtml build/*.html",
     "build": "gulp build && prettyhtml source/*.html && prettyhtml build/*.html",
     "start": "gulp start"
   },
@@ -81,9 +81,11 @@
     "source/sass/**/*.{sass,scss}"
   ],
   "dependencies": {
+    "favicons-webpack-plugin": "^3.0.1",
     "focus-manager": "^0.4.1",
     "html-webpack-plugin": "^4.3.0",
     "normalize.css": "^8.0.1",
+    "nouislider": "^14.6.0",
     "swiper": "^5.4.5",
     "yall-js": "^3.2.0"
   },

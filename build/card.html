@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Карточка товара</title>
+  <link rel="shortcut icon" href="favicons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicons/favicon-48x48.png">
+<link rel="manifest" href="favicons/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#fff">
+<meta name="application-name" content="Conquest">
+<link rel="icon" type="image/png" sizes="228x228" href="favicons/coast-228x228.png">
+<meta name="msapplication-TileColor" content="#020307">
+<meta name="msapplication-TileImage" content="favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="favicons/browserconfig.xml">
+<link rel="yandex-tableau-widget" href="favicons/yandex-browser-manifest.json">
+
+  <link rel="stylesheet preload" href="css/style.min.css" as="style">
+</head>
+<body>
+  <!-- Header -->
+  <!-- Header -->
+<header class="page-header">
+  <div class="page-header__wrap container container--page">
+    <!-- Logo -->
+    <a href="index.html" class="page-header__logo-link" aria-label="Логотип Conquest">
+      <object class="page-header__logo-picture" data="img/svg/logo.svg" type="image/svg+xml" width="105" height="27">
+        <span class="visually-hidden">Логотип Conquest</span>
+      </object>
+    </a>
+    <!-- Menu -->
+<nav id="menu" class="page-header__menu menu">
+  <div class="menu__wrap">
+    <button type="button" class="menu__btn hamburger-btn" aria-label="Открыть меню" aria-expanded="false">
+      <span class="hamburger-btn__body"></span>
+    </button>
+    <ul id="menu-list" class="menu__list">
+      <!-- Item 1 -->
+      <li class="menu__item">
+        <a class="menu__page-link" href="#" aria-label="Каталог">Каталог</a>
+      </li>
+      <!-- Item 2 -->
+      <li class="menu__item">
+        <a class="menu__page-link" href="#" aria-label="Акции">Акции</a>
+      </li>
+      <!-- Item 3 -->
+      <li class="menu__item">
+        <a class="menu__page-link" href="#" aria-label="Доставка">Доставка</a>
+      </li>
+      <!-- Item 4 -->
+      <li class="menu__item">
+        <a class="menu__page-link" href="#" aria-label="Контакты">Контакты</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+    <!-- User section -->
+    <div class="page-header__user-section">
+      <!-- Search -->
+      <form action="#" method="post" class="page-header__search search">
+        <label class="search__title" for="search-field">
+          <span class="visually-hidden">Поиск</span>
+        </label>
+
+        <!-- <div class="search__body"> -->
+        <input id="search-field" class="search__field" type="search" name="nav-search" autocomplete="off" aria-labelledby="search-btn">
+        <button type="button" id="search-btn" class="search__btn" aria-label="Развернуть поиск" aria-controls="search-field">
+          <svg class="search__icon" width="17" height="17">
+            <use xlink:href="img/sprite_auto.svg#icon-search"></use>
+          </svg>
+        </button>
+        <!-- </div> -->
+      </form>
+      <!-- Likes -->
+      <a href="#" class="page-header__link page-header__link--likes" aria-label="Избранное">
+        <svg width="20" height="17">
+          <use xlink:href="img/sprite_auto.svg#icon-like"></use>
+        </svg>
+      </a>
+      <!-- Cart -->
+      <a href="#" class="page-header__link page-header__link--cart" aria-label="Корзина">
+        <svg width="19" height="17">
+          <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+  <main class="site-content container container--card">
+    <h1 class="visually-hidden">Карточка товара</h1>
+    <!-- Breadcrumbs -->
+    <nav class="site-content__breadcrumbs breadcrumbs breadcrumbs--card" aria-label="breadcrumbs">
+      <div class="breadcrumbs__wrap">
+        <ol class="breadcrumbs__list">
+          <!-- Главная -->
+          <li class="breadcrumbs__item">
+            <a href="#" class="breadcrumbs__link">Главная</a>
+            <span class="breadcrumbs__separator"></span>
+          </li>
+          <!-- Каталог -->
+          <li class="breadcrumbs__item">
+            <a href="#" class="breadcrumbs__link">Каталог</a>
+            <span class="breadcrumbs__separator"></span>
+          </li>
+          <!-- Мужские часы -->
+          <li class="breadcrumbs__item">
+            <a href="#" class="breadcrumbs__link">Мужские часы</a>
+            <span class="breadcrumbs__separator"></span>
+          </li>
+          <!-- Georg Jensen -->
+          <li class="breadcrumbs__item">
+            <a href="#" class="breadcrumbs__link breadcrumbs__link--active" aria-current="location">Georg Jensen</a>
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Card -->
+    <article class="card">
+      <div class="card__wrap">
+        <div class="card__slider">
+          <button class="card__control card__control--prev" type="button" aria-label="К предыдущему слайду"></button>
+          <div class="card__container swiper-container swiper4">
+            <ul class="card__list swiper-wrapper">
+              <!-- Item-1 -->
+              <li class="card__item swiper-slide">
+                <a href="#" class="card__link">
+                  <!-- Picture -->
+                  <picture class="card__media-wrap">
+                    <!-- Webp -->
+                    <source media="(min-width: 1140px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/cards/rado/rado-card-1@2x.webp 2x, img/cards/rado/rado-card-1.webp">
+                    <!-- Png -->
+                    <source media="(min-width: 1140px)" srcset="img/placeholder.png" data-srcset="img/cards/rado/rado-card-1@2x.png 2x, img/cards/rado/rado-card-1.png">
+                    <img class="card__image lazy" src="img/placeholder.png" data-srcset="img/cards/rado/tablet/rado-card-1--tablet@2x.png 2x" data-src="img/cards/rado/tablet/rado-card-1--tablet.png" alt="Часы Techne">
+                  </picture>
+                </a>
+              </li>
+              <!-- Item-2 -->
+              <li class="card__item swiper-slide">
+                <a href="#" class="card__link">
+                  <!-- Picture -->
+                  <picture class="card__media-wrap">
+                    <!-- Webp -->
+                    <source media="(min-width: 1140px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/cards/rado/rado-card-2@2x.webp 2x, img/cards/rado/rado-card-2.webp">
+                    <!-- Png -->
+                    <source media="(min-width: 1140px)" srcset="img/placeholder.png" data-srcset="img/cards/rado/rado-card-2@2x.png 2x, img/cards/rado/rado-card-2.png">
+                    <img class="card__image lazy" src="img/placeholder.png" data-srcset="img/cards/rado/tablet/rado-card-2--tablet@2x.png 2x" data-src="img/cards/rado/tablet/rado-card-2--tablet.png" alt="Часы Techne">
+                  </picture>
+                </a>
+              </li>
+              <!-- Item-3 -->
+              <li class="card__item swiper-slide">
+                <a href="#" class="card__link">
+                  <!-- Picture -->
+                  <picture class="card__media-wrap">
+                    <!-- Webp -->
+                    <source media="(min-width: 1140px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/cards/rado/rado-card-3@2x.webp 2x, img/cards/rado/rado-card-3.webp">
+                    <!-- Png -->
+                    <source media="(min-width: 1140px)" srcset="img/placeholder.png" data-srcset="img/cards/rado/rado-card-3@2x.png 2x, img/cards/rado/rado-card-3.png">
+                    <img class="card__image lazy" src="img/placeholder.png" data-srcset="img/cards/rado/tablet/rado-card-3--tablet@2x.png 2x" data-src="img/cards/rado/tablet/rado-card-3--tablet.png" alt="Часы Techne">
+                  </picture>
+                </a>
+              </li>
+              <!-- Item-4 -->
+              <li class="card__item swiper-slide">
+                <a href="#" class="card__link">
+                  <!-- Picture -->
+                  <picture class="card__media-wrap">
+                    <!-- Webp -->
+                    <source media="(min-width: 1140px)" type="image/webp" srcset="img/placeholder.png" data-srcset="img/cards/rado/rado-card-4@2x.webp 2x, img/cards/rado/rado-card-4.webp">
+                    <!-- Png -->
+                    <source media="(min-width: 1140px)" srcset="img/placeholder.png" data-srcset="img/cards/rado/rado-card-4@2x.png 2x, img/cards/rado/rado-card-4.png">
+                    <img class="card__image lazy" src="img/placeholder.png" data-srcset="img/cards/rado/tablet/rado-card-4--tablet@2x.png 2x" data-src="img/cards/rado/tablet/rado-card-4--tablet.png" alt="Часы Techne">
+                  </picture>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <button class="card__control card__control--next" type="button" aria-label="К следующему слайду"></button>
+        </div>
+        <div class="card__pagination"></div>
+      </div>
+      <div class="card__content">
+        <div class="card__header">
+          <div class="card__label">
+            <h2 class="card__title">Rado, 28 mm</h2>
+            <p class="card__price">45 700 ₽</p>
+          </div>
+          <button class="card__like-btn" type="button" aria-label="Добавить в избранное">
+            <svg width="19" height="17">
+              <use xlink:href="img/sprite_auto.svg#icon-like"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="card__inner">
+          <!-- Tabs -->
+          <div class="tabs card__tabs">
+  <ul class="tabs__list" role="tablist">
+    <li class="tabs__item" role="presentation">
+      <a href="#" id="label_id_first" class="tabs__link card__tab-title tabs__link--active" data-tab="id_first" role="tab" aria-controls="id_first" aria-selected="true">
+        Описание
+      </a>
+    </li>
+    <li class="tabs__item" role="presentation">
+      <a href="#" id="label_id_second" class="tabs__link card__tab-link" data-tab="id_second" role="tab" aria-controls="id_second">
+        Технические характеристики
+      </a>
+    </li>
+  </ul>
+  <div class="tabs__content" id="id_first" aria-labelledby="label_id_first">
+    <p class="tabs__desc card__about">
+      Дизайн часов HyperChrome Automatic Chronograph вдохновлен большим теннисом, а&nbsp;специальные функции оценят как игроки, так и&nbsp;любители игры.
+    </p>
+  </div>
+  <div class="tabs__content" id="id_second" aria-labelledby="label_id_second" aria-hidden="true">
+    <dl class="tabs__desc card__specs">
+      <dt class="card__term">Механизм:</dt>
+      <dd class="card__desc">Автоматический механизм</dd>
+
+      <dt class="card__term">Размер:</dt>
+      <dd class="card__desc">45.0 мм</dd>
+
+      <dt class="card__term">Лимитированная серия:</dt>
+      <dd class="card__desc">Лимитированная серия 999 экземпляров</dd>
+
+      <dt class="card__term">Общий вес:</dt>
+      <dd class="card__desc">111 грамм</dd>
+    </dl>
+  </div>
+</div>
+
+          <button class="card__to-cart-btn btn btn--grey" type="button">
+            В корзину
+          </button>
+        </div>
+      </div>
+    </article>
+
+  </main>
+  <div class="overlay" aria-hidden="true">
+    <div class="modal-view">
+      <button type="button" class="modal-view__close" aria-label="Закрыть просмотр">
+      </button>
+    </div>
+  </div>
+  <script src="js/vendor.min.js"></script>
+  <script src="js/main.min.js"></script>
+</body>
+</html>

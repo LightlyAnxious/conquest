@@ -1,0 +1,81 @@
+.site-content {
+  padding-bottom: 80px;
+}
+
+/* stylelint-disable */
+/* prettier-ignore */
+.site-content__layout {
+  display: grid;
+  grid-template-columns: 230px 3fr;
+  grid-template-rows: auto auto 1fr;
+  grid-row-gap: 40px;
+  grid-column-gap: 3%;
+  grid-template-areas:
+    "breadcrumbs breadcrumbs"
+    "title       catalog"
+    "filters      catalog"
+    ;
+  width: 100%;
+}
+/* stylelint-enable */
+
+.site-content__title {
+  @include title;
+
+  grid-area: title;
+
+  margin-bottom: 20px;
+}
+
+.site-content__breadcrumbs {
+  grid-area: breadcrumbs;
+}
+
+.site-content__filters {
+  grid-area: filters;
+}
+
+.site-content__catalog {
+  grid-area: catalog;
+}
+
+// ! Планшетная версия
+
+@media (max-width: $tablet-width) {
+  .site-content {
+    padding-bottom: 60px;
+  }
+
+  .site-content__title {
+    margin-bottom: 0;
+  }
+
+  .site-content__layout {
+    grid-template-columns: 195px 3fr;
+    grid-column-gap: 2%;
+  }
+}
+
+// ! Мобильная версия
+
+@media (max-width: $mobile-width) {
+  .site-content {
+    padding-bottom: 40px;
+  }
+
+  /* stylelint-disable */
+  /* prettier-ignore */
+  .site-content__layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 1fr;
+    grid-row-gap: 30px;
+    grid-column-gap: 3%;
+    grid-template-areas:
+      "breadcrumbs"
+      "title"
+      "filters"
+      "catalog"
+      ;
+  }
+  /* stylelint-enable */
+}

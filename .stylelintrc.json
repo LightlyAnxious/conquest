@@ -48,7 +48,8 @@
       "s",
       "dpi",
       "dppx",
-      "deg"
+      "deg",
+      "fr"
     ]
   }
 }

@@ -1,15 +1,15 @@
-import '../../components/js/accordion';
+import '../../components/js/menu.js';
+import '../../components/js/accordion.js';
+import '../../components/js/search.js';
+import '../../components/js/select.js';
+import '../../components/js/tabs.js';
 
-const burger = document.querySelector('.burger');
-const menu = document.querySelector('.main-nav__menu');
+const logoPicture = document.querySelector('.page-header__logo-picture');
 
-if (burger && menu) {
-  // * Функция-обработчик нажатия на кнопку меню
+const onKeyPressCancelTab = () => {
+  if (logoPicture) {
+    logoPicture.tabIndex = '-1';
+  }
+};
 
-  const oncBurgerClickMenuToggle = () => {
-    burger.classList.toggle('burger--active');
-    menu.classList.toggle('main-nav__menu--shown');
-  };
-
-  burger.addEventListener('click', oncBurgerClickMenuToggle);
-}
+window.addEventListener('keydown', onKeyPressCancelTab);

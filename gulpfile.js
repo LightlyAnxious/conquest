@@ -2,6 +2,7 @@ const gulp = require('gulp');
 
 const styles = require('./gulp/tasks/styles');
 const clean = require('./gulp/tasks/clean');
+const html = require('./gulp/tasks/html');
 const fonts = require('./gulp/tasks/fonts');
 const images = require('./gulp/tasks/images');
 const webp = require('./gulp/tasks/webp');
@@ -20,22 +21,25 @@ function setMode(isProd = false) {
 
 module.exports.styles = gulp.series(styles);
 module.exports.clean = gulp.series(clean);
+module.exports.html = gulp.series(html);
 module.exports.fonts = gulp.series(fonts);
 module.exports.images = gulp.series(images);
 module.exports.webp = gulp.series(webp);
 module.exports.sprite = gulp.series(sprite);
 module.exports.script = gulp.series(script);
+module.exports.icons = gulp.series(favicons);
 module.exports.lighthouse = gulp.series(lighthouse);
 
 const build = gulp.series(
   clean,
+  favicons,
+  html,
   styles,
   script,
   fonts,
   images,
   webp,
-  sprite,
-  favicons
+  sprite
 );
 
 module.exports.start = gulp.series(setMode(), sync);

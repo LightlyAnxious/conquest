@@ -8,7 +8,8 @@
       "files": "*.js",
       "options": {
         "tabWidth": 2,
-        "singleQuote": true
+        "singleQuote": true,
+        "quoteProps": "as-needed"
       }
     },
     {

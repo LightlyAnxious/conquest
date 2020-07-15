@@ -1,9 +1,11 @@
 const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const { basename } = require('path');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -12,6 +14,7 @@ const isProd = !isDev;
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
+  console.log(templateFiles);
   return templateFiles.map(item => {
     const parts = item.split('.');
     const name = parts[0];
@@ -34,6 +37,7 @@ function generateHtmlPlugins(templateDir) {
   });
 }
 
+// Создание массива html плагинов
 const htmlPlugins = generateHtmlPlugins('./build').filter(
   el => el !== undefined
 );
