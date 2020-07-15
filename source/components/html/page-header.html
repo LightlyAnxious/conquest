@@ -1,0 +1,73 @@
+<!-- Header -->
+<header class="page-header">
+  <div class="page-header__wrap container container--page">
+    <!-- Logo -->
+    <a
+      href="index.html"
+      class="page-header__logo-link"
+      aria-label="Логотип Conquest"
+    >
+      <object
+        class="page-header__logo-picture"
+        data="img/svg/logo.svg"
+        type="image/svg+xml"
+        width="105"
+        height="27"
+      >
+        <span class="visually-hidden">Логотип Conquest</span>
+      </object>
+    </a>
+    <include src="source/components/html/menu.html"></include>
+    <!-- User section -->
+    <div class="page-header__user-section">
+      <!-- Search -->
+      <form action="#" method="post" class="page-header__search search">
+        <label class="search__title" for="search-field">
+          <span class="visually-hidden">Поиск</span>
+        </label>
+
+        <!-- <div class="search__body"> -->
+        <input
+          id="search-field"
+          class="search__field"
+          type="search"
+          name="nav-search"
+          autocomplete="off"
+          aria-labelledby="search-btn"
+        >
+        <button
+          type="button"
+          id="search-btn"
+          class="search__btn"
+          aria-label="Развернуть поиск"
+          aria-controls="search-field"
+        >
+          <svg class="search__icon" width="17" height="17">
+            <use xlink:href="img/sprite_auto.svg#icon-search"></use>
+          </svg>
+        </button>
+        <!-- </div> -->
+      </form>
+      <!-- Likes -->
+      <a
+        href="#"
+        class="page-header__link page-header__link--likes"
+        aria-label="Избранное"
+      >
+        <svg width="20" height="17">
+          <use xlink:href="img/sprite_auto.svg#icon-like"></use>
+        </svg>
+      </a>
+      <!-- Cart -->
+      <a
+        href="#"
+        class="page-header__link page-header__link--cart"
+        aria-label="Корзина"
+      >
+        <svg width="19" height="17">
+          <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>

@@ -23,13 +23,11 @@ function enableWindowScroll() {
 
 // * Функция проверки медиа запросов
 
-const breakpointChecker = function(media, el, disableCallback, enableCallback) {
+const breakpointChecker = function(media, enableCallback, disableCallback) {
   if (media.matches === true) {
-    if (el !== undefined) disableCallback();
-
-    return;
-  } else if (media.matches === false) {
     return enableCallback();
+  } else if (media.matches === false) {
+    return disableCallback();
   }
 };
 
@@ -39,6 +37,15 @@ const onEscEvent = function(evt, action) {
   if (evt.keyCode === ESC_KEYCODE) {
     action();
   }
+};
+
+// * Функция создания кнопки
+
+const createBtn = btnClass => {
+  let btn = document.createElement('button');
+  btn.classList.add(btnClass);
+
+  return btn;
 };
 
 // * Debounce
@@ -86,18 +93,6 @@ const manageControls = (
   }
 };
 
-// * Функция скрытия элемента
-
-const setHidden = el => {
-  let isHidden = el.getAttribute('aria-hidden') === 'true' || false;
-
-  el.setAttribute('aria-hidden', !isHidden);
-
-  el.hidden = !isHidden;
-
-  return el;
-};
-
 // * Функция изменения состояния aria-expanded
 
 const setExpanded = el => {
@@ -117,6 +112,6 @@ export {
   onEscEvent,
   debounce,
   manageControls,
-  setHidden,
-  setExpanded
+  setExpanded,
+  createBtn
 };

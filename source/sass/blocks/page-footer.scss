@@ -19,6 +19,7 @@
 .page-footer__inner {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 
   width: 28%;
 }
@@ -45,6 +46,14 @@
   &[href]:active {
     opacity: 0.3;
   }
+}
+
+.page-footer__logo-body {
+  pointer-events: none;
+}
+
+.page-footer__contact {
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .page-footer__link {
@@ -92,6 +101,8 @@
   }
 }
 
+// ! Мобильная версия
+
 @media (max-width: $mobile-width) {
   .page-footer__wrap {
     flex-direction: column;
@@ -112,6 +123,10 @@
   .page-footer__menu {
     justify-content: flex-start;
     width: 100%;
+  }
+
+  .page-footer__contact {
+    width: 33.3%;
   }
 
   .page-footer__link {
@@ -154,6 +169,10 @@
 
       text-align: left;
     }
+  }
+
+  .page-footer__contact {
+    width: auto;
   }
 
   .page-footer__menu {

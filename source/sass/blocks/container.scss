@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+
+  padding: 0 2%;
+  margin: 0 auto;
+  width: 92%;
+
+  &--card {
+    flex-direction: column;
+    flex-wrap: unset;
+  }
+}
+
+@media (max-width: $tablet-width) {
+  .container {
+    position: relative;
+
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .container {
+    box-sizing: border-box;
+    padding: 0 5%;
+    margin: 0;
+    width: 100%;
+  }
+}

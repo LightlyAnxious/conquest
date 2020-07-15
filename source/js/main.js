@@ -1,6 +1,7 @@
-import './main/navigation';
-import './main/sliders';
-
+import './main/navigation.js';
+import './main/sliders.js';
+import './main/forms.js';
+import './main/modal.js';
 import yall from 'yall-js';
 
 // ! Инициализация плагина yall-js

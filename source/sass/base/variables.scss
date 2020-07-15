@@ -1,19 +1,29 @@
-$mobile-width: 767px;
-$tablet-width: 1139px;
 $retina-dpi: 144dpi;
 $retina-dppx: 1.5dppx;
+$mobile-width: 767px;
+$tablet-width: 1139px;
 $pale-black: rgba(27, 26, 23, 0.82);
 $black: #1b1a17;
 $beige: #d4b098;
 $light-beige: #fdfdfb;
 $grey-dark: #444240;
+$grey-normal: #555248;
 $grey-light: #636261;
-$silver: #818d92;
+$grey-pale: #bdb9b5;
+$gold: #a69876;
 $trans: all 0.15s ease-in-out;
+$instant-animation: 0.075s;
+$fast-animation: 0.125s;
+$normal-animation: 0.25s;
+$slow-animation: 0.5s;
 
 :root {
   --titleSize: 32px;
   --titleHeight: 43px;
+  --subTitleSize: 14px;
+  --subTitleHeight: 16px;
+  --contentSize: 12px;
+  --contentHeight: 14px;
 }
 
 @media (max-width: $tablet-width) {
@@ -27,5 +37,7 @@ $trans: all 0.15s ease-in-out;
   :root {
     --titleSize: 24px;
     --titleHeight: 32px;
+    --subTitleSize: 12px;
+    --subTitleHeight: 14px;
   }
 }

@@ -1,61 +1,115 @@
-import {
-  setHidden,
-  setExpanded,
-  breakpointChecker,
-  debounce
-} from '../../js/main/utils';
+import { setExpanded, breakpointChecker, debounce } from '../../js/main/utils';
 // import webAnimations from 'web-animations-js';
 
-const accordionHeaders = document.querySelectorAll('.accordion__button');
+const footerAccordionHeaders = document.querySelectorAll(
+  '.accordion__button--footer'
+);
+const filtersAccordionHeaders = document.querySelectorAll(
+  '.accordion__button--filters'
+);
 const mobile = window.matchMedia('(max-width: 530px)');
 
-// * Инициализация обработчиков и анимации для всех панелей аккордеона
+//Функция инициализации аккордеона
+const accordionInit = (controls, media = false) => {
+  Array.prototype.forEach.call(controls, accordionHeader => {
+    let target = accordionHeader.parentElement.nextElementSibling;
 
-Array.prototype.forEach.call(accordionHeaders, accordionHeader => {
-  let target = accordionHeader.parentElement.nextElementSibling;
-
-  const mobileAccordionChecker = () => {
-    if (mobile.matches === true) {
-      target.setAttribute('aria-hidden', true);
-      accordionHeader.setAttribute('aria-expanded', false);
-      target.hidden = true;
-    } else {
-      target.removeAttribute('aria-hidden');
-      accordionHeader.removeAttribute('aria-expanded');
-      target.hidden = false;
-    }
-  };
-
-  mobile.addListener(mobileAccordionChecker);
-
-  mobileAccordionChecker();
-
-  const onClickControlAccordion = evt => {
-    setHidden(target);
-    setExpanded(evt.target);
-
-    // * Анимация аккордеона
-
-    target.animate(
-      [
-        {
-          transformOrigin: 'top left',
-          transform: `scaleY(0)`
-        },
-        {
-          transformOrigin: 'top left',
-          transform: `scaleY(1)`
+    if (media) {
+      const mobileAccordionChecker = () => {
+        if (mobile.matches === true) {
+          accordionHeader.setAttribute('aria-expanded', false);
+        } else {
+          accordionHeader.removeAttribute('aria-expanded');
         }
-      ],
-      {
-        duration: 125,
-        easing: 'ease-in-out',
-        fill: 'both'
-      }
-    );
-  };
+      };
 
-  accordionHeader.addEventListener('click', evt => {
-    onClickControlAccordion(evt);
+      mobile.addListener(mobileAccordionChecker);
+
+      mobileAccordionChecker();
+    }
+
+    const onClickControlAccordion = evt => {
+      setExpanded(evt.target);
+      target.classList.toggle('accordion__panel--expanded');
+
+      // * Анимация аккордеона
+
+      target.animate(
+        [
+          {
+            transformOrigin: 'top left',
+            transform: `scaleY(0)`
+          },
+          {
+            transformOrigin: 'top left',
+            transform: `scaleY(1)`
+          }
+        ],
+        {
+          duration: 125,
+          easing: 'ease-in-out',
+          fill: 'both'
+        }
+      );
+    };
+
+    accordionHeader.addEventListener('click', evt => {
+      onClickControlAccordion(evt);
+    });
   });
-});
+};
+
+// Инициализация аккордеона для блока footer
+accordionInit(footerAccordionHeaders, mobile);
+
+// Инициализация аккордеона для блока filters
+accordionInit(filtersAccordionHeaders);
+
+// // * Инициализация обработчиков для всех панелей аккордеона в footer
+
+// if (accordionHeaders) {
+//   Array.prototype.forEach.call(accordionHeaders, accordionHeader => {
+//     let target = accordionHeader.parentElement.nextElementSibling;
+
+//     const mobileAccordionChecker = () => {
+//       if (mobile.matches === true) {
+//         accordionHeader.setAttribute('aria-expanded', false);
+//       } else {
+//         accordionHeader.removeAttribute('aria-expanded');
+//       }
+//     };
+
+//     mobile.addListener(mobileAccordionChecker);
+
+//     mobileAccordionChecker();
+
+//     const onClickControlAccordion = evt => {
+//       setExpanded(evt.target);
+//       target.classList.toggle('accordion__panel--expanded');
+
+//       // * Анимация аккордеона
+
+//       target.animate(
+//         [
+//           {
+//             transformOrigin: 'top left',
+//             transform: `scaleY(0)`
+//           },
+//           {
+//             transformOrigin: 'top left',
+//             transform: `scaleY(1)`
+//           }
+//         ],
+//         {
+//           duration: 125,
+//           easing: 'ease-in-out',
+//           fill: 'both'
+//         }
+//       );
+//     };
+
+//     accordionHeader.addEventListener('click', evt => {
+//       onClickControlAccordion(evt);
+//     });
+//   });
+// }

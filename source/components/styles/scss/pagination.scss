@@ -1,0 +1,93 @@
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pagination__btn {
+  @include btn-reset;
+
+  position: relative;
+
+  width: 5px;
+  height: 10px;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+
+    width: 7px;
+    height: 1px;
+    background-color: $black;
+
+    transform: translateY(-50%);
+  }
+
+  &--prev {
+    margin-right: 14px;
+
+    &::before {
+      transform: rotate(-45deg);
+      transform-origin: left;
+    }
+
+    &::after {
+      transform: rotate(45deg);
+      transform-origin: left;
+    }
+  }
+
+  &--next {
+    margin-left: 14px;
+
+    &::before {
+      transform: rotate(45deg);
+      transform-origin: right;
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+      transform-origin: right;
+    }
+  }
+
+  &--disabled {
+    &::before,
+    &::after {
+      background-color: $grey-light;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    &::before,
+    &::after {
+      background-color: $gold;
+    }
+  }
+}
+
+.pagination__list {
+  @include list-reset;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pagination__item {
+  margin-right: 8px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.pagination__link {
+  color: $grey-light;
+
+  &--current {
+    color: $black;
+  }
+}

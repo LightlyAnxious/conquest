@@ -1,0 +1,118 @@
+$hamburger-hover-color: #a69876;
+
+.hamburger-btn {
+  @include btn-reset;
+
+  position: relative;
+  z-index: 15;
+
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+
+  cursor: pointer;
+  transition-duration: $instant-animation;
+  transition-timing-function: ease-in-out;
+  overflow: visible;
+
+  & span {
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    display: block;
+    width: 100%;
+    height: 1px;
+
+    background-color: $black;
+
+    transition-property: transform;
+    transition-duration: $instant-animation;
+    transition-timing-function: ease-in-out;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+
+    display: block;
+    width: 100%;
+    height: 1px;
+
+    background-color: $black;
+
+    transition-property: transform;
+    transition-duration: $instant-animation;
+    transition-timing-function: ease-in-out;
+  }
+
+  &::before {
+    top: 0;
+    transition: top $instant-animation ease-in-out,
+      opacity $instant-animation ease-in-out;
+  }
+
+  &::after {
+    bottom: 0;
+    transition: bottom $instant-animation ease-in-out,
+      opacity $instant-animation ease-in-out;
+  }
+
+  &:hover,
+  &:focus {
+    & span {
+      background-color: $hamburger-hover-color;
+    }
+
+    &::before,
+    &::after {
+      background-color: $hamburger-hover-color;
+    }
+  }
+
+  &:active {
+    & span {
+      background-color: $hamburger-hover-color;
+      opacity: 0.3;
+    }
+
+    &::before,
+    &::after {
+      background-color: $hamburger-hover-color;
+      opacity: 0.3;
+    }
+
+    &::before {
+      top: 50%;
+
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      bottom: 50%;
+
+      margin: 1px;
+    }
+  }
+
+  &--active {
+    & span {
+      transform: rotate(45deg);
+      transform-origin: center;
+    }
+
+    &::before {
+      top: 50%;
+      margin: -1px;
+
+      transform: rotate(-45deg);
+      transform-origin: center;
+    }
+
+    &::after {
+      bottom: 50%;
+      margin: 1px;
+      opacity: 0;
+    }
+  }
+}

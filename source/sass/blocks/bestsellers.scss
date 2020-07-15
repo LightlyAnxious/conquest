@@ -9,7 +9,7 @@
 
   width: 85.66%;
   max-width: 1435px;
-  padding: 40px 7% 40px;
+  padding: 0 7% 40px;
   margin: 0 auto;
 }
 
@@ -45,7 +45,7 @@
     display: block;
     width: 90%;
     height: 1px;
-    background-color: $silver;
+    background-color: $gold;
 
     transform: translateX(-50%);
     transition: $trans;
@@ -183,7 +183,7 @@
     width: 21.42%;
     height: 1px;
 
-    background-color: $silver;
+    background-color: $gold;
     transform: translateY(-50%);
   }
 
@@ -235,6 +235,9 @@
 
     &::before {
       background-image: url("../img/svg/ellipse-filled.svg");
+      background-position: 100% center;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
   }
 
@@ -327,7 +330,7 @@
   }
 
   .bestsellers__title {
-    margin-bottom: 20px;
+    margin-bottom: 35px;
   }
 
   .bestsellers__link {

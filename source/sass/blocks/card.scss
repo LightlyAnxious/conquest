@@ -1,0 +1,330 @@
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.card__wrap {
+  width: 50%;
+}
+
+.card__slider {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.card__container {
+  width: 76%;
+  max-width: 425px;
+  height: 480px;
+}
+
+.card__control {
+  @include btn-reset;
+
+  position: relative;
+  z-index: 15;
+
+  width: 12px;
+  height: 24px;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+
+    width: 14px;
+    height: 1px;
+    background-color: $black;
+
+    transform: translateY(-50%);
+  }
+
+  &--prev {
+    &::before {
+      left: 0;
+      transform: rotate(-45deg);
+      transform-origin: left;
+    }
+
+    &::after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: left;
+    }
+  }
+
+  &--next {
+    &::before {
+      right: 0;
+      transform: rotate(45deg);
+      transform-origin: right;
+    }
+
+    &::after {
+      right: 0;
+      transform: rotate(-45deg);
+      transform-origin: right;
+    }
+  }
+
+  &--disabled {
+    &::before,
+    &::after {
+      background-color: $grey-light;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    &::before,
+    &::after {
+      background-color: $gold;
+    }
+  }
+}
+
+.card__list {
+  @include list-reset;
+}
+
+.card__link {
+  display: inline-block;
+
+  width: 100%;
+  height: 100%;
+
+  outline: none;
+
+  &:hover,
+  &:focus {
+    & .card__image {
+      transform: translate(-50%, -50%) scale(1.05);
+
+      opacity: 0.7;
+    }
+  }
+}
+
+.card__media-wrap {
+  position: relative;
+
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.card__image {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  object-fit: contain;
+  transition: scale $fast-animation linear, opacity $fast-animation linear;
+  transform: translate(-50%, -50%);
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 50%;
+  padding: 2% 2% 100px;
+  box-sizing: border-box;
+}
+
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  width: 86%;
+  padding-bottom: 50px;
+  max-width: 465px;
+}
+
+.card__title {
+  margin: 0 0 20px 0;
+
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 37px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.card__price {
+  margin: 0;
+
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #686868;
+}
+
+.card__inner {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  width: 86%;
+  max-width: 465px;
+}
+
+.card__tabs {
+  flex-grow: 1;
+
+  width: 100%;
+}
+
+.card__tab-link {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.card__like-btn {
+  @include btn-reset;
+
+  transition: all $fast-animation linear;
+
+  &:hover,
+  &:focus {
+    stroke: $gold;
+  }
+
+  &:active {
+    stroke: $gold;
+    opacity: 0.5;
+  }
+}
+
+.card__specs {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin: 0;
+}
+
+.card__term,
+.card__desc {
+  margin: 0;
+  width: 50%;
+}
+
+.card__about {
+  margin-bottom: 35px;
+}
+
+.card__to-cart-btn {
+  align-self: flex-start;
+}
+
+.card__pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card__bullet {
+  @include btn-reset;
+
+  position: relative;
+
+  width: 22%;
+  height: 127px;
+
+  background-color: none;
+}
+
+.card__bullet-media {
+  @include center;
+
+  display: inline-block;
+
+  width: 100%;
+  height: 100%;
+
+  & img {
+    display: inline-block;
+
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: $tablet-width) {
+  .card__container {
+    height: 336px;
+  }
+
+  .card__title {
+    font-size: 22px;
+    line-height: 32px;
+  }
+
+  .card__price {
+    font-size: 22px;
+    line-height: 32px;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .card {
+    flex-direction: column;
+  }
+
+  .card__wrap {
+    width: 100%;
+    padding-bottom: 30px;
+  }
+
+  .card__container {
+    height: 300px;
+  }
+
+  .card__header,
+  .card__inner {
+    width: 100%;
+  }
+
+  .card__bullet {
+    height: 80px;
+  }
+
+  .card__content {
+    width: 100%;
+  }
+
+  .card__header {
+    padding-bottom: 20px;
+  }
+
+  .card__title {
+    margin-bottom: 15px;
+  }
+
+  .card__price {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .card__tab-link {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}

@@ -3,12 +3,12 @@ const favicons = require('gulp-favicons');
 
 module.exports = function renderFavicons() {
   return gulp
-    .src('source/img/favicon/*.png')
+    .src('source/img/favicons/*.png')
     .pipe(
       favicons({
-        appName: '',
+        appName: 'Conquest',
         appShortName: '',
-        appDescription: '',
+        appDescription: 'Conquest - часы премиум брендов',
         developerName: 'Даниил Приходько',
         developerURL: 'http://https://github.com/LightlyAnxious',
         background: '#020307',
@@ -22,7 +22,11 @@ module.exports = function renderFavicons() {
         logging: false,
         html: 'index.html',
         pipeHTML: true,
-        replace: true
+        replace: true,
+        icons: {
+          appleIcon: false,
+          appleStartup: false
+        }
       })
     )
     .pipe(gulp.dest('build/favicons'));
