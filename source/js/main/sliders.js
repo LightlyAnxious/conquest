@@ -3,9 +3,7 @@ import '../../components/js/range-slider.js';
 import { createImage } from '../main/modal.js';
 import { createBtn } from '../main/utils.js';
 const promo = document.querySelector('.promo');
-const slides = document
-  .querySelector('.card__slider')
-  .querySelectorAll('.card__image');
+const slides = document.querySelectorAll('.card__image');
 
 // * Опции слайдеров
 const promoSliderOptions = {
