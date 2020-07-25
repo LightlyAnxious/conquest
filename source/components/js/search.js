@@ -1,4 +1,4 @@
-import { onEscEvent, breakpointChecker } from '../../js/main/utils';
+import { onEscEvent } from '../../js/main/utils.js';
 
 const searchForm = document.querySelector('.search');
 const searchBtn = document.querySelector('#search-btn');
@@ -33,18 +33,14 @@ const onClickControlSearch = () => {
   }
 };
 
-// *  Обработчик фокуса поиска
-
-const onBlurCollapseSearch = () => {
-  closeSearch();
-};
-
 searchForm.addEventListener('submit', evt => {
   evt.preventDefault();
   closeSearch();
 });
 searchBtn.addEventListener('click', onClickControlSearch, false);
-// searchField.addEventListener('blur', () => {}, false);
+document.addEventListener('mouseup', evt => {
+  if (!searchForm.contains(evt.target)) closeSearch();
+});
 window.addEventListener('keydown', evt => {
   onEscEvent(evt, closeSearch);
 });

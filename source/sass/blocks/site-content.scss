@@ -44,6 +44,10 @@
 @media (max-width: $tablet-width) {
   .site-content {
     padding-bottom: 60px;
+
+    &--card {
+      padding-bottom: 0;
+    }
   }
 
   .site-content__title {

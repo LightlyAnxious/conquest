@@ -47,6 +47,7 @@
     "gulp-svgstore": "^7.0.1",
     "gulp-w3c-html-validator": "^2.0.1",
     "gulp-webp": "^4.0.1",
+    "html-webpack-plugin": "^4.3.0",
     "husky": "^4.2.5",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.0",
@@ -81,12 +82,10 @@
     "source/sass/**/*.{sass,scss}"
   ],
   "dependencies": {
-    "favicons-webpack-plugin": "^3.0.1",
     "focus-manager": "^0.4.1",
-    "html-webpack-plugin": "^4.3.0",
     "normalize.css": "^8.0.1",
     "nouislider": "^14.6.0",
-    "swiper": "^5.4.5",
+    "swiper": "^6.0.4",
     "yall-js": "^3.2.0"
   },
   "husky": {

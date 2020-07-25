@@ -52,13 +52,15 @@
 }
 
 .page-header__link {
+  position: relative;
+
   margin-right: 23px;
 
   transition: $trans;
 
   outline: none;
 
-  &--likes {
+  &--favorites {
     stroke: $black;
 
     &:hover,
@@ -88,6 +90,34 @@
 
   &:nth-child(3n) {
     margin-right: 0;
+  }
+}
+
+.page-header__link-body {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 20;
+
+  display: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+
+  background-color: $beige;
+
+  transform: translate(50%, -50%);
+
+  &::before {
+    @include center;
+
+    content: attr(data-counter);
+
+    font-size: 8px;
+    line-height: 9px;
+    text-align: center;
+
+    color: $black;
   }
 }
 

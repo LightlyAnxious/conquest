@@ -1,19 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Conquest - часы премиум брендов с доставкой"
+  >
   <title>Карточка товара</title>
   <include src="source/favicons/index.html"></include>
   <link rel="stylesheet preload" href="css/style.min.css" as="style">
+  <link rel="preload" as="font" href="/fonts/roboto-v20-cyrillic-regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/roboto-v20-cyrillic-500.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/playfair-display-v20-cyrillic-regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/playfair-display-v20-cyrillic-600.woff2" type="font/woff2" crossorigin="anonymous">
 </head>
 <body>
   <!-- Header -->
   <include src="source/components/html/page-header.html"></include>
-  <main class="site-content container container--card">
+  <main class="site-content site-content--card container container--card">
     <h1 class="visually-hidden">Карточка товара</h1>
     <!-- Breadcrumbs -->
-    <nav class="site-content__breadcrumbs breadcrumbs breadcrumbs--card" aria-label="breadcrumbs">
+    <nav
+      class="site-content__breadcrumbs breadcrumbs breadcrumbs--card"
+      aria-label="breadcrumbs"
+    >
       <div class="breadcrumbs__wrap">
         <ol class="breadcrumbs__list">
           <!-- Главная -->
@@ -28,10 +39,7 @@
           </li>
           <!-- Мужские часы -->
           <li class="breadcrumbs__item">
-            <a
-              href="#"
-              class="breadcrumbs__link"
-            >Мужские часы</a>
+            <a href="#" class="breadcrumbs__link">Мужские часы</a>
             <span class="breadcrumbs__separator"></span>
           </li>
           <!-- Georg Jensen -->
@@ -50,7 +58,11 @@
     <article class="card">
       <div class="card__wrap">
         <div class="card__slider">
-          <button class="card__control card__control--prev" type="button" aria-label="К предыдущему слайду"></button>
+          <button
+            class="card__control card__control--prev"
+            type="button"
+            aria-label="К предыдущему слайду"
+          ></button>
           <div class="card__container swiper-container swiper4">
             <ul class="card__list swiper-wrapper">
               <!-- Item-1 -->
@@ -167,7 +179,11 @@
               </li>
             </ul>
           </div>
-          <button class="card__control card__control--next" type="button" aria-label="К следующему слайду"></button>
+          <button
+            class="card__control card__control--next"
+            type="button"
+            aria-label="К следующему слайду"
+          ></button>
         </div>
         <div class="card__pagination"></div>
       </div>
@@ -177,7 +193,11 @@
             <h2 class="card__title">Rado, 28 mm</h2>
             <p class="card__price">45 700 ₽</p>
           </div>
-          <button class="card__like-btn" type="button" aria-label="Добавить в избранное">
+          <button
+            class="card__like-btn"
+            type="button"
+            aria-label="Добавить в избранное"
+          >
             <svg width="19" height="17">
               <use xlink:href="img/sprite_auto.svg#icon-like"></use>
             </svg>
@@ -186,18 +206,459 @@
         <div class="card__inner">
           <!-- Tabs -->
           <include src="source/components/html/tabs.html"></include>
-          <button class="card__to-cart-btn btn btn--grey" type="button">
-            В корзину
-          </button>
+          <button
+            class="card__to-cart-btn btn btn--grey"
+            type="button"
+          >В корзину</button>
         </div>
       </div>
     </article>
-
   </main>
+  <!-- Viewed -->
+  <section class="viewed">
+    <button
+      class="slide-control slide-control--prev"
+      type="button"
+      aria-label="К предыдущему слайду"
+    ></button>
+    <!-- Additional catalog -->
+    <div class="catalog catalog--additional swiper-container swiper3">
+      <!-- Title -->
+      <h2 class="catalog__heading viewed__title">Вы смотрели</h2>
+
+      <!-- List -->
+      <ul class="catalog__list swiper-wrapper">
+        <!-- Item 1 -->
+        <li class="catalog__item swiper-slide" data-vendor="18">
+          <div class="catalog__title">
+            <!-- Brand -->
+            <a href="#" class="catalog__brand">Techne</a>
+
+            <!-- Price -->
+            <p class="catalog__price">12 700 ₽</p>
+          </div>
+
+          <div class="catalog__controls">
+            <!-- Like btn -->
+            <button
+              class="catalog__toggle catalog__toggle--like like-btn"
+              aria-label="Поставить лайк"
+              type="button"
+            >
+              <svg width="18" height="16">
+                <use xlink:href="img/sprite_auto.svg#icon-like"></use>
+              </svg>
+            </button>
+
+            <!-- Cart btn -->
+            <button
+              class="catalog__toggle catalog__toggle--cart cart-btn"
+              aria-label="Добавить в корзину"
+              type="button"
+            >
+              <svg width="18" height="16">
+                <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Link -->
+          <a href="#" class="catalog__link" aria-label="К карточке товара">
+            <!-- Picture -->
+            <!-- Picture -->
+            <picture class="catalog__media-wrap">
+              <!-- Webp -->
+              <source
+                media="(min-width: 1140px)"
+                type="image/webp"
+                srcset="img/placeholder.png"
+                data-srcset="img/items/techne-1@2x.webp 2x, img/items/techne-1.webp"
+              >
+              <source
+                media="(min-width: 768px)"
+                type="image/webp"
+                srcset="img/placeholder.png"
+                data-srcset="img/items/tablet/techne-1--tablet@2x.webp 2x, img/items/tablet/techne-1--tablet.webp"
+              >
+              <!-- Png -->
+              <source
+                media="(min-width: 1140px)"
+                srcset="img/placeholder.png"
+                data-srcset="img/items/techne-1@2x.png 2x, img/items/techne-1.png"
+              >
+              <source
+                media="(min-width: 768px)"
+                srcset="img/placeholder.png"
+                data-srcset="img/items/tablet/techne-1--tablet@2x.png 2x, img/items/tablet/techne-1--tablet.png"
+              >
+              <img
+                class="catalog__image lazy"
+                src="img/placeholder.png"
+                data-srcset="img/items/tablet/techne-1--tablet@2x.png 2x"
+                data-src="img/items/tablet/techne-1--tablet.png"
+                alt="Часы Techne"
+              >
+            </picture>
+          </a>
+        </li>
+        <!-- Item 2 -->
+        <li class="catalog__item swiper-slide" data-vendor="19">
+          <div class="catalog__title">
+            <!-- Brand -->
+            <a href="#" class="catalog__brand">Techne</a>
+
+            <!-- Price -->
+            <p class="catalog__price">15700 ₽</p>
+          </div>
+
+          <div class="catalog__controls">
+            <!-- Like btn -->
+            <button
+              class="catalog__toggle catalog__toggle--like like-btn"
+              aria-label="Поставить лайк"
+              type="button"
+            >
+              <svg width="18" height="16">
+                <use xlink:href="img/sprite_auto.svg#icon-like"></use>
+              </svg>
+            </button>
+
+            <!-- Cart btn -->
+            <button
+              class="catalog__toggle catalog__toggle--cart cart-btn"
+              aria-label="Добавить в корзину"
+              type="button"
+            >
+              <svg width="18" height="16">
+                <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Link -->
+          <a href="#" class="catalog__link" aria-label="К карточке товара">
+            <!-- Picture -->
+            <picture class="catalog__media-wrap">
+              <!-- Webp -->
+              <source
+                media="(min-width: 1140px)"
+                type="image/webp"
+                srcset="img/placeholder.png"
+                data-srcset="img/items/techne-3@2x.webp 2x, img/items/techne-3.webp"
+              >
+              <source
+                media="(min-width: 768px)"
+                type="image/webp"
+                srcset="img/placeholder.png"
+                data-srcset="img/items/tablet/techne-3--tablet@2x.webp 2x, img/items/tablet/techne-3--tablet.webp"
+              >
+              <!-- Png -->
+              <source
+                media="(min-width: 1140px)"
+                srcset="img/placeholder.png"
+                data-srcset="img/items/techne-3@2x.png 2x, img/items/techne-3.png"
+              >
+              <source
+                media="(min-width: 768px)"
+                srcset="img/placeholder.png"
+                data-srcset="img/items/tablet/techne-3--tablet@2x.png 2x, img/items/tablet/techne-3--tablet.png"
+              >
+              <img
+                class="catalog__image lazy"
+                src="img/placeholder.png"
+                data-srcset="img/items/tablet/techne-3--tablet@2x.png 2x"
+                data-src="img/items/tablet/techne-3--tablet.png"
+                alt="Часы Techne"
+              >
+            </picture>
+          </a>
+        </li>
+        <!-- Item 3 -->
+        <li class="catalog__item swiper-slide" data-vendor="20">
+          <div class="catalog__title">
+            <!-- Brand -->
+            <a href="#" class="catalog__brand">Spark</a>
+
+            <!-- Price -->
+            <p class="catalog__price">5400 ₽</p>
+          </div>
+
+          <div class="catalog__controls">
+            <!-- Like btn -->
+            <button
+              class="catalog__toggle catalog__toggle--like like-btn"
+              aria-label="Поставить лайк"
+              type="button"
+            >
+              <svg width="18" height="16">
+                <use xlink:href="img/sprite_auto.svg#icon-like"></use>
+              </svg>
+            </button>
+
+            <!-- Cart btn -->
+            <button
+              class="catalog__toggle catalog__toggle--cart cart-btn"
+              aria-label="Добавить в корзину"
+              type="button"
+            >
+              <svg width="18" height="16">
+                <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Link -->
+          <a href="#" class="catalog__link" aria-label="К карточке товара">
+            <!-- Picture -->
+            <picture class="catalog__media-wrap">
+              <!-- Webp -->
+              <source
+                media="(min-width: 1140px)"
+                type="image/webp"
+                srcset="img/placeholder.png"
+                data-srcset="img/bands/band-spark@2x.webp 2x, img/bands/band-spark.webp"
+              >
+              <source
+                media="(min-width: 768px)"
+                type="image/webp"
+                srcset="img/placeholder.png"
+                data-srcset="img/bands/tablet/band-spark--tablet@2x.webp 2x, img/bands/tablet/band-spark--tablet.webp"
+              >
+              <!-- Png -->
+              <source
+                media="(min-width: 768px)"
+                srcset="img/placeholder.png"
+                data-srcset="img/bands/tablet/band-spark--tablet@2x.png 2x, img/bands/tablet/band-spark--tablet.png"
+              >
+              <img
+                class="catalog__image lazy"
+                src="img/placeholder.png"
+                data-src="img/bands/band-spark.png"
+                data-srcset="img/bands/band-spark@2x.png 2x"
+                alt="Ремешок Spark"
+              >
+            </picture>
+          </a>
+        </li>
+        <!-- Item 4 -->
+        <li class="catalog__item swiper-slide" data-vendor="21">
+          <div class="catalog__title">
+            <!-- Brand -->
+            <a href="#" class="catalog__brand">Georg Jensen</a>
+
+            <!-- Price -->
+            <p class="catalog__price">6700 ₽</p>
+          </div>
+
+          <div class="catalog__controls">
+            <!-- Like btn -->
+            <button
+              class="catalog__toggle catalog__toggle--like like-btn"
+              aria-label="Поставить лайк"
+              type="button"
+            >
+              <svg width="18" height="16">
+                <use xlink:href="img/sprite_auto.svg#icon-like"></use>
+              </svg>
+            </button>
+
+            <!-- Cart btn -->
+            <button
+              class="catalog__toggle catalog__toggle--cart cart-btn"
+              aria-label="Добавить в корзину"
+              type="button"
+            >
+              <svg width="18" height="16">
+                <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Link -->
+          <a href="#" class="catalog__link" aria-label="К карточке товара">
+            <!-- Picture -->
+            <picture class="catalog__media-wrap">
+              <!-- Webp -->
+              <source
+                media="(min-width: 1140px)"
+                type="image/webp"
+                srcset="img/placeholder.png"
+                data-srcset="img/bands/band-george-jensen@2x.webp 2x, img/bands/band-george-jensen.webp"
+              >
+              <source
+                media="(min-width: 768px)"
+                type="image/webp"
+                srcset="img/placeholder.png"
+                data-srcset="img/bands/tablet/band-george-jensen--tablet@2x.webp 2x, img/bands/tablet/band-george-jensen--tablet.webp"
+              >
+              <!-- Png -->
+              <source
+                media="(min-width: 768px)"
+                srcset="img/placeholder.png"
+                data-srcset="img/bands/tablet/band-george-jensen--tablet@2x.png 2x, img/bands/tablet/band-george-jensen--tablet.png"
+              >
+              <img
+                class="catalog__image lazy"
+                src="img/placeholder.png"
+                data-src="img/bands/band-george-jensen.png"
+                data-srcset="img/bands/band-george-jensen@2x.png 2x"
+                alt="Ремешок Georg Jensen"
+              >
+            </picture>
+          </a>
+        </li>
+        <!-- Item 5 -->
+        <li class="catalog__item swiper-slide" data-vendor="22">
+          <div class="catalog__title">
+            <!-- Brand -->
+            <a href="#" class="catalog__brand">Nato</a>
+
+            <!-- Price -->
+            <p class="catalog__price">3200 ₽</p>
+          </div>
+
+          <div class="catalog__controls">
+            <!-- Like btn -->
+            <button
+              class="catalog__toggle catalog__toggle--like like-btn"
+              aria-label="Поставить лайк"
+              type="button"
+            >
+              <svg width="18" height="16">
+                <use xlink:href="img/sprite_auto.svg#icon-like"></use>
+              </svg>
+            </button>
+
+            <!-- Cart btn -->
+            <button
+              class="catalog__toggle catalog__toggle--cart cart-btn"
+              aria-label="Добавить в корзину"
+              type="button"
+            >
+              <svg width="18" height="16">
+                <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Link -->
+          <a href="#" class="catalog__link" aria-label="К карточке товара">
+            <!-- Picture -->
+            <picture class="catalog__media-wrap">
+              <!-- Webp -->
+              <source
+                media="(min-width: 1140px)"
+                type="image/webp"
+                srcset="img/placeholder.png"
+                data-srcset="img/bands/band-nato@2x.webp 2x, img/bands/band-nato.webp"
+              >
+              <source
+                media="(min-width: 768px)"
+                type="image/webp"
+                srcset="img/placeholder.png"
+                data-srcset="img/bands/tablet/band-nato--tablet@2x.webp 2x, img/bands/tablet/band-nato--tablet.webp"
+              >
+              <!-- Png -->
+              <source
+                media="(min-width: 768px)"
+                srcset="img/placeholder.png"
+                data-srcset="img/bands/tablet/band-nato--tablet@2x.png 2x, img/bands/tablet/band-nato--tablet.png"
+              >
+              <img
+                class="catalog__image lazy"
+                src="img/placeholder.png"
+                data-src="img/bands/band-nato.png"
+                data-srcset="img/bands/band-nato@2x.png 2x"
+                alt="Ремешок Nato"
+              >
+            </picture>
+          </a>
+        </li>
+        <!-- Item 6 -->
+        <li class="catalog__item swiper-slide" data-vendor="23">
+          <div class="catalog__title">
+            <!-- Brand -->
+            <a href="#" class="catalog__brand">Spark</a>
+
+            <!-- Price -->
+            <p class="catalog__price">5400 ₽</p>
+          </div>
+
+          <div class="catalog__controls">
+            <!-- Like btn -->
+            <button
+              class="catalog__toggle catalog__toggle--like like-btn"
+              aria-label="Поставить лайк"
+              type="button"
+            >
+              <svg width="18" height="16">
+                <use xlink:href="img/sprite_auto.svg#icon-like"></use>
+              </svg>
+            </button>
+
+            <!-- Cart btn -->
+            <button
+              class="catalog__toggle catalog__toggle--cart cart-btn"
+              aria-label="Добавить в корзину"
+              type="button"
+            >
+              <svg width="18" height="16">
+                <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Link -->
+          <a href="#" class="catalog__link" aria-label="К карточке товара">
+            <!-- Picture -->
+            <picture class="catalog__media-wrap">
+              <!-- Webp -->
+              <source
+                media="(min-width: 1140px)"
+                type="image/webp"
+                srcset="img/placeholder.png"
+                data-srcset="img/bands/band-spark@2x.webp 2x, img/bands/band-spark.webp"
+              >
+              <source
+                media="(min-width: 768px)"
+                type="image/webp"
+                srcset="img/placeholder.png"
+                data-srcset="img/bands/tablet/band-spark--tablet@2x.webp 2x, img/bands/tablet/band-spark--tablet.webp"
+              >
+              <!-- Png -->
+              <source
+                media="(min-width: 768px)"
+                srcset="img/placeholder.png"
+                data-srcset="img/bands/tablet/band-spark--tablet@2x.png 2x, img/bands/tablet/band-spark--tablet.png"
+              >
+              <img
+                class="catalog__image lazy"
+                src="img/placeholder.png"
+                data-src="img/bands/band-spark.png"
+                data-srcset="img/bands/band-spark@2x.png 2x"
+                alt="Ремешок Spark"
+              >
+            </picture>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <button
+      class="slide-control slide-control--next"
+      type="button"
+      aria-label="К следующему слайду"
+    ></button>
+  </section>
+  <include src="source/components/html/footer.html"></include>
+  <include src="source/components/html/favorites.html"></include>
+  <include src="source/components/html/cart.html"></include>
   <div class="overlay" aria-hidden="true">
     <div class="modal-view">
-      <button type="button" class="modal-view__close" aria-label="Закрыть просмотр">
-      </button>
+      <button
+        type="button"
+        class="modal-view__close"
+        aria-label="Закрыть просмотр"
+      ></button>
     </div>
   </div>
   <script src="js/vendor.min.js"></script>

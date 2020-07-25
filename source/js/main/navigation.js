@@ -3,6 +3,9 @@ import '../../components/js/accordion.js';
 import '../../components/js/search.js';
 import '../../components/js/select.js';
 import '../../components/js/tabs.js';
+import '../../components/js/favorites.js';
+import '../../components/js/cart.js';
+import '../../components/js/pagination.js';
 
 const logoPicture = document.querySelector('.page-header__logo-picture');
 

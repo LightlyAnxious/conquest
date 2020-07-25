@@ -1,9 +1,10 @@
-@import "../../node_modules/normalize.css/normalize";
 @import "base/fonts.scss";
+@import "../../node_modules/normalize.css/normalize";
 @import "base/variables.scss";
 @import "base/mixins.scss";
 @import "base/common.scss";
 @import "base/utils.scss";
+@import "base/ui-kit.scss";
 @import "base/animation.scss";
 @import "plugins/swiper.scss";
 @import "plugins/nouislider.scss";
@@ -22,4 +23,5 @@
 @import "blocks/mailing.scss";
 @import "blocks/bands.scss";
 @import "blocks/card.scss";
+@import "blocks/viewed.scss";
 @import "blocks/modal-view.scss";

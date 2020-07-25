@@ -56,7 +56,7 @@ selects.forEach(select => {
     selectList.classList.remove('select__list--shown');
   };
   //Закрываем выпадающий сисок, если клик был вне области
-  document.addEventListener('mouseup', e => {
-    if (!select.contains(e.target)) selectListHide();
+  document.addEventListener('mouseup', evt => {
+    if (!select.contains(evt.target)) selectListHide();
   });
 });

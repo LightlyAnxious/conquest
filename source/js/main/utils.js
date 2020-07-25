@@ -3,6 +3,24 @@ const ESC_KEYCODE = 27;
 let winX = null,
   winY = null;
 
+// * Добавление активного класса элементу
+const addActiveClass = (el, activeClass) => {
+  if (!el.classList.contains(activeClass)) {
+    el.classList.add(activeClass);
+  }
+
+  return el;
+};
+
+// * Удаление активного класса у элемента
+const removeActiveClass = (el, activeClass) => {
+  if (el.classList.contains(activeClass)) {
+    el.classList.remove(activeClass);
+  }
+
+  return el;
+};
+
 // * Функция блокировки скролла
 
 window.addEventListener('scroll', function() {
@@ -113,5 +131,7 @@ export {
   debounce,
   manageControls,
   setExpanded,
-  createBtn
+  createBtn,
+  addActiveClass,
+  removeActiveClass
 };

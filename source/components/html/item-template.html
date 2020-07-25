@@ -1,0 +1,40 @@
+<!-- Item template -->
+<template id="catalog-item-template">
+  <li class="catalog__item" data-vendor="">
+    <div class="catalog__title">
+      <!-- Brand -->
+      <a href="#" class="catalog__brand"></a>
+
+      <!-- Price -->
+      <p class="catalog__price"></p>
+    </div>
+
+    <div class="catalog__controls">
+      <!-- Like btn -->
+      <button
+        class="catalog__toggle catalog__toggle--like like-btn"
+        aria-label="Поставить лайк"
+        type="button"
+      >
+        <svg width="18" height="16">
+          <use xlink:href="img/sprite_auto.svg#icon-like"></use>
+        </svg>
+      </button>
+
+      <!-- Cart btn -->
+      <button
+        class="catalog__toggle catalog__toggle--cart cart-btn"
+        aria-label="Добавить в корзину"
+        type="button"
+      >
+        <svg width="18" height="16">
+          <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Link -->
+    <a href="#" class="catalog__link" aria-label="К карточке товара">
+    </a>
+  </li>
+</template>

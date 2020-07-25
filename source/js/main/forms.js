@@ -3,17 +3,34 @@ const colorButtons = document.querySelectorAll('.filters__color-btn');
 const colorPicker = document.querySelector('#color-picker');
 
 //Задание фонового цвета для кнопок
+const setBgColor = toggle =>
+  (toggle.style.backgroundColor = toggle.dataset.color);
 
-// Функция=обработчик по нажатию на кнопку выбора цвета
-const onClickSelectColor = toggle => {
+// Функция задающая передающая значение цвета инпуту
+const setColorValue = toggle => {
   let color = colorPicker.value;
   color = toggle.dataset.color;
+
+  return color;
+};
+
+// Обработчик по нажатию на кнопку цвета
+const onColorBtnClickSetColor = (toggle, activeClass) => {
+  toggle.classList.toggle(activeClass);
+
+  setColorValue(toggle);
+  setBgColor(toggle);
 };
 
 if (colorButtons) {
   colorButtons.forEach(btn => {
-    btn.addEventListener('click', () => onClickSelectColor(btn));
-    btn.style.backgroundColor = btn.dataset.color;
+    if (btn.classList.contains('filters__color-btn--active')) {
+      btn.classList.remove('filters__color-btn--active');
+    }
+    setBgColor(btn);
+    btn.addEventListener('click', () =>
+      onColorBtnClickSetColor(btn, 'filters__color-btn--active')
+    );
   });
 }
 

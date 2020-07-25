@@ -29,6 +29,7 @@
   color: $grey-light;
 
   transition: all $fast-animation ease-in-out;
+  outline: none;
 
   &:hover,
   &:focus {

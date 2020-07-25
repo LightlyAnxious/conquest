@@ -57,6 +57,8 @@
 }
 
 .filters__item {
+  margin-right: 15px;
+
   margin-bottom: 20px;
 
   &:last-of-type {
@@ -71,10 +73,21 @@
 .filters__color-btn {
   @include btn-reset;
 
-  width: 20px;
-  height: 20px;
+  position: relative;
+
+  z-index: 5;
+
+  width: 22px;
+  height: 22px;
+  padding: 2px;
   border-radius: 50%;
-  margin-right: 15px;
+  box-sizing: border-box;
+
+  &--active {
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 2.5L3.30769 5L7 1' stroke='white' stroke-opacity='0.75'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
 }
 
 .filters__reset-btn {

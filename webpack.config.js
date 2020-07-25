@@ -1,14 +1,13 @@
 const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { basename } = require('path');
 
 const isDev = process.env.NODE_ENV === 'development';
-const isProd = !isDev;
+const isProd = false;
 
 // * Функция генерации копий HtmlWebpackPlugin
 
@@ -37,6 +36,8 @@ function generateHtmlPlugins(templateDir) {
   });
 }
 
+console.log(isProd);
+
 // Создание массива html плагинов
 const htmlPlugins = generateHtmlPlugins('./build').filter(
   el => el !== undefined
@@ -45,7 +46,7 @@ const htmlPlugins = generateHtmlPlugins('./build').filter(
 // * Функция инициализации плагинов в зависимости от параметра mode:
 
 const plugins = () => {
-  const base = [
+  let base = [
     new CircularDependencyPlugin({
       // exclude detection of files based on a RegExp
       exclude: /a\.vendor|node_modules/,
@@ -57,12 +58,12 @@ const plugins = () => {
     new DuplicatePackageCheckerPlugin()
   ];
 
-  if (isProd) {
-    base.concat(htmlPlugins);
-  }
+  if (isProd) return base.concat(htmlPlugins);
 
   return base;
 };
+
+// Настройки
 
 module.exports = {
   mode: 'production',

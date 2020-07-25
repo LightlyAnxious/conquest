@@ -1,0 +1,41 @@
+<!-- Modal cart -->
+<div class="overlay overlay--cart">
+  <section class="cart">
+    <div class="cart__header">
+      <h2 class="cart__title">Корзина</h2>
+      <button type="button" class="cart__close-btn close-btn" aria-label="Закрыть корзину"></button>
+    </div>
+    <p class="cart__tip">
+      В корзине пока нет товаров
+    </p>
+    <ul class="cart__list">
+    </ul>
+    <div class="cart__footer">
+      <div class="cart__total">
+        <p class="cart__subtitle">Итого:</p>
+        <p id="total-price" class="cart__price">0 ₽</p>
+      </div>
+      <button class="cart__checkout btn btn--grey" type="button" aria-label="Оформить заказ">Оформить заказ</button>
+    </div>
+
+    <!-- Cart item template -->
+    <template id="cart-item">
+      <li class="cart__item">
+        <h3 class="cart__name"></h3>
+        <p class="cart__price-tag"></p>
+        <picture class="cart__media"></picture>
+        <div class="cart__controls">
+          <button type="button" class="cart__delete" aria-label="Удалить из корзины">
+          </button>
+          <div class="cart__counter">
+            <button type="button" class="cart__count-btn cart__count-btn--minus" aria-label="Уменьшить количество">
+            </button>
+            </button>
+            <input inputmode="number" class="cart__count-input">
+            <button type="button" class="cart__count-btn cart__count-btn--plus" aria-label="Увеличить количество">
+          </div>
+        </div>
+      </li>
+    </template>
+  </section>
+</div>

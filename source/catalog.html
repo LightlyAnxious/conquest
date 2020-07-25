@@ -10,6 +10,10 @@
   <title>Каталог</title>
   <include src="source/favicons/index.html"></include>
   <link rel="stylesheet preload" href="css/style.min.css" as="style">
+  <!-- <link rel="preload" as="font" href="/fonts/roboto-v20-cyrillic-regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/roboto-v20-cyrillic-500.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/playfair-display-v20-cyrillic-regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/playfair-display-v20-cyrillic-600.woff2" type="font/woff2" crossorigin="anonymous"> -->
 </head>
 
 <body>
@@ -19,7 +23,10 @@
   <main class="site-content site-content--catalog container">
     <div class="site-content__layout">
       <!-- Breadcrumbs -->
-      <nav class="site-content__breadcrumbs breadcrumbs" aria-label="breadcrumbs">
+      <nav
+        class="site-content__breadcrumbs breadcrumbs"
+        aria-label="breadcrumbs"
+      >
         <div class="breadcrumbs__wrap">
           <ol class="breadcrumbs__list">
             <li class="breadcrumbs__item">
@@ -364,819 +371,11 @@
 
         <!-- List -->
         <ul class="catalog__list">
-          <!-- Item 1 -->
-          <li class="catalog__item">
-            <div class="catalog__title">
-              <!-- Brand -->
-              <a href="#" class="catalog__brand">Techne</a>
-
-              <!-- Price -->
-              <p class="catalog__price">12700 ₽</p>
-            </div>
-
-            <div class="catalog__controls">
-              <!-- Like btn -->
-              <button
-                class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-like"></use>
-                </svg>
-              </button>
-
-              <!-- Cart btn -->
-              <button
-                class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Link -->
-            <a href="#" class="catalog__link" aria-label="К карточке товара">
-              <!-- Picture -->
-              <picture class="catalog__media-wrap">
-                <!-- Webp -->
-                <source
-                  media="(min-width: 1140px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-1@2x.webp 2x, img/items/techne-1.webp"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-1--tablet@2x.webp 2x, img/items/tablet/techne-1--tablet.webp"
-                >
-                <!-- Png -->
-                <source
-                  media="(min-width: 1140px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-1@2x.png 2x, img/items/techne-1.png"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-1--tablet@2x.png 2x, img/items/tablet/techne-1--tablet.png"
-                >
-                <img
-                  class="catalog__image lazy"
-                  src="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-1--tablet@2x.png 2x"
-                  data-src="img/items/tablet/techne-1--tablet.png"
-                  alt="Часы Techne"
-                >
-              </picture>
-            </a>
-          </li>
-          <!-- Item 2 -->
-          <li class="catalog__item">
-            <div class="catalog__title">
-              <!-- Brand -->
-              <a href="#" class="catalog__brand">Techne</a>
-
-              <!-- Price -->
-              <p class="catalog__price">12700 ₽</p>
-            </div>
-
-            <div class="catalog__controls">
-              <!-- Like btn -->
-              <button
-                class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-like"></use>
-                </svg>
-              </button>
-
-              <!-- Cart btn -->
-              <button
-                class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Link -->
-            <a href="#" class="catalog__link" aria-label="К карточке товара">
-              <!-- Picture -->
-              <picture class="catalog__media-wrap">
-                <!-- Webp -->
-                <source
-                  media="(min-width: 1140px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-2@2x.webp 2x, img/items/techne-2.webp"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-2--tablet@2x.webp 2x, img/items/tablet/techne-2--tablet.webp"
-                >
-                <!-- Png -->
-                <source
-                  media="(min-width: 1140px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-2@2x.png 2x, img/items/techne-2.png"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-2--tablet@2x.png 2x, img/items/tablet/techne-2--tablet.png"
-                >
-                <img
-                  class="catalog__image lazy"
-                  src="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-2--tablet@2x.png 2x"
-                  data-src="img/items/tablet/techne-2--tablet.png"
-                  alt="Часы Techne"
-                >
-              </picture>
-            </a>
-          </li>
-          <!-- Item 3 -->
-          <li class="catalog__item">
-            <div class="catalog__title">
-              <!-- Brand -->
-              <a href="#" class="catalog__brand">Techne</a>
-
-              <!-- Price -->
-              <p class="catalog__price">15700 ₽</p>
-            </div>
-
-            <div class="catalog__controls">
-              <!-- Like btn -->
-              <button
-                class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-like"></use>
-                </svg>
-              </button>
-
-              <!-- Cart btn -->
-              <button
-                class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Link -->
-            <a href="#" class="catalog__link" aria-label="К карточке товара">
-              <!-- Picture -->
-              <picture class="catalog__media-wrap">
-                <!-- Webp -->
-                <source
-                  media="(min-width: 1140px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-3@2x.webp 2x, img/items/techne-3.webp"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-3--tablet@2x.webp 2x, img/items/tablet/techne-3--tablet.webp"
-                >
-                <!-- Png -->
-                <source
-                  media="(min-width: 1140px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-3@2x.png 2x, img/items/techne-3.png"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-3--tablet@2x.png 2x, img/items/tablet/techne-3--tablet.png"
-                >
-                <img
-                  class="catalog__image lazy"
-                  src="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-3--tablet@2x.png 2x"
-                  data-src="img/items/tablet/techne-3--tablet.png"
-                  alt="Часы Techne"
-                >
-              </picture>
-            </a>
-          </li>
-          <!-- Item 4 -->
-          <li class="catalog__item">
-            <div class="catalog__title">
-              <!-- Brand -->
-              <a href="#" class="catalog__brand">Techne</a>
-
-              <!-- Price -->
-              <p class="catalog__price">15700 ₽</p>
-            </div>
-
-            <div class="catalog__controls">
-              <!-- Like btn -->
-              <button
-                class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-like"></use>
-                </svg>
-              </button>
-
-              <!-- Cart btn -->
-              <button
-                class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Link -->
-            <a href="#" class="catalog__link" aria-label="К карточке товара">
-              <!-- Picture -->
-              <picture class="catalog__media-wrap">
-                <!-- Webp -->
-                <source
-                  media="(min-width: 1140px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-4@2x.webp 2x, img/items/techne-4.webp"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-4--tablet@2x.webp 2x, img/items/tablet/techne-4--tablet.webp"
-                >
-                <!-- Png -->
-                <source
-                  media="(min-width: 1140px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-4@2x.png 2x, img/items/techne-4.png"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-4--tablet@2x.png 2x, img/items/tablet/techne-4--tablet.png"
-                >
-                <img
-                  class="catalog__image lazy"
-                  src="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-4--tablet@2x.png 2x"
-                  data-src="img/items/tablet/techne-4--tablet.png"
-                  alt="Часы Techne"
-                >
-              </picture>
-            </a>
-          </li>
-          <!-- Item 5 -->
-          <li class="catalog__item">
-            <div class="catalog__title">
-              <!-- Brand -->
-              <a href="#" class="catalog__brand">Techne</a>
-
-              <!-- Price -->
-              <p class="catalog__price">12700 ₽</p>
-            </div>
-
-            <div class="catalog__controls">
-              <!-- Like btn -->
-              <button
-                class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-like"></use>
-                </svg>
-              </button>
-
-              <!-- Cart btn -->
-              <button
-                class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Link -->
-            <a href="#" class="catalog__link" aria-label="К карточке товара">
-              <!-- Picture -->
-              <picture class="catalog__media-wrap">
-                <!-- Webp -->
-                <source
-                  media="(min-width: 1140px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-5@2x.webp 2x, img/items/techne-5.webp"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-5--tablet@2x.webp 2x, img/items/tablet/techne-5--tablet.webp"
-                >
-                <!-- Png -->
-                <source
-                  media="(min-width: 1140px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-5@2x.png 2x, img/items/techne-5.png"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-5--tablet@2x.png 2x, img/items/tablet/techne-5--tablet.png"
-                >
-                <img
-                  class="catalog__image lazy"
-                  src="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-5--tablet@2x.png 2x"
-                  data-src="img/items/tablet/techne-5--tablet.png"
-                  alt="Часы Techne"
-                >
-              </picture>
-            </a>
-          </li>
-          <!-- Item 6 -->
-          <li class="catalog__item catalog__item--banner">
-            <!-- Link -->
-            <a href="#" class="catalog__link" aria-label="К карточке товара">
-              <!-- Picture -->
-              <picture class="catalog__media-wrap">
-                <!-- Webp -->
-                <source
-                  media="(min-width: 1140px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/catalog-banner@2x.webp 2x, img/items/catalog-banner.webp"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/catalog-banner--tablet@2x.webp 2x, img/items/tablet/catalog-banner--tablet.webp"
-                >
-                <!-- Png -->
-                <source
-                  media="(min-width: 1140px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/catalog-banner@2x.png 2x, img/items/catalog-banner.png"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/catalog-banner--tablet@2x.png 2x, img/items/tablet/catalog-banner--tablet.png"
-                >
-                <img
-                  class="catalog__image lazy"
-                  src="img/items/tablet/catalog-banner--tablet.png"
-                  data-srcset="img/items/tablet/catalog-banner--tablet@2x.png 2x"
-                  alt="Часы Techne"
-                >
-              </picture>
-            </a>
-          </li>
-          <!-- Item 7 -->
-          <li class="catalog__item">
-            <div class="catalog__title">
-              <!-- Brand -->
-              <a href="#" class="catalog__brand">Techne</a>
-
-              <!-- Price -->
-              <p class="catalog__price">12700 ₽</p>
-            </div>
-
-            <div class="catalog__controls">
-              <!-- Like btn -->
-              <button
-                class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-like"></use>
-                </svg>
-              </button>
-
-              <!-- Cart btn -->
-              <button
-                class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Link -->
-            <a href="#" class="catalog__link" aria-label="К карточке товара">
-              <!-- Picture -->
-              <picture class="catalog__media-wrap">
-                <!-- Webp -->
-                <source
-                  media="(min-width: 1140px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-6@2x.webp 2x, img/items/techne-6.webp"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-6--tablet@2x.webp 2x, img/items/tablet/techne-6--tablet.webp"
-                >
-                <!-- Png -->
-                <source
-                  media="(min-width: 1140px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-6@2x.png 2x, img/items/techne-6.png"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-6--tablet@2x.png 2x, img/items/tablet/techne-6--tablet.png"
-                >
-                <img
-                  class="catalog__image lazy"
-                  data-src="img/items/tablet/techne-6--tablet.png"
-                  src="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-6--tablet@2x.png 2x"
-                  alt="Часы Techne"
-                >
-              </picture>
-            </a>
-          </li>
-          <!-- Item 8 -->
-          <li class="catalog__item">
-            <div class="catalog__title">
-              <!-- Brand -->
-              <a href="#" class="catalog__brand">Techne</a>
-
-              <!-- Price -->
-              <p class="catalog__price">12700 ₽</p>
-            </div>
-
-            <div class="catalog__controls">
-              <!-- Like btn -->
-              <button
-                class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-like"></use>
-                </svg>
-              </button>
-
-              <!-- Cart btn -->
-              <button
-                class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Link -->
-            <a href="#" class="catalog__link" aria-label="К карточке товара">
-              <!-- Picture -->
-              <picture class="catalog__media-wrap">
-                <!-- Webp -->
-                <source
-                  media="(min-width: 1140px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-7@2x.webp 2x, img/items/techne-7.webp"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-7--tablet@2x.webp 2x, img/items/tablet/techne-7--tablet.webp"
-                >
-                <!-- Png -->
-                <source
-                  media="(min-width: 1140px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-7@2x.png 2x, img/items/techne-7.png"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-7--tablet@2x.png 2x, img/items/tablet/techne-7--tablet.png"
-                >
-                <img
-                  class="catalog__image lazy"
-                  data-src="img/items/tablet/techne-7--tablet.png"
-                  src="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-7--tablet@2x.png 2x"
-                  alt="Часы Techne"
-                >
-              </picture>
-            </a>
-          </li>
-          <!-- Item 9 -->
-          <li class="catalog__item">
-            <div class="catalog__title">
-              <!-- Brand -->
-              <a href="#" class="catalog__brand">Techne</a>
-
-              <!-- Price -->
-              <p class="catalog__price">12700 ₽</p>
-            </div>
-
-            <div class="catalog__controls">
-              <!-- Like btn -->
-              <button
-                class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-like"></use>
-                </svg>
-              </button>
-
-              <!-- Cart btn -->
-              <button
-                class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Link -->
-            <a href="#" class="catalog__link" aria-label="К карточке товара">
-              <!-- Picture -->
-              <picture class="catalog__media-wrap">
-                <!-- Webp -->
-                <source
-                  media="(min-width: 1140px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/rado-1@2x.webp 2x, img/items/rado-1.webp"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/rado-1--tablet@2x.webp 2x, img/items/tablet/rado-1--tablet.webp"
-                >
-                <!-- Png -->
-                <source
-                  media="(min-width: 1140px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/rado-1@2x.png 2x, img/items/rado-1.png"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/rado-1--tablet@2x.png 2x, img/items/tablet/rado-1--tablet.png"
-                >
-                <img
-                  class="catalog__image lazy"
-                  data-src="img/items/tablet/rado-1--tablet.png"
-                  src="img/placeholder.png"
-                  data-srcset="img/items/tablet/rado-1--tablet@2x.png 2x"
-                  alt="Часы Techne"
-                >
-              </picture>
-            </a>
-          </li>
-          <!-- Item 10 -->
-          <li class="catalog__item">
-            <div class="catalog__title">
-              <!-- Brand -->
-              <a href="#" class="catalog__brand">Techne</a>
-
-              <!-- Price -->
-              <p class="catalog__price">12700 ₽</p>
-            </div>
-
-            <div class="catalog__controls">
-              <!-- Like btn -->
-              <button
-                class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-like"></use>
-                </svg>
-              </button>
-
-              <!-- Cart btn -->
-              <button
-                class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Link -->
-            <a href="#" class="catalog__link" aria-label="К карточке товара">
-              <!-- Picture -->
-              <picture class="catalog__media-wrap">
-                <!-- Webp -->
-                <source
-                  media="(min-width: 1140px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/bvlgari-1@2x.webp 2x, img/items/bvlgari-1.webp"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/bvlgari-1--tablet@2x.webp 2x, img/items/tablet/bvlgari-1--tablet.webp"
-                >
-                <!-- Png -->
-                <source
-                  media="(min-width: 1140px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/bvlgari-1@2x.png 2x, img/items/bvlgari-1.png"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/bvlgari-1--tablet@2x.png 2x, img/items/tablet/bvlgari-1--tablet.png"
-                >
-                <img
-                  class="catalog__image lazy"
-                  data-src="img/items/tablet/bvlgari-1--tablet.png"
-                  src="img/placeholder.png"
-                  data-srcset="img/items/tablet/bvlgari-1--tablet@2x.png 2x"
-                  alt="Часы Techne"
-                >
-              </picture>
-            </a>
-          </li>
-          <!-- Item 11 -->
-          <li class="catalog__item">
-            <div class="catalog__title">
-              <!-- Brand -->
-              <a href="#" class="catalog__brand">Techne</a>
-
-              <!-- Price -->
-              <p class="catalog__price">12700 ₽</p>
-            </div>
-
-            <div class="catalog__controls">
-              <!-- Like btn -->
-              <button
-                class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-like"></use>
-                </svg>
-              </button>
-
-              <!-- Cart btn -->
-              <button
-                class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Link -->
-            <a href="#" class="catalog__link" aria-label="К карточке товара">
-              <!-- Picture -->
-              <picture class="catalog__media-wrap">
-                <!-- Webp -->
-                <source
-                  media="(min-width: 1140px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-9@2x.webp 2x, img/items/techne-9.webp"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-9--tablet@2x.webp 2x, img/items/tablet/techne-9--tablet.webp"
-                >
-                <!-- Png -->
-                <source
-                  media="(min-width: 1140px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/techne-9@2x.png 2x, img/items/techne-9.png"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-9--tablet@2x.png 2x, img/items/tablet/techne-9--tablet.png"
-                >
-                <img
-                  class="catalog__image lazy"
-                  data-src="img/items/tablet/techne-9--tablet.png"
-                  src="img/placeholder.png"
-                  data-srcset="img/items/tablet/techne-9--tablet@2x.png 2x"
-                  alt="Часы Techne"
-                >
-              </picture>
-            </a>
-          </li>
-          <!-- Item 12 -->
-          <li class="catalog__item">
-            <div class="catalog__title">
-              <!-- Brand -->
-              <a href="#" class="catalog__brand">Techne</a>
-
-              <!-- Price -->
-              <p class="catalog__price">12700 ₽</p>
-            </div>
-
-            <div class="catalog__controls">
-              <!-- Like btn -->
-              <button
-                class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-like"></use>
-                </svg>
-              </button>
-
-              <!-- Cart btn -->
-              <button
-                class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину"
-                type="button"
-              >
-                <svg width="18" height="16">
-                  <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Link -->
-            <a href="#" class="catalog__link" aria-label="К карточке товара">
-              <!-- Picture -->
-              <picture class="catalog__media-wrap">
-                <!-- Webp -->
-                <source
-                  media="(min-width: 1140px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/rado-2@2x.webp 2x, img/items/rado-2.webp"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  type="image/webp"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/rado-2--tablet@2x.webp 2x, img/items/tablet/rado-2--tablet.webp"
-                >
-                <!-- Png -->
-                <source
-                  media="(min-width: 1140px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/rado-2@2x.png 2x, img/items/rado-2.png"
-                >
-                <source
-                  media="(min-width: 768px)"
-                  srcset="img/placeholder.png"
-                  data-srcset="img/items/tablet/rado-2--tablet@2x.png 2x, img/items/tablet/rado-2--tablet.png"
-                >
-                <img
-                  class="catalog__image lazy"
-                  data-src="img/items/tablet/rado-2--tablet.png"
-                  src="img/placeholder.png"
-                  data-srcset="img/items/tablet/rado-2--tablet@2x.png 2x"
-                  alt="Часы Techne"
-                >
-              </picture>
-            </a>
-          </li>
         </ul>
 
         <!-- Pagination -->
-        <include src="source/components/html/pagination.html"></include>
+        <div class="catalog__pagination"></div>
+        <include src="source/components/html/item-template.html"></include>
       </section>
     </div>
   </main>
@@ -1189,9 +388,7 @@
         <p class="mailing__desc">Получить скидку 10% на первую покупку</p>
       </div>
       <div class="mailing__wrap mailing__wrap--right">
-        <label for="mailing-input" class="visually-hidden">
-          Введите ваш email
-        </label>
+        <label for="mailing-input" class="visually-hidden">Введите ваш email</label>
         <input
           class="mailing__field"
           type="email"
@@ -1206,7 +403,7 @@
   <!-- Bands -->
   <section class="bands">
     <button
-      class="bands__control bands__control--prev"
+      class="slide-control slide-control--prev"
       type="button"
       aria-label="К предыдущему слайду"
     ></button>
@@ -1220,7 +417,7 @@
       <!-- List -->
       <ul class="catalog__list swiper-wrapper">
         <!-- Item 1 -->
-        <li class="catalog__item swiper-slide">
+        <li class="catalog__item swiper-slide" data-vendor="12">
           <div class="catalog__title">
             <!-- Brand -->
             <a href="#" class="catalog__brand">Georg Jensen</a>
@@ -1231,14 +428,22 @@
 
           <div class="catalog__controls">
             <!-- Like btn -->
-            <button class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк" type="button">
+            <button
+              class="catalog__toggle catalog__toggle--like like-btn"
+              aria-label="Поставить лайк"
+              type="button"
+            >
               <svg width="18" height="16">
                 <use xlink:href="img/sprite_auto.svg#icon-like"></use>
               </svg>
             </button>
 
             <!-- Cart btn -->
-            <button class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину" type="button">
+            <button
+              class="catalog__toggle catalog__toggle--cart cart-btn"
+              aria-label="Добавить в корзину"
+              type="button"
+            >
               <svg width="18" height="16">
                 <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
               </svg>
@@ -1279,7 +484,7 @@
           </a>
         </li>
         <!-- Item 2 -->
-        <li class="catalog__item swiper-slide">
+        <li class="catalog__item swiper-slide" data-vendor="13">
           <div class="catalog__title">
             <!-- Brand -->
             <a href="#" class="catalog__brand">Nato</a>
@@ -1290,14 +495,22 @@
 
           <div class="catalog__controls">
             <!-- Like btn -->
-            <button class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк" type="button">
+            <button
+              class="catalog__toggle catalog__toggle--like like-btn"
+              aria-label="Поставить лайк"
+              type="button"
+            >
               <svg width="18" height="16">
                 <use xlink:href="img/sprite_auto.svg#icon-like"></use>
               </svg>
             </button>
 
             <!-- Cart btn -->
-            <button class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину" type="button">
+            <button
+              class="catalog__toggle catalog__toggle--cart cart-btn"
+              aria-label="Добавить в корзину"
+              type="button"
+            >
               <svg width="18" height="16">
                 <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
               </svg>
@@ -1338,7 +551,7 @@
           </a>
         </li>
         <!-- Item 3 -->
-        <li class="catalog__item swiper-slide">
+        <li class="catalog__item swiper-slide" data-vendor="14">
           <div class="catalog__title">
             <!-- Brand -->
             <a href="#" class="catalog__brand">Spark</a>
@@ -1349,14 +562,22 @@
 
           <div class="catalog__controls">
             <!-- Like btn -->
-            <button class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк" type="button">
+            <button
+              class="catalog__toggle catalog__toggle--like like-btn"
+              aria-label="Поставить лайк"
+              type="button"
+            >
               <svg width="18" height="16">
                 <use xlink:href="img/sprite_auto.svg#icon-like"></use>
               </svg>
             </button>
 
             <!-- Cart btn -->
-            <button class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину" type="button">
+            <button
+              class="catalog__toggle catalog__toggle--cart cart-btn"
+              aria-label="Добавить в корзину"
+              type="button"
+            >
               <svg width="18" height="16">
                 <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
               </svg>
@@ -1397,7 +618,7 @@
           </a>
         </li>
         <!-- Item 4 -->
-        <li class="catalog__item swiper-slide">
+        <li class="catalog__item swiper-slide" data-vendor="15">
           <div class="catalog__title">
             <!-- Brand -->
             <a href="#" class="catalog__brand">Georg Jensen</a>
@@ -1408,14 +629,22 @@
 
           <div class="catalog__controls">
             <!-- Like btn -->
-            <button class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк" type="button">
+            <button
+              class="catalog__toggle catalog__toggle--like like-btn"
+              aria-label="Поставить лайк"
+              type="button"
+            >
               <svg width="18" height="16">
                 <use xlink:href="img/sprite_auto.svg#icon-like"></use>
               </svg>
             </button>
 
             <!-- Cart btn -->
-            <button class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину" type="button">
+            <button
+              class="catalog__toggle catalog__toggle--cart cart-btn"
+              aria-label="Добавить в корзину"
+              type="button"
+            >
               <svg width="18" height="16">
                 <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
               </svg>
@@ -1456,7 +685,7 @@
           </a>
         </li>
         <!-- Item 5 -->
-        <li class="catalog__item swiper-slide">
+        <li class="catalog__item swiper-slide" data-vendor="16">
           <div class="catalog__title">
             <!-- Brand -->
             <a href="#" class="catalog__brand">Nato</a>
@@ -1467,14 +696,22 @@
 
           <div class="catalog__controls">
             <!-- Like btn -->
-            <button class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк" type="button">
+            <button
+              class="catalog__toggle catalog__toggle--like like-btn"
+              aria-label="Поставить лайк"
+              type="button"
+            >
               <svg width="18" height="16">
                 <use xlink:href="img/sprite_auto.svg#icon-like"></use>
               </svg>
             </button>
 
             <!-- Cart btn -->
-            <button class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину" type="button">
+            <button
+              class="catalog__toggle catalog__toggle--cart cart-btn"
+              aria-label="Добавить в корзину"
+              type="button"
+            >
               <svg width="18" height="16">
                 <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
               </svg>
@@ -1515,7 +752,7 @@
           </a>
         </li>
         <!-- Item 6 -->
-        <li class="catalog__item swiper-slide">
+        <li class="catalog__item swiper-slide" data-vendor="17">
           <div class="catalog__title">
             <!-- Brand -->
             <a href="#" class="catalog__brand">Spark</a>
@@ -1526,14 +763,22 @@
 
           <div class="catalog__controls">
             <!-- Like btn -->
-            <button class="catalog__toggle catalog__toggle--like" aria-label="Поставить лайк" type="button">
+            <button
+              class="catalog__toggle catalog__toggle--like like-btn"
+              aria-label="Поставить лайк"
+              type="button"
+            >
               <svg width="18" height="16">
                 <use xlink:href="img/sprite_auto.svg#icon-like"></use>
               </svg>
             </button>
 
             <!-- Cart btn -->
-            <button class="catalog__toggle catalog__toggle--cart" aria-label="Добавить в корзину" type="button">
+            <button
+              class="catalog__toggle catalog__toggle--cart cart-btn"
+              aria-label="Добавить в корзину"
+              type="button"
+            >
               <svg width="18" height="16">
                 <use xlink:href="img/sprite_auto.svg#icon-cart"></use>
               </svg>
@@ -1576,12 +821,14 @@
       </ul>
     </div>
     <button
-      class="bands__control bands__control--next"
+      class="slide-control slide-control--next"
       type="button"
       aria-label="К следующему слайду"
     ></button>
   </section>
   <include src="source/components/html/footer.html"></include>
+  <include src="source/components/html/favorites.html"></include>
+  <include src="source/components/html/cart.html"></include>
   <script src="js/vendor.min.js"></script>
   <script src="js/main.min.js"></script>
 </body>

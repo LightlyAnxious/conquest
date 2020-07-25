@@ -1,9 +1,15 @@
-import Swiper from 'swiper';
-import '../../components/js/range-slider.js';
-import { createImage } from '../main/modal.js';
-import { createBtn } from '../main/utils.js';
+import {
+  Swiper as SwiperClass,
+  Pagination,
+  Navigation,
+  Autoplay,
+  EffectFade
+} from 'swiper/core';
+import { createRangeSlider } from '../../components/js/range-slider.js';
 const promo = document.querySelector('.promo');
 const slides = document.querySelectorAll('.card__image');
+
+SwiperClass.use([Pagination, Autoplay, EffectFade, Navigation]);
 
 // * Опции слайдеров
 const promoSliderOptions = {
@@ -66,11 +72,11 @@ const advantagesSliderOptions = {
 const catalogSliderOptions = {
   a11y: true,
   initialSlide: 0,
-  // observer: true,
+  observer: true,
   updateOnWindowResize: true,
   navigation: {
-    nextEl: '.bands__control--next',
-    prevEl: '.bands__control--prev'
+    nextEl: '.slide-control--next',
+    prevEl: '.slide-control--prev'
   },
   breakpoints: {
     0: {
@@ -103,24 +109,6 @@ const cardSliderOptions = {
       return `<button class="${className} card__bullet"></button>`;
     }
   }
-  // runCallbacksOnInit: true,
-  // on: {
-  //   init: function() {
-  //     const sliderNumerationBar = document.querySelector(
-  //       '.advantages__slider-progress'
-  //     );
-
-  //     sliderNumerationBar.innerHTML = '0' + (this.realIndex + 1);
-  //   },
-
-  //   slideChange: function() {
-  //     const sliderNumerationBar = document.querySelector(
-  //       '.advantages__slider-progress'
-  //     );
-
-  //     sliderNumerationBar.innerHTML = '0' + (this.realIndex + 1);
-  //   }
-  // }
 };
 
 // Функция создания изображений для пагинации
@@ -138,10 +126,10 @@ function renderPaginationImages(imgClass) {
 
 // ! Инициализация слайдеров
 
-const promoSlider = new Swiper('.swiper1', promoSliderOptions);
-const advantagesSlider = new Swiper('.swiper2', advantagesSliderOptions);
-const catalogSlider = new Swiper('.swiper3', catalogSliderOptions);
-const cardSlider = new Swiper('.swiper4', cardSliderOptions);
+const promoSlider = new SwiperClass('.swiper1', promoSliderOptions);
+const advantagesSlider = new SwiperClass('.swiper2', advantagesSliderOptions);
+const catalogSlider = new SwiperClass('.swiper3', catalogSliderOptions);
+const cardSlider = new SwiperClass('.swiper4', cardSliderOptions);
 
 // ! Вычисление и задание высоты слайдеру блока "Promo"
 
@@ -163,3 +151,5 @@ if (promo) {
 }
 
 renderPaginationImages('card__bullet-media');
+
+createRangeSlider();

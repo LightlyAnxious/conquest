@@ -401,3 +401,9 @@ button.swiper-pagination-bullet {
 .swiper-container-fade .swiper-slide-active .swiper-slide-active {
   pointer-events: auto;
 }
+
+.swiper3 {
+  .swiper-slide {
+    max-width: 363px;
+  }
+}
