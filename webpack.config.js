@@ -66,7 +66,7 @@ const plugins = () => {
 // Настройки
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   context: path.resolve(__dirname),
   entry: {
     main: ['./source/js/main.js']
@@ -80,7 +80,7 @@ module.exports = {
       name: 'vendor',
       chunks: 'all'
     },
-    minimize: true,
+    minimize: false,
     minimizer: [new TerserPlugin()]
   },
 

@@ -9,8 +9,8 @@
 
   position: relative;
 
-  width: 5px;
-  height: 10px;
+  width: 7px;
+  height: 15px;
 
   &::before,
   &::after {
@@ -25,7 +25,8 @@
     transform: translateY(-50%);
   }
 
-  &--prev {
+  &--prev,
+  &--first {
     margin-right: 14px;
 
     &::before {
@@ -39,7 +40,8 @@
     }
   }
 
-  &--next {
+  &--next,
+  &--last {
     margin-left: 14px;
 
     &::before {
@@ -51,12 +53,9 @@
       transform: rotate(-45deg);
       transform-origin: right;
     }
-  }
 
-  &--disabled {
-    &::before,
-    &::after {
-      background-color: $grey-light;
+    & + .pagination__btn--disabled {
+      opacity: 0.7;
     }
   }
 
@@ -67,6 +66,10 @@
       background-color: $gold;
     }
   }
+}
+
+.pagination__btn--disabled {
+  opacity: 0.5;
 }
 
 .pagination__list {

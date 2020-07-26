@@ -51,6 +51,7 @@ class CatalogItem extends Item {
 
         <!-- Tablet -->
         <img
+          style="height: 100%"
           class="catalog__image lazy"
           src="img/placeholder.png"
           data-srcset="${this.tablet}@2x.png 2x"
@@ -75,23 +76,3 @@ class CatalogItem extends Item {
 }
 
 export { CatalogItem };
-
-// db.forEach(item => {
-//   const catalogList = document.querySelector('.catalog__list');
-
-//   const catalogItem = new CatalogItem({
-//     type: item.type,
-//     brand: item.brand,
-//     price: item.price,
-//     vendor: item.vendor,
-//     desktop: item.img.desktop,
-//     tablet: item.img.tablet,
-//     alt: item.img.alt
-//   });
-
-//   catalogItem.renderItem();
-
-//   catalogItem.add(catalogList);
-
-//   return catalogItem;
-// });
