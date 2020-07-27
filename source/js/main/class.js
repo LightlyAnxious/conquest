@@ -23,8 +23,16 @@ class Counter {
     return this.count;
   }
 
-  decrease() {
-    this.count--;
+  decrease(value = 0) {
+    if (value) {
+      const result = this.count - value;
+
+      this.count = result;
+    } else if (this.count) {
+      this.count--;
+    }
+
+    if (!this.count) this.hide();
     this.$box.dataset.counter = this.count;
     return this.count;
   }
