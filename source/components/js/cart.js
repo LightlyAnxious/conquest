@@ -3,13 +3,16 @@ import { attrAvailabilityCheck } from '../js/favorites.js';
 import { removeActiveClass } from '../../js/main/utils.js';
 
 const cartToggle = document.querySelector('#cart-toggle');
-const cartBtns = document.querySelectorAll('.cart-btn');
-const closeCartBtn = document.querySelector('.cart__close-btn');
-const cartOverlay = document.querySelector('.overlay');
 const cartItemsToVendors = new Map();
 const cartItemTemplate = document
   .querySelector('#cart-item')
   .content.querySelector('.cart__item');
+
+// * Создание счетчика количества "избранного"
+const cartCounter = new Counter({
+  count: 0,
+  selector: '#cart-counter'
+});
 
 // Класс для создания объектов в избранном
 class CartItem extends Item {
@@ -66,33 +69,44 @@ class CartItem extends Item {
 
   // Метод назначающий все обработчики
   bindAll() {
-    const deleteToggle = this.$layout.querySelector('.cart__delete');
     const plusButton = this.$layout.querySelector('.cart__count-btn--plus');
     const minusButton = this.$layout.querySelector('.cart__count-btn--minus');
-    const amountBox = this.$layout.querySelector('.cart__count-input');
+    const deleteToggle = this.$layout.querySelector('.cart__delete');
 
-    amountBox.value = this.amount;
+    const deleteToggleClickHandler = () => {
+      const item = deleteToggle.parentNode.parentNode;
+      const counter = item.querySelector('.cart__count-input');
 
-    deleteToggle.addEventListener('click', () => {
-      deleteToggle.parentNode.parentNode.remove();
-
-      cartCounter.decrease();
-      if (cartCounter.count === 0) cartCounter.hide();
+      cartCounter.decrease(counter.value);
+      item.remove();
 
       CartItem.sumTotal();
 
       displayCartTip();
-    });
+
+      return;
+    };
 
     plusButton.addEventListener('click', () => {
       this.getAmount('.cart__count-input', this.increase());
+      cartCounter.increase();
     });
 
     minusButton.addEventListener('click', () => {
-      if (this.amount > 1)
+      if (this.amount >= 1)
         this.getAmount('.cart__count-input', this.decrease());
-      if (this.amount === 1) return null;
+      cartCounter.decrease();
+      if (this.amount === 0) deleteToggleClickHandler();
     });
+
+    deleteToggle.addEventListener('click', deleteToggleClickHandler);
+  }
+
+  init() {
+    const amountBox = this.$layout.querySelector('.cart__count-input');
+    amountBox.value = this.amount;
+
+    this.bindAll();
   }
 
   // Метод вычисляющий сумму всех товаров в корзине
@@ -130,7 +144,10 @@ class CartItem extends Item {
   }
 }
 
-// Функция показа подсказки
+const cartOverlay = document.querySelector('.overlay');
+const closeCartBtn = document.querySelector('.cart__close-btn');
+
+// Показ подсказки
 const displayCartTip = () => {
   const addedItems = document.querySelectorAll('.cart__item');
   const tip = document.querySelector('.cart__tip');
@@ -141,12 +158,15 @@ const displayCartTip = () => {
   return tip;
 };
 
-// Функция подсчета и показа количества товаров в корзине
-const toCountCartItems = () => {
-  cartCounter.increase();
-  cartCounter.show();
+// *  Функция обработчик по нажатию на кнопку избранного в меню
+const onCartClickToggleOverlay = () => {
+  const cart = document.querySelector('.cart');
+  const overlay = document.querySelector('.overlay');
 
-  return cartCounter.count;
+  overlay.classList.toggle('overlay--shown');
+  cart.classList.toggle('cart--shown');
+
+  displayCartTip();
 };
 
 // Функция закрытия корзины по клику вне окна
@@ -158,13 +178,13 @@ const onDocumentClickCloseCart = evt => {
     removeActiveClass(overlay, 'overlay--shown');
 };
 
-// * Создание счетчика количества "избранного"
-const cartCounter = new Counter({
-  count: 0,
-  selector: '#cart-counter'
+cartToggle.addEventListener('click', onCartClickToggleOverlay, false);
+document.addEventListener('mouseup', onDocumentClickCloseCart);
+closeCartBtn.addEventListener('click', () => {
+  removeActiveClass(cartOverlay, 'overlay--shown');
 });
 
-// * Функция создания и добавления товара в корзину
+// Cоздание и добавление товара в корзину
 const dropCartItem = (ctx, amount, template, container) => {
   const cartItem = new CartItem({
     name: ctx.querySelector('.catalog__brand').textContent,
@@ -178,7 +198,7 @@ const dropCartItem = (ctx, amount, template, container) => {
 
   cartItem.$layout.querySelector('.catalog__image').style.height = '100%';
   cartItem.add(container);
-  cartItem.bindAll();
+  cartItem.init();
   CartItem.sumTotal();
 
   cartItemsToVendors.set(cartItem, cartItem.vendor);
@@ -186,18 +206,7 @@ const dropCartItem = (ctx, amount, template, container) => {
   return cartItem;
 };
 
-// !  Функция обработчик по нажатию на кнопку избранного в меню
-const onCartClickToggleOverlay = () => {
-  const cart = document.querySelector('.cart');
-  const overlay = document.querySelector('.overlay');
-
-  overlay.classList.toggle('overlay--shown');
-  cart.classList.toggle('cart--shown');
-
-  displayCartTip();
-};
-
-// ! Функция обработчик по нажатию на кнопку лайк
+// * Функция обработчик по нажатию на кнопку открытия корзины
 const cartBtnClickHandler = evt => {
   let itemTemplate = cartItemTemplate.cloneNode(true);
   const targetItem = evt.target.closest('.catalog__item');
@@ -219,17 +228,20 @@ const cartBtnClickHandler = evt => {
     }
 
   // Cчетчик добавленных товаров
-  toCountCartItems();
+  cartCounter.increase();
+  cartCounter.show();
 
   return cartList;
 };
 
-cartBtns.forEach(btn => {
-  btn.addEventListener('click', cartBtnClickHandler);
-});
+const cartFactory = () => {
+  const cartBtns = document.querySelectorAll('.cart-btn');
 
-closeCartBtn.addEventListener('click', () => {
-  removeActiveClass(cartOverlay, 'overlay--shown');
-});
-cartToggle.addEventListener('click', onCartClickToggleOverlay, false);
-document.addEventListener('mouseup', onDocumentClickCloseCart);
+  cartBtns.forEach(btn => {
+    btn.addEventListener('click', cartBtnClickHandler);
+  });
+
+  return cartBtns;
+};
+
+export { cartFactory, CartItem };
