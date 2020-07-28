@@ -1,4 +1,3 @@
-import db from '../../../conguest.db.json';
 import { Item } from './class.js';
 
 const catalogItemTemplate = document.querySelector('#catalog-item-template');

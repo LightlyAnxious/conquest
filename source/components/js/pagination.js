@@ -1,4 +1,5 @@
 import { CatalogItem } from '../../js/main/factory.js';
+import { favorites } from './favorites.js';
 import { cart } from './cart.js';
 import Pagination from 'tui-pagination';
 import db from '../../../conguest.db.json';
@@ -62,6 +63,7 @@ class PageInterface {
       this.currentPage = evt.page;
       this.renderItems(this.currentPage);
       cart.init();
+      favorites.bindAll();
     });
 
     return paging;
@@ -98,6 +100,7 @@ class PageInterface {
       let items = this.renderItems(this.initialPage);
       this.bindPaging();
       cart.init();
+      favorites.bindAll();
 
       return items;
     }
