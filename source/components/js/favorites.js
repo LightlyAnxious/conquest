@@ -44,8 +44,8 @@ class FavoriteItem extends Item {
       deleteToggle.parentNode.remove();
 
       displayFavoritesTip();
-      favoriteCounter.decrease();
-      if (favoriteCounter.count === 0) favoriteCounter.hide();
+      favoriteCounter.decreaseCount();
+      if (favoriteCounter.count === 0) favoriteCounter.hideCounter();
     });
   }
 }
@@ -86,19 +86,19 @@ const onDocumentClickCloseFavorites = evt => {
 // * Создание счетчика количества "избранного"
 const favoriteCounter = new Counter({
   count: 0,
-  selector: '#likes-counter'
+  counterSelector: '#likes-counter'
 });
 
 // Функции увеличения и показа количества товаров в избранном
 const increaseLikes = () => {
-  favoriteCounter.increase();
-  favoriteCounter.show();
+  favoriteCounter.increaseCount();
+  favoriteCounter.showCounter();
   return favoriteCounter.count;
 };
 
 const decreaseLikes = () => {
-  favoriteCounter.decrease();
-  if (favoriteCounter.count === 0) favoriteCounter.hide();
+  favoriteCounter.decreaseCount();
+  if (favoriteCounter.count === 0) favoriteCounter.hideCounter();
   return favoriteCounter.count;
 };
 

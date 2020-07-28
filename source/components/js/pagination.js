@@ -1,5 +1,5 @@
 import { CatalogItem } from '../../js/main/factory.js';
-import { CartItem, cartFactory } from './cart.js';
+import { cart } from './cart.js';
 import Pagination from 'tui-pagination';
 import db from '../../../conguest.db.json';
 
@@ -61,7 +61,7 @@ class PageInterface {
     paging.on('afterMove', evt => {
       this.currentPage = evt.page;
       this.renderItems(this.currentPage);
-      cartFactory();
+      cart.init();
     });
 
     return paging;
@@ -97,7 +97,7 @@ class PageInterface {
     if (this.itemsContainer) {
       let items = this.renderItems(this.initialPage);
       this.bindPaging();
-      cartFactory();
+      cart.init();
 
       return items;
     }
