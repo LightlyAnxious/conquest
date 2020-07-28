@@ -1,18 +1,11 @@
 import { Counter, Item } from '../../js/main/class.js';
-import { attrAvailabilityCheck } from '../js/favorites.js';
 import { removeActiveClass } from '../../js/main/utils.js';
 
-const cartToggle = document.querySelector('#cart-toggle');
+// Пары товар - артикул
 const cartItemsToVendors = new Map();
 const cartItemTemplate = document
   .querySelector('#cart-item')
   .content.querySelector('.cart__item');
-
-// * Создание счетчика количества "избранного"
-const cartCounter = new Counter({
-  count: 0,
-  selector: '#cart-counter'
-});
 
 // Класс для создания объектов в избранном
 class CartItem extends Item {
@@ -38,33 +31,34 @@ class CartItem extends Item {
 
     return newItem;
   }
+  // Подсчет общего количества добавленных товаров
+  toCount() {
+    const totalCountField = document.querySelector('#total-count');
 
-  increase() {
-    let currentAmount = this.amount;
-    this.amount = ++currentAmount;
+    totalCountField.value = Cart.countTotal();
 
-    CartItem.sumTotal();
+    totalCountField.dispatchEvent(new Event('input', { bubbles: true }));
+
+    return totalCountField.value;
+  }
+
+  increaseAmount() {
+    this.amount += 1;
 
     return this.amount;
   }
 
-  decrease() {
-    let currentAmount = this.amount;
-    this.amount = --currentAmount;
-
-    CartItem.sumTotal();
+  decreaseAmount() {
+    this.amount -= 1;
 
     return this.amount;
   }
+  // Вывод количества товаров в соответствующий элемент
+  initAmountBox() {
+    const amountBox = this.$layout.querySelector('.cart__count-input');
+    amountBox.value = this.amount;
 
-  getAmount(selector, cb) {
-    const amount = this.$layout.querySelector(selector);
-
-    cb;
-    amount.value = this.amount;
-    CartItem.sumTotal();
-
-    return amount;
+    return amountBox;
   }
 
   // Метод назначающий все обработчики
@@ -72,47 +66,194 @@ class CartItem extends Item {
     const plusButton = this.$layout.querySelector('.cart__count-btn--plus');
     const minusButton = this.$layout.querySelector('.cart__count-btn--minus');
     const deleteToggle = this.$layout.querySelector('.cart__delete');
+    const currentItem = deleteToggle.parentNode.parentNode;
 
     const deleteToggleClickHandler = () => {
-      const item = deleteToggle.parentNode.parentNode;
-      const counter = item.querySelector('.cart__count-input');
+      for (let [key, value] of cartItemsToVendors) {
+        if (value === currentItem.dataset.vendor) {
+          cartItemsToVendors.delete(key);
+        }
+      }
 
-      cartCounter.decrease(counter.value);
-      item.remove();
+      this.amount = 0;
+      currentItem.remove();
 
-      CartItem.sumTotal();
-
-      displayCartTip();
+      Cart.sumTotal();
+      this.toCount();
 
       return;
     };
 
+    const minusBtnClickHandler = () => {
+      if (this.amount >= 1) this.decreaseAmount();
+
+      if (this.amount === 0) deleteToggleClickHandler();
+
+      this.initAmountBox();
+      Cart.sumTotal();
+      this.toCount();
+
+      return this.amount;
+    };
+
     plusButton.addEventListener('click', () => {
-      this.getAmount('.cart__count-input', this.increase());
-      cartCounter.increase();
+      this.increaseAmount();
+      this.initAmountBox();
+      Cart.sumTotal();
+      this.toCount();
     });
 
-    minusButton.addEventListener('click', () => {
-      if (this.amount >= 1)
-        this.getAmount('.cart__count-input', this.decrease());
-      cartCounter.decrease();
-      if (this.amount === 0) deleteToggleClickHandler();
-    });
+    minusButton.addEventListener('click', minusBtnClickHandler);
 
     deleteToggle.addEventListener('click', deleteToggleClickHandler);
   }
 
   init() {
-    const amountBox = this.$layout.querySelector('.cart__count-input');
-    amountBox.value = this.amount;
+    this.initAmountBox();
+    this.bindAll();
+  }
+}
 
+class Cart extends Counter {
+  constructor(params) {
+    super(params);
+    this.cartContainer = document.querySelector(params.cartContainerSelector);
+    this.cartToggle = document.querySelector(params.cartToggleSelector);
+    this.counterContainer = document.querySelector(params.counterSelector);
+  }
+  // Возвращает коллекцию всех добавленных элементов
+  collectItems() {
+    const cartItems = document.querySelectorAll('.cart__item');
+
+    return cartItems;
+  }
+
+  // Показ подсказки
+  displayCartTip() {
+    const addedItems = this.collectItems();
+    const tip = document.querySelector('.cart__tip');
+
+    if (addedItems.length > 0) tip.classList.add('cart__tip--hidden');
+    if (addedItems.length === 0) tip.classList.remove('cart__tip--hidden');
+
+    return tip;
+  }
+
+  // Cоздание и добавление товара в корзину
+  dropCartItem(ctx, amount, template, container) {
+    const cartItem = new CartItem({
+      name: ctx.querySelector('.catalog__brand').textContent,
+      price: ctx.querySelector('.catalog__price').textContent,
+      image: ctx.querySelector('.catalog__image').cloneNode(true),
+      vendor: ctx.dataset.vendor,
+      amount: amount
+    });
+
+    cartItem.create(
+      template,
+      '.cart__name',
+      '.cart__price-tag',
+      '.cart__media'
+    );
+
+    cartItem.$layout.querySelector('.catalog__image').style.height = '100%';
+    cartItem.add(container);
+    cartItem.init();
+    Cart.sumTotal();
+
+    cartItemsToVendors.set(cartItem, cartItem.vendor);
+
+    return cartItem;
+  }
+  // Поиск дублирующихся товаров
+  findDuplicate(vendor) {
+    let duplicate = null;
+    for (let [key, value] of cartItemsToVendors) {
+      if (value === vendor) {
+        duplicate = key;
+      }
+    }
+
+    return duplicate;
+  }
+
+  bindAll() {
+    const closeCartBtn = document.querySelector('.cart__close-btn');
+    const cartBtns = document.querySelectorAll('.cart-btn');
+    const overlay = document.querySelector('.overlay');
+    const totalCountField = document.querySelector('#total-count');
+
+    // *  Функция обработчик по нажатию на кнопку корзины в меню
+    const cartToggleClickHandler = () => {
+      const overlay = document.querySelector('.overlay');
+
+      overlay.classList.toggle('overlay--shown');
+      this.cartContainer.classList.toggle('cart--shown');
+
+      this.displayCartTip();
+    };
+
+    // ! Функция обработчик по нажатию на кнопку добавления в корзину
+    const cartBtnClickHandler = evt => {
+      let itemTemplate = cartItemTemplate.cloneNode(true);
+      const targetItem = evt.target.closest('.catalog__item');
+      const targetVendor = targetItem.dataset.vendor;
+      const cartList = document.querySelector('.cart__list');
+      const duplicate = this.findDuplicate(targetVendor);
+
+      // Если товара еще нет в корзине то добавляем его
+      if (!duplicate) this.dropCartItem(targetItem, 1, itemTemplate, cartList);
+
+      if (duplicate) {
+        duplicate.amount++;
+        duplicate.initAmountBox();
+      }
+      Cart.countTotal();
+
+      // Cчетчик добавленных товаров
+      this.increaseCount();
+      this.showCounter();
+
+      return cartList;
+    };
+
+    // Функция закрытия корзины по клику вне окна
+    const onDocumentClickCloseCart = evt => {
+      const cartBox = document.querySelector('.cart');
+
+      if (!cartBox.contains(evt.target))
+        removeActiveClass(overlay, 'overlay--shown');
+    };
+
+    this.cartToggle.addEventListener('click', cartToggleClickHandler, false);
+
+    // Закрытие корзины по клику на оверлей
+    closeCartBtn.addEventListener('click', () => {
+      removeActiveClass(overlay, 'overlay--shown');
+    });
+
+    cartBtns.forEach(btn => {
+      btn.addEventListener('click', cartBtnClickHandler);
+    });
+
+    totalCountField.addEventListener('input', () => {
+      this.count = totalCountField.value;
+      this.initCounter();
+    });
+
+    document.addEventListener('mouseup', onDocumentClickCloseCart);
+
+    return this.cartContainer;
+  }
+
+  init() {
+    this.displayCartTip();
     this.bindAll();
   }
 
   // Метод вычисляющий сумму всех товаров в корзине
   static sumTotal() {
     const defaultCurrency = ' ₽';
-    const amounts = [];
     const priceTags = document.querySelectorAll('.cart__price-tag');
     const priceBox = document.querySelector('#total-price');
     const prices = [];
@@ -142,106 +283,29 @@ class CartItem extends Item {
 
     return priceBox;
   }
-}
 
-const cartOverlay = document.querySelector('.overlay');
-const closeCartBtn = document.querySelector('.cart__close-btn');
+  // Метод вычисляющий количество всех товаров в корзине
+  static countTotal() {
+    let items = [...cartItemsToVendors.keys()];
+    let amounts = items.map(item => item.amount);
 
-// Показ подсказки
-const displayCartTip = () => {
-  const addedItems = document.querySelectorAll('.cart__item');
-  const tip = document.querySelector('.cart__tip');
+    if (amounts.length != 0) {
+      const totalCount = amounts.reduce((a, b) => {
+        return a + b;
+      });
 
-  if (addedItems.length > 0) tip.classList.add('cart__tip--hidden');
-  if (addedItems.length === 0) tip.classList.remove('cart__tip--hidden');
-
-  return tip;
-};
-
-// *  Функция обработчик по нажатию на кнопку избранного в меню
-const onCartClickToggleOverlay = () => {
-  const cart = document.querySelector('.cart');
-  const overlay = document.querySelector('.overlay');
-
-  overlay.classList.toggle('overlay--shown');
-  cart.classList.toggle('cart--shown');
-
-  displayCartTip();
-};
-
-// Функция закрытия корзины по клику вне окна
-const onDocumentClickCloseCart = evt => {
-  const cartBox = document.querySelector('.cart');
-  const overlay = document.querySelector('.overlay');
-
-  if (!cartBox.contains(evt.target))
-    removeActiveClass(overlay, 'overlay--shown');
-};
-
-cartToggle.addEventListener('click', onCartClickToggleOverlay, false);
-document.addEventListener('mouseup', onDocumentClickCloseCart);
-closeCartBtn.addEventListener('click', () => {
-  removeActiveClass(cartOverlay, 'overlay--shown');
-});
-
-// Cоздание и добавление товара в корзину
-const dropCartItem = (ctx, amount, template, container) => {
-  const cartItem = new CartItem({
-    name: ctx.querySelector('.catalog__brand').textContent,
-    price: ctx.querySelector('.catalog__price').textContent,
-    image: ctx.querySelector('.catalog__image').cloneNode(true),
-    vendor: ctx.dataset.vendor,
-    amount: amount
-  });
-
-  cartItem.create(template, '.cart__name', '.cart__price-tag', '.cart__media');
-
-  cartItem.$layout.querySelector('.catalog__image').style.height = '100%';
-  cartItem.add(container);
-  cartItem.init();
-  CartItem.sumTotal();
-
-  cartItemsToVendors.set(cartItem, cartItem.vendor);
-
-  return cartItem;
-};
-
-// * Функция обработчик по нажатию на кнопку открытия корзины
-const cartBtnClickHandler = evt => {
-  let itemTemplate = cartItemTemplate.cloneNode(true);
-  const targetItem = evt.target.closest('.catalog__item');
-  const targetVendor = targetItem.dataset.vendor;
-  const cartList = document.querySelector('.cart__list');
-  const addedItems = cartList.querySelectorAll('.cart__item');
-
-  // Если товара еще нет в корзине то добавляем его
-  if (!attrAvailabilityCheck(addedItems, targetVendor))
-    dropCartItem(targetItem, 1, itemTemplate, cartList);
-  // В обратном случае увеличиваем его количество в корзине
-  if (attrAvailabilityCheck(addedItems, targetVendor))
-    for (let [key, value] of cartItemsToVendors) {
-      if (value === targetVendor) {
-        const duplicate = key;
-
-        duplicate.getAmount('.cart__count-input', duplicate.increase());
-      }
+      return totalCount;
     }
 
-  // Cчетчик добавленных товаров
-  cartCounter.increase();
-  cartCounter.show();
+    return 0;
+  }
+}
 
-  return cartList;
-};
+const cart = new Cart({
+  count: 0,
+  counterSelector: '#cart-counter',
+  cartContainerSelector: '.cart',
+  cartToggleSelector: '#cart-toggle'
+});
 
-const cartFactory = () => {
-  const cartBtns = document.querySelectorAll('.cart-btn');
-
-  cartBtns.forEach(btn => {
-    btn.addEventListener('click', cartBtnClickHandler);
-  });
-
-  return cartBtns;
-};
-
-export { cartFactory, CartItem };
+export { cart };

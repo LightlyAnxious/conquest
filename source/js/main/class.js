@@ -1,29 +1,24 @@
 class Counter {
   constructor(params) {
     this.count = params.count;
-    this.$box = document.querySelector(params.selector);
+    this.$counterBox = document.querySelector(params.counterSelector);
   }
 
-  show() {
-    if (this.count > 0) this.$box.style.display = 'block';
+  showCounter() {
+    if (this.count > 0) this.$counterBox.style.display = 'block';
   }
 
   hide() {
-    if (this.count === 0) this.$box.style.display = 'none';
+    if (this.count === 0) this.$counterBox.style.display = 'none';
   }
 
-  set amount(newCount) {
-    this.count = newCount;
-    this.$box.dataset.counter = newCount;
-  }
-
-  increase() {
+  increaseCount() {
     this.count++;
-    this.$box.dataset.counter = this.count;
+    this.initCounter();
     return this.count;
   }
 
-  decrease(value = 0) {
+  decreaseCount(value = 0) {
     if (value) {
       const result = this.count - value;
 
@@ -32,9 +27,17 @@ class Counter {
       this.count--;
     }
 
-    if (!this.count) this.hide();
-    this.$box.dataset.counter = this.count;
+    this.initCounter();
     return this.count;
+  }
+
+  initCounter() {
+    if (this.count) {
+      this.showCounter();
+      this.$counterBox.dataset.counter = this.count;
+    }
+
+    this.hide();
   }
 }
 
