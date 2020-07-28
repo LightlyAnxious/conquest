@@ -1,4 +1,5 @@
 import './main/sliders.js';
+import './main/backend.js';
 import './main/factory.js';
 import './main/navigation.js';
 import './main/forms.js';

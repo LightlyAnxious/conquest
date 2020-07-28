@@ -1,8 +1,6 @@
 import { Counter, Item } from '../../js/main/class.js';
 import { removeActiveClass } from '../../js/main/utils.js';
 
-const favoriteBtn = document.querySelector('#favorites');
-const likeBtns = document.querySelectorAll('.like-btn');
 const favoriteItemTemplate = document
   .querySelector('#favorites-item')
   .content.querySelector('.favorites__item');
@@ -11,6 +9,7 @@ const favoriteItemTemplate = document
 class FavoriteItem extends Item {
   constructor(params) {
     super(params);
+    this.counterField = document.querySelector('#favorites-counter');
   }
 
   // Метод создающий избранные элементы
@@ -37,16 +36,159 @@ class FavoriteItem extends Item {
     const sourceItem = document.querySelector(
       `li[data-vendor='${this.vendor}']`
     );
+    const favoritesCounter = document.querySelector('#favorites-counter');
     const likeBtn = sourceItem.querySelector('.like-btn');
 
     deleteToggle.addEventListener('click', () => {
       likeBtn.classList.remove('like-btn--active');
       deleteToggle.parentNode.remove();
 
-      displayFavoritesTip();
-      favoriteCounter.decreaseCount();
-      if (favoriteCounter.count === 0) favoriteCounter.hideCounter();
+      if (favoritesCounter.value !== 0) favoritesCounter.value--;
+
+      favoritesCounter.dispatchEvent(new Event('input', { bubbles: true }));
+
+      return favoritesCounter;
     });
+  }
+}
+
+class Favorites extends Counter {
+  constructor(params) {
+    super(params);
+    this.container = document.querySelector('.favorites');
+    this.counterField = document.querySelector('#favorites-counter');
+  }
+
+  // Функции увеличения и показа количества товаров в избранном
+  increaseLikes() {
+    this.increaseCount();
+    this.counterField.value = this.count;
+    this.showCounter();
+    return this.count;
+  }
+
+  decreaseLikes() {
+    this.decreaseCount();
+    this.counterField.value = this.count;
+    if (this.count === 0) this.hide();
+    return this.count;
+  }
+
+  collectItems() {
+    const addedItems = document.querySelectorAll('.favorites__item');
+
+    return addedItems;
+  }
+
+  // Функция показа подсказки
+  displayFavoritesTip() {
+    const items = this.collectItems();
+    const tip = document.querySelector('.favorites__tip');
+
+    if (items.length > 0) tip.classList.add('favorites__tip--hidden');
+    if (items.length === 0) tip.classList.remove('favorites__tip--hidden');
+
+    return tip;
+  }
+
+  bindAll() {
+    const likeBtns = document.querySelectorAll('.like-btn');
+    const favoritesBtn = document.querySelector('#favorites');
+    const favoritesCounter = document.querySelector('#favorites-counter');
+
+    const favoritesCounterInputHandler = () => {
+      this.count = this.counterField.value;
+      this.initCounter();
+      if (this.count === 0) this.hideCounter();
+    };
+
+    // Функция закрытия избранного по клику вне окна
+    const onDocumentClickCloseFavorites = evt => {
+      const favorites = document.querySelector('.favorites');
+      if (
+        !favorites.contains(evt.target) &&
+        !evt.target.parentNode.classList.contains('like-btn') &&
+        !evt.target.parentNode.classList.contains('page-header__link')
+      )
+        removeActiveClass(favorites, 'favorites--shown');
+    };
+
+    // !  Функция обработчик по нажатию на кнопку избранного в меню
+    const onFavBtnClickToggleModal = () => {
+      this.displayFavoritesTip();
+
+      this.container.classList.toggle('favorites--shown');
+
+      return this.container;
+    };
+
+    // ! Функция обработчик по нажатию на кнопку лайк
+    const likeBtnClickHandler = evt => {
+      let itemTemplate = favoriteItemTemplate.cloneNode(true);
+      let likeBtn = evt.target.closest('.like-btn');
+      const targetItem = evt.target.closest('.catalog__item');
+      const targetVendor = targetItem.dataset.vendor;
+      const favoritesList = document.querySelector('.favorites__list');
+      const addedItems = this.collectItems();
+
+      if (likeBtn.classList.contains('like-btn'))
+        likeBtn.classList.toggle('like-btn--active');
+
+      // Если элемента еще нет в избранном и кнопка содержит активный класс
+      if (
+        !attrAvailabilityCheck(addedItems, targetVendor) &&
+        likeBtn.classList.contains('like-btn--active')
+      ) {
+        // Создаем небходимый объект
+        const favoriteItem = new FavoriteItem({
+          name: targetItem.querySelector('.catalog__brand').textContent,
+          price: targetItem.querySelector('.catalog__price').textContent,
+          image: targetItem.querySelector('.catalog__image').cloneNode(true),
+          vendor: targetItem.dataset.vendor
+        });
+
+        favoriteItem.create(
+          itemTemplate,
+          '.favorites__name',
+          '.favorites__price',
+          '.favorites__media'
+        );
+
+        favoriteItem.add(favoritesList);
+        favoriteItem.bindAll();
+        favoritesCounter.value++;
+
+        this.increaseLikes();
+        this.initCounter();
+      }
+
+      // Если у кнопки удален активный класс удаляем соответствующмй элемент
+      if (!likeBtn.classList.contains('like-btn--active')) {
+        // Ищем и удаляем из избранного элемент соответвующий кнопке
+        const addedVendors = [];
+        addedItems.forEach(item => {
+          addedVendors.push(item.dataset.vendor);
+        });
+
+        const deletedIndex = findIndexByVendor(addedVendors, targetVendor);
+
+        addedItems[deletedIndex].remove();
+
+        this.decreaseLikes();
+        this.initCounter();
+      }
+
+      return favoritesList;
+    };
+
+    this.displayFavoritesTip();
+
+    this.counterField.addEventListener('input', favoritesCounterInputHandler);
+    favoritesBtn.addEventListener('click', onFavBtnClickToggleModal, false);
+    likeBtns.forEach(btn => {
+      btn.addEventListener('click', likeBtnClickHandler);
+    });
+    document.addEventListener('mouseup', onDocumentClickCloseFavorites);
   }
 }
 
@@ -58,48 +200,6 @@ const calcFavorites = () => {
     .getBoundingClientRect().height;
 
   root.style.setProperty('--favoritesTop', headerHeight + 'px');
-};
-
-// Функция показа подсказки
-const displayFavoritesTip = () => {
-  const addedItems = document.querySelectorAll('.favorites__item');
-  const tip = document.querySelector('.favorites__tip');
-
-  if (addedItems.length > 0) tip.classList.add('favorites__tip--hidden');
-  if (addedItems.length === 0) tip.classList.remove('favorites__tip--hidden');
-
-  return tip;
-};
-
-// Функция закрытия избранного по клику вне окна
-const onDocumentClickCloseFavorites = evt => {
-  const favoritesBox = document.querySelector('.favorites');
-
-  if (
-    !favoritesBox.contains(evt.target) &&
-    !evt.target.parentNode.classList.contains('like-btn') &&
-    !evt.target.parentNode.classList.contains('page-header__link')
-  )
-    removeActiveClass(favoritesBox, 'favorites--shown');
-};
-
-// * Создание счетчика количества "избранного"
-const favoriteCounter = new Counter({
-  count: 0,
-  counterSelector: '#likes-counter'
-});
-
-// Функции увеличения и показа количества товаров в избранном
-const increaseLikes = () => {
-  favoriteCounter.increaseCount();
-  favoriteCounter.showCounter();
-  return favoriteCounter.count;
-};
-
-const decreaseLikes = () => {
-  favoriteCounter.decreaseCount();
-  if (favoriteCounter.count === 0) favoriteCounter.hideCounter();
-  return favoriteCounter.count;
 };
 
 // Функция проверки на наличие товара в избранном по артикулу
@@ -119,78 +219,13 @@ const findIndexByVendor = (vendorsArray, vendor) => {
   return vendorsArray.indexOf(vendor);
 };
 
-// !  Функция обработчик по нажатию на кнопку избранного в меню
-const onFavBtnClickToggleModal = () => {
-  const favorites = document.querySelector('.favorites');
-
-  displayFavoritesTip();
-
-  favorites.classList.toggle('favorites--shown');
-};
-
-// ! Функция обработчик по нажатию на кнопку лайк
-const likeBtnClickHandler = evt => {
-  let itemTemplate = favoriteItemTemplate.cloneNode(true);
-  let likeBtn = evt.target.closest('.like-btn');
-  const targetItem = evt.target.closest('.catalog__item');
-  const targetVendor = targetItem.dataset.vendor;
-  const favoritesList = document.querySelector('.favorites__list');
-  const addedItems = favoritesList.querySelectorAll('.favorites__item');
-
-  if (likeBtn.classList.contains('like-btn'))
-    likeBtn.classList.toggle('like-btn--active');
-
-  // Если элемента еще нет в избранном и кнопка содержит активный класс
-  if (
-    !attrAvailabilityCheck(addedItems, targetVendor) &&
-    likeBtn.classList.contains('like-btn--active')
-  ) {
-    // Создаем небходимый объект
-    const favoriteItem = new FavoriteItem({
-      name: targetItem.querySelector('.catalog__brand').textContent,
-      price: targetItem.querySelector('.catalog__price').textContent,
-      image: targetItem.querySelector('.catalog__image').cloneNode(true),
-      vendor: targetItem.dataset.vendor
-    });
-
-    favoriteItem.create(
-      itemTemplate,
-      '.favorites__name',
-      '.favorites__price',
-      '.favorites__media'
-    );
-
-    favoriteItem.add(favoritesList);
-    favoriteItem.bindAll();
-
-    increaseLikes();
-  }
-
-  // Если у кнопки удален активный класс удаляем соответствующмй элемент
-  if (!likeBtn.classList.contains('like-btn--active')) {
-    // Ищем и удаляем из избранного элемент соответвующий кнопке
-    const addedVendors = [];
-    addedItems.forEach(item => {
-      addedVendors.push(item.dataset.vendor);
-    });
-
-    const deletedIndex = findIndexByVendor(addedVendors, targetVendor);
-
-    addedItems[deletedIndex].remove();
-
-    decreaseLikes();
-  }
-
-  return favoritesList;
-};
-
-likeBtns.forEach(btn => {
-  btn.addEventListener('click', likeBtnClickHandler);
+const favorites = new Favorites({
+  count: 0,
+  counterSelector: '#likes-counter'
 });
 
-favoriteBtn.addEventListener('click', onFavBtnClickToggleModal, false);
+// Вычисление положения блока "Избранное" при изменениях в браузере
 window.addEventListener('load', calcFavorites, false);
 window.addEventListener('resize', calcFavorites, false);
-document.addEventListener('mouseup', onDocumentClickCloseFavorites);
 
-export { attrAvailabilityCheck, findIndexByVendor };
+export { favorites };
