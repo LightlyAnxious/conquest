@@ -1,4 +1,7 @@
+// import db from '../../../conguest.db.json';
 import { Item } from './class.js';
+import { readDbRequest, readUrl } from './backend.js';
+import { PageInterface } from '../../components/js/pagination.js';
 
 const catalogItemTemplate = document.querySelector('#catalog-item-template');
 
@@ -74,4 +77,52 @@ class CatalogItem extends Item {
   }
 }
 
-export { CatalogItem };
+const renderCatalogItem = (itemData, container) => {
+  const catalogFragment = document.createDocumentFragment();
+  const catalogItem = new CatalogItem({
+    type: itemData.type,
+    brand: itemData.brand,
+    price: itemData.price,
+    vendor: itemData.vendor,
+    desktop: itemData.img.desktop,
+    tablet: itemData.img.tablet,
+    alt: itemData.img.alt
+  });
+
+  catalogItem.renderItem();
+
+  catalogItem.add(catalogFragment);
+  container.appendChild(catalogFragment);
+
+  return container;
+};
+
+async function startInterface() {
+  const responceData = await readDbRequest('GET', readUrl);
+  const db = responceData.slice();
+
+  const interfaceOptions = {
+    dataBase: db,
+    renderCb: renderCatalogItem,
+    pagingContainerClass: 'pagination',
+    itemsContainerClass: '.catalog__list',
+    totalItems: db.length,
+    itemsPerPage: 12,
+    visiblePages: 6,
+    initialPage: 1,
+    centerAlign: false,
+    firstItemClass: 'pagination__link--first-child',
+    lastItemClass: 'pagination__link--last-child',
+    pageClass: 'pagination__link',
+    currentPageClass: 'pagination__link--current',
+    moveButtonClass: 'pagination__btn',
+    disabledMoveButtonClass: 'pagination__btn--disabled',
+    moreButtonClass: 'pagination__link'
+  };
+
+  const catalogInterface = new PageInterface(interfaceOptions);
+
+  return catalogInterface.init(db, renderCatalogItem);
+}
+
+startInterface();

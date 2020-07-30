@@ -53,10 +53,4 @@ async function getDbId() {
   return response.id;
 }
 
-async function readDb() {
-  const db = await readDbRequest('GET', readUrl);
-
-  return db;
-}
-
-export { readDb };
+export { readDbRequest, readUrl };

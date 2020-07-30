@@ -1,3 +1,4 @@
+import { turnOffListener } from '../../js/main/utils.js';
 import { Counter, Item } from '../../js/main/class.js';
 import { removeActiveClass } from '../../js/main/utils.js';
 
@@ -91,15 +92,16 @@ class Favorites extends Counter {
     return tip;
   }
 
-  bindAll() {
-    const likeBtns = document.querySelectorAll('.like-btn');
+  bindToggle() {
     const favoritesBtn = document.querySelector('#favorites');
-    const favoritesCounter = document.querySelector('#favorites-counter');
 
-    const favoritesCounterInputHandler = () => {
-      this.count = this.counterField.value;
-      this.initCounter();
-      if (this.count === 0) this.hideCounter();
+    // !  Функция обработчик по нажатию на кнопку избранного в меню
+    const onFavBtnClickToggleModal = () => {
+      this.displayFavoritesTip();
+
+      this.container.classList.toggle('favorites--shown');
+
+      return this.container;
     };
 
     // Функция закрытия избранного по клику вне окна
@@ -113,13 +115,22 @@ class Favorites extends Counter {
         removeActiveClass(favorites, 'favorites--shown');
     };
 
-    // !  Функция обработчик по нажатию на кнопку избранного в меню
-    const onFavBtnClickToggleModal = () => {
-      this.displayFavoritesTip();
+    favoritesBtn.removeEventListener('click', onFavBtnClickToggleModal, false);
+    favoritesBtn.addEventListener('click', onFavBtnClickToggleModal, false);
 
-      this.container.classList.toggle('favorites--shown');
+    document.addEventListener('mouseup', onDocumentClickCloseFavorites);
 
-      return this.container;
+    return favoritesBtn;
+  }
+
+  bindItemBtn() {
+    const likeBtns = document.querySelectorAll('.like-btn');
+    const favoritesCounter = document.querySelector('#favorites-counter');
+
+    const favoritesCounterInputHandler = () => {
+      this.count = this.counterField.value;
+      this.initCounter();
+      if (this.count === 0) this.hideCounter();
     };
 
     // ! Функция обработчик по нажатию на кнопку лайк
@@ -131,8 +142,7 @@ class Favorites extends Counter {
       const favoritesList = document.querySelector('.favorites__list');
       const addedItems = this.collectItems();
 
-      if (likeBtn.classList.contains('like-btn'))
-        likeBtn.classList.toggle('like-btn--active');
+      if (likeBtn) likeBtn.classList.toggle('like-btn--active');
 
       // Если элемента еще нет в избранном и кнопка содержит активный класс
       if (
@@ -184,11 +194,19 @@ class Favorites extends Counter {
     this.displayFavoritesTip();
 
     this.counterField.addEventListener('input', favoritesCounterInputHandler);
-    favoritesBtn.addEventListener('click', onFavBtnClickToggleModal, false);
+
     likeBtns.forEach(btn => {
       btn.addEventListener('click', likeBtnClickHandler);
     });
-    document.addEventListener('mouseup', onDocumentClickCloseFavorites);
+
+    return likeBtns;
+  }
+
+  bindAll() {
+    this.bindToggle();
+    this.bindItemBtn();
+
+    return this;
   }
 }
 
