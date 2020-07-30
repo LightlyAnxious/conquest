@@ -121,6 +121,18 @@ const setExpanded = el => {
   return el;
 };
 
+const turnOffListener = function(event, elem, callback, capture) {
+  if (typeof elem === 'function') {
+    capture = callback;
+    callback = elem;
+    elem = window;
+  }
+  capture = capture ? true : false;
+  elem = typeof elem === 'string' ? document.querySelector(elem) : elem;
+  if (!elem) return;
+  elem.removeEventListener(event, callback, capture);
+};
+
 export {
   ESC_KEYCODE,
   ENTER_KEYCODE,
@@ -133,5 +145,6 @@ export {
   setExpanded,
   createBtn,
   addActiveClass,
-  removeActiveClass
+  removeActiveClass,
+  turnOffListener
 };

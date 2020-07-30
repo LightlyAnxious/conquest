@@ -1,11 +1,11 @@
-import { CatalogItem } from '../../js/main/factory.js';
 import { favorites } from './favorites.js';
 import { cart } from './cart.js';
 import Pagination from 'tui-pagination';
-import db from '../../../conguest.db.json';
 
 class PageInterface {
   constructor(params) {
+    this._dataBase = params.dataBase;
+    this._renderCb = params.renderCb;
     this.pagingContainerClass = params.pagingContainerClass;
     this.itemsContainer = document.querySelector(params.itemsContainerClass);
     this.totalItems = params.totalItems;
@@ -32,7 +32,7 @@ class PageInterface {
         '<li class="pagination__item"><a href="#" class="pagination__link">...</a></li>'
     };
     this.$paging = '';
-    this.currentPage;
+    this.currentPage = params.initialPage;
   }
 
   createPaging() {
@@ -61,35 +61,30 @@ class PageInterface {
 
     paging.on('afterMove', evt => {
       this.currentPage = evt.page;
-      this.renderItems(this.currentPage);
-      cart.init();
-      favorites.bindAll();
+
+      async function refreshPage() {
+        await this.renderItems();
+        favorites.bindItemBtn();
+        cart.bindItems();
+        return this;
+      }
+
+      refreshPage.call(this);
     });
 
     return paging;
   }
 
-  renderItems(pageNumber) {
+  renderItems() {
     const indexIndent = 1;
-    const targetPages = pageNumber + this.itemsPerPage - indexIndent;
-    const targetData = db.slice(pageNumber - indexIndent, targetPages);
+    const targetPages = this.currentPage + this.itemsPerPage - indexIndent;
+    const targetData = this._dataBase.slice(
+      this.currentPage - indexIndent,
+      targetPages
+    );
 
     targetData.forEach(itemData => {
-      const catalogFragment = document.createDocumentFragment();
-      const catalogItem = new CatalogItem({
-        type: itemData.type,
-        brand: itemData.brand,
-        price: itemData.price,
-        vendor: itemData.vendor,
-        desktop: itemData.img.desktop,
-        tablet: itemData.img.tablet,
-        alt: itemData.img.alt
-      });
-
-      catalogItem.renderItem();
-
-      catalogItem.add(catalogFragment);
-      this.itemsContainer.appendChild(catalogFragment);
+      return this._renderCb(itemData, this.itemsContainer);
     });
 
     return this.itemsContainer;
@@ -97,12 +92,12 @@ class PageInterface {
 
   init() {
     if (this.itemsContainer) {
-      let items = this.renderItems(this.initialPage);
+      this.renderItems();
       this.bindPaging();
       cart.init();
       favorites.bindAll();
 
-      return items;
+      return this.itemsContainer;
     }
   }
 
@@ -111,23 +106,4 @@ class PageInterface {
   }
 }
 
-const paginationOptions = {
-  pagingContainerClass: 'pagination',
-  itemsContainerClass: '.catalog__list',
-  totalItems: db.length,
-  itemsPerPage: 12,
-  visiblePages: 6,
-  initialPage: 1,
-  centerAlign: false,
-  firstItemClass: 'pagination__link--first-child',
-  lastItemClass: 'pagination__link--last-child',
-  pageClass: 'pagination__link',
-  currentPageClass: 'pagination__link--current',
-  moveButtonClass: 'pagination__btn',
-  disabledMoveButtonClass: 'pagination__btn--disabled',
-  moreButtonClass: 'pagination__link'
-};
-
-const catalogInterface = new PageInterface(paginationOptions);
-
-catalogInterface.init();
+export { PageInterface };

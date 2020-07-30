@@ -177,12 +177,10 @@ class Cart extends Counter {
     return duplicate;
   }
 
-  bindAll() {
-    const closeCartBtn = document.querySelector('.cart__close-btn');
-    const cartBtns = document.querySelectorAll('.cart-btn');
-    const overlay = document.querySelector('.overlay');
+  bindMenu() {
     const totalCountField = document.querySelector('#total-count');
-
+    const closeCartBtn = document.querySelector('.cart__close-btn');
+    const overlay = document.querySelector('.overlay');
     // *  Функция обработчик по нажатию на кнопку корзины в меню
     const cartToggleClickHandler = () => {
       const overlay = document.querySelector('.overlay');
@@ -192,6 +190,33 @@ class Cart extends Counter {
 
       this.displayCartTip();
     };
+
+    // Функция закрытия корзины по клику вне окна
+    const onDocumentClickCloseCart = evt => {
+      const cartBox = document.querySelector('.cart');
+
+      if (!cartBox.contains(evt.target))
+        removeActiveClass(overlay, 'overlay--shown');
+    };
+
+    // Закрытие корзины по клику на оверлей
+    closeCartBtn.addEventListener('click', () => {
+      removeActiveClass(overlay, 'overlay--shown');
+    });
+
+    totalCountField.addEventListener('input', () => {
+      this.count = totalCountField.value;
+      this.initCounter();
+    });
+
+    this.cartToggle.addEventListener('click', cartToggleClickHandler, false);
+    document.addEventListener('mouseup', onDocumentClickCloseCart);
+
+    return this;
+  }
+
+  bindItems() {
+    const cartBtns = document.querySelectorAll('.cart-btn');
 
     // ! Функция обработчик по нажатию на кнопку добавления в корзину
     const cartBtnClickHandler = evt => {
@@ -217,33 +242,16 @@ class Cart extends Counter {
       return cartList;
     };
 
-    // Функция закрытия корзины по клику вне окна
-    const onDocumentClickCloseCart = evt => {
-      const cartBox = document.querySelector('.cart');
-
-      if (!cartBox.contains(evt.target))
-        removeActiveClass(overlay, 'overlay--shown');
-    };
-
-    this.cartToggle.addEventListener('click', cartToggleClickHandler, false);
-
-    // Закрытие корзины по клику на оверлей
-    closeCartBtn.addEventListener('click', () => {
-      removeActiveClass(overlay, 'overlay--shown');
-    });
-
     cartBtns.forEach(btn => {
       btn.addEventListener('click', cartBtnClickHandler);
     });
 
-    totalCountField.addEventListener('input', () => {
-      this.count = totalCountField.value;
-      this.initCounter();
-    });
-
-    document.addEventListener('mouseup', onDocumentClickCloseCart);
-
     return this.cartContainer;
+  }
+
+  bindAll() {
+    this.bindMenu();
+    this.bindItems();
   }
 
   init() {
