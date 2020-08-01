@@ -6,6 +6,7 @@ class PageInterface {
   constructor(params) {
     this._dataBase = params.dataBase;
     this._renderCb = params.renderCb;
+    this.productType = params.productType;
     this.pagingContainerClass = params.pagingContainerClass;
     this.itemsContainer = document.querySelector(params.itemsContainerClass);
     this.totalItems = params.totalItems;
@@ -84,7 +85,7 @@ class PageInterface {
     );
 
     targetData.forEach(itemData => {
-      return this._renderCb(itemData, this.itemsContainer);
+      return this._renderCb(itemData, this.itemsContainer, this.productType);
     });
 
     return this.itemsContainer;
@@ -93,7 +94,10 @@ class PageInterface {
   init() {
     if (this.itemsContainer) {
       this.renderItems();
-      this.bindPaging();
+
+      if (this.pagingContainerClass) {
+        this.bindPaging();
+      }
       cart.init();
       favorites.bindAll();
 

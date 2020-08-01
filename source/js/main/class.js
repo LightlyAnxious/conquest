@@ -53,7 +53,7 @@ class Item {
   }
 
   add(container) {
-    container.appendChild(this.$layout);
+    if (this.$layout) container.appendChild(this.$layout);
 
     return container;
   }

@@ -1,62 +1,119 @@
-const selects = document.querySelectorAll('.select');
-
-selects.forEach(select => {
-  //Выбираем все выпадающие списки на странице
-
-  let selectCurrent = select.querySelector('.select__current'),
-    selectList = select.querySelector('.select__list'),
-    selectField = select.querySelector('.select__field'),
-    selectItems = select.querySelectorAll('.select__item');
-
-  selectCurrent.addEventListener('click', () => {
-    //прячем дубликаты
-    selectItems.forEach(item => {
-      if (item.textContent === selectCurrent.textContent) {
-        item.style.display = 'none';
-      }
-    });
-    //по клику добавляем/удаляем класс
-    select.classList.toggle('select--active');
-    selectList.classList.toggle('select__list--shown');
+const getTemplate = (data = [], placeholder, selectedId) => {
+  let text = placeholder || 'Дефолтный текст';
+  const items = data.map(item => {
+    let selectedClass = '';
+    if (item.id === selectedId) {
+      text = item.value;
+      selectedClass = 'selected';
+    }
+    return `
+    <li class="select__item" aria-role="option">
+      <button type="button" class="select__btn ${selectedClass}" data-type="item" data-id="${item.id}">
+        ${item.value}
+      </button>
+    </li>
+    `;
   });
 
-  //обходим элементы списка
-  selectItems.forEach(item => {
-    //обрабатываем событие клик по элементу
-    item.addEventListener('click', () => {
-      //получаем значение из data-атрибута
-      let itemValue = item.getAttribute('data-value');
+  return `
+  <div class="select__backdrop" data-type="backdrop"></div>
+  <input class="visually-hidden" data-type="trigger" aria-hidden="true" value=""></input>
+  <button type="button" id="select-input" class="select__input" data-type="input" aria-controls="select-dropdown" aria-current="true">
+    <span data-type="value">${text}</span>
+  </button>
+  <div id="select-dropdown" class="select__dropdown" aria-labelledby="select-input" aria-expanded="false">
+    <ul class="select__list">
+      ${items.join('')}
+    </ul>
+  </div>`;
+};
 
-      //получаем содержание элемента (текст)
-      let itemText = item.textContent;
+class Select {
+  constructor(selector, options) {
+    this.$el = document.querySelector(selector);
+    this.options = options;
+    this.selectedId = options.selectedId;
 
-      //присваиваем инпуту ранее полученное значение из data-атрибута
-      selectField.value = itemValue;
+    this.render();
+    this.setup();
+  }
 
-      //присваиваем текущее значение (текст)
-      selectCurrent.textContent = itemText;
-      // присваиваем значение aria-label
-      selectCurrent.setAttribute('aria-label', itemText);
+  render() {
+    const { placeholder, data } = this.options;
+    this.$el.classList.add('select');
+    this.$el.innerHTML = getTemplate(data, placeholder, this.selectedId);
+  }
 
-      //скрываем выпадающий список
-      selectListHide();
-    });
-  });
+  setup() {
+    this.clickHandler = this.clickHandler.bind(this);
+    this.$el.addEventListener('click', this.clickHandler);
+    this.$value = this.$el.querySelector('[data-type="value"]');
+    this.$el.setAttribute('aria-role', 'select');
+  }
 
-  // функция закрытия выпадающего списка
-  let selectListHide = () => {
-    //возвращаем дубликаты
-    selectItems.forEach(item => {
-      if (item.style.display == 'none') {
-        item.style.display = 'block';
-      }
-    });
+  ally() {
+    const dropdown = this.$el.querySelector('#select-dropdown');
+    let isExpanded = dropdown.getAttribute('aria-expanded') === 'true' || false;
 
-    select.classList.remove('select--active');
-    selectList.classList.remove('select__list--shown');
-  };
-  //Закрываем выпадающий сисок, если клик был вне области
-  document.addEventListener('mouseup', evt => {
-    if (!select.contains(evt.target)) selectListHide();
-  });
-});
+    dropdown.setAttribute('aria-expanded', !isExpanded);
+  }
+
+  clickHandler(evt) {
+    const { type } = evt.target.dataset;
+
+    if (type === 'input' || type === 'value') {
+      this.toggle();
+    } else if (type === 'item') {
+      const id = evt.target.dataset.id;
+
+      this.select(id);
+    }
+
+    if (type === 'backdrop') this.close();
+
+    this.ally();
+  }
+
+  get isOpen() {
+    return this.$el.classList.contains('open');
+  }
+
+  get current() {
+    return this.options.data.find(item => item.id === this.selectedId);
+  }
+
+  select(id) {
+    let trigger = this.$el.querySelector('[data-type="trigger"]');
+    this.selectedId = id;
+    this.$value.textContent = this.current.value;
+
+    this.$el
+      .querySelectorAll('[data-type="item"]')
+      .forEach(el => el.classList.remove('selected'));
+    this.$el.querySelector(`[data-id="${id}"]`).classList.add('selected');
+    trigger.setAttribute('value', this.current.value);
+    trigger.dispatchEvent(new Event('input', { bubbles: true }));
+
+    this.options.onSelect ? this.options.onSelect(this.current) : null;
+    this.close();
+  }
+
+  toggle() {
+    this.isOpen ? this.close() : this.open();
+  }
+
+  open() {
+    this.$el.classList.add('open');
+  }
+
+  close() {
+    this.$el.classList.remove('open');
+  }
+
+  destroy() {
+    this.$el.removeEventListener('click', this.clickHandler);
+    this.$el.innerHTML = '';
+  }
+}
+
+export { Select };
