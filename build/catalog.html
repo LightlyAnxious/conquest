@@ -305,17 +305,7 @@
         <!-- Sort -->
         <div class="catalog__sort">
           <p class="catalog__subtitle">Сортировать по:</p>
-          <!-- Select -->
-<div class="select catalog__select">
-  <input class="select__field" type="hidden" name="sort-option" aria-hidden="true">
-  <button id="select-list-control" class="select__current catalog__option" aria-controls="select-list" aria-expanded="false" aria-label="популярности">популярности</button>
-  <div id="select-list" class="select__list" role="listbox" aria-labelledby="select-list-control">
-    <button class="select__item catalog__option" data-value="популярности" role="option">популярности</button>
-    <button class="select__item catalog__option" data-value="имени" role="option">имени</button>
-    <button class="select__item catalog__option" data-value="цене" role="option">цене</button>
-  </div>
-</div>
-
+          <div id="select" class="select catalog__select"></div>
         </div>
 
         <!-- List -->
@@ -782,7 +772,7 @@
           <div class="cart__counter">
             <button type="button" class="cart__count-btn cart__count-btn--minus" aria-label="Уменьшить количество">
             </button>
-            
+
             <input inputmode="number" class="cart__count-input">
             <button type="button" class="cart__count-btn cart__count-btn--plus" aria-label="Увеличить количество">
           </button></div>

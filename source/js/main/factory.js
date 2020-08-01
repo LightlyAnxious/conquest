@@ -1,9 +1,10 @@
-// import db from '../../../conguest.db.json';
+import { sortItems, getSortOption } from './filter.js';
 import { Item } from './class.js';
 import { readDbRequest, readUrl } from './backend.js';
 import { PageInterface } from '../../components/js/pagination.js';
 
 const catalogItemTemplate = document.querySelector('#catalog-item-template');
+const eventsTrigger = document.querySelector('[data-type="trigger"]');
 
 class CatalogItem extends Item {
   constructor(params) {
@@ -14,9 +15,9 @@ class CatalogItem extends Item {
   }
 
   // Метод создания единицы товара
-  renderItem() {
+  renderItem(productType) {
     if (catalogItemTemplate)
-      if (this.type === 'watch') {
+      if (this.type === productType) {
         const catalogItem = catalogItemTemplate.content
           .querySelector('.catalog__item')
           .cloneNode(true);
@@ -77,7 +78,7 @@ class CatalogItem extends Item {
   }
 }
 
-const renderCatalogItem = (itemData, container) => {
+const renderCatalogItem = (itemData, container, productType) => {
   const catalogFragment = document.createDocumentFragment();
   const catalogItem = new CatalogItem({
     type: itemData.type,
@@ -89,24 +90,30 @@ const renderCatalogItem = (itemData, container) => {
     alt: itemData.img.alt
   });
 
-  catalogItem.renderItem();
+  catalogItem.renderItem(productType);
 
   catalogItem.add(catalogFragment);
+
   container.appendChild(catalogFragment);
 
   return container;
 };
 
-async function startInterface() {
+async function initCatalog() {
   const responceData = await readDbRequest('GET', readUrl);
-  const db = responceData.slice();
+  const db = responceData.slice().sort(sortItems);
 
-  const interfaceOptions = {
+  const getTotalLength = type => {
+    return db.map(item => item[type]);
+  };
+
+  const catalogOptions = {
     dataBase: db,
     renderCb: renderCatalogItem,
+    productType: 'watch',
     pagingContainerClass: 'pagination',
     itemsContainerClass: '.catalog__list',
-    totalItems: db.length,
+    totalItems: getTotalLength('watch'),
     itemsPerPage: 12,
     visiblePages: 6,
     initialPage: 1,
@@ -120,9 +127,13 @@ async function startInterface() {
     moreButtonClass: 'pagination__link'
   };
 
-  const catalogInterface = new PageInterface(interfaceOptions);
+  const catalogInterface = new PageInterface(catalogOptions);
+  catalogInterface.clear();
 
   return catalogInterface.init(db, renderCatalogItem);
 }
 
-startInterface();
+initCatalog();
+eventsTrigger.addEventListener('input', () => {
+  initCatalog();
+});

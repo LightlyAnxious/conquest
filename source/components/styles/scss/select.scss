@@ -1,83 +1,12 @@
-$select-background: #bdb9b5;
+/* stylelint-disable */
 $select-hover-color: #a69876;
-$append-color: #1b1a17;
+$select-background-color: #ffffff;
 $select-transition: 0.075s;
+$select-height: 23px;
+$select-font: "Roboto", sans-serif;
+$transition-time: 0.075s;
 
-.select {
-  position: relative;
-
-  &::before,
-  &::after {
-    position: absolute;
-    content: "";
-    top: 40%;
-    right: 5px;
-    z-index: 3;
-
-    width: 7px;
-    height: 1px;
-    background-color: $append-color;
-
-    transition: all $select-transition ease-in-out;
-  }
-
-  &::before {
-    transform: translateX(-36%) rotate(45deg);
-    transform-origin: left;
-  }
-
-  &::after {
-    transform: rotate(-45deg);
-    transform-origin: right;
-  }
-
-  &:hover,
-  &:focus {
-    &::before,
-    &::after {
-      background-color: $select-hover-color;
-    }
-
-    & .select__current {
-      color: $select-hover-color;
-    }
-  }
-
-  &--active {
-    &::before {
-      transform: translateX(-36%) rotate(-45deg);
-      transform-origin: left;
-    }
-
-    &::after {
-      transform: rotate(45deg);
-      transform-origin: right;
-    }
-  }
-}
-
-.select__list {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  display: none;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  width: 100%;
-  padding-top: 5px;
-  overflow: hidden;
-  transform: translateY(100%);
-
-  &--shown {
-    display: flex;
-  }
-}
-
-.select__current,
-.select__item {
+@mixin btn-reset {
   padding: 0;
   border: none;
   box-sizing: content-box;
@@ -87,38 +16,114 @@ $select-transition: 0.075s;
 
   cursor: pointer;
   outline: none;
-
-  transition: all $select-transition ease-in-out;
 }
 
-.select__current {
-  position: relative;
-
-  width: 100%;
-
-  text-align: left;
-
-  transition: all $select-transition ease-in-out;
-
+@mixin hover {
   &:hover,
   &:focus {
     color: $select-hover-color;
+
+    cursor: pointer;
+    transition: $transition-time color ease-in,
+      $transition-time background ease-in;
+
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23a69876' stroke-width='0.5'/%3E%3C/svg%3E%0A");
+    background-position: 100% 50%;
+    background-color: none;
+    background-repeat: no-repeat;
   }
 }
 
-.select__item {
+.select {
+  position: relative;
+  z-index: 10;
+
+  height: $select-height;
+
+  font-family: $select-font;
+  font-size: 14px;
+  line-height: 21px;
+
+  &.open {
+    .select__dropdown {
+      display: block;
+    }
+
+    .select__input {
+      border-bottom: none;
+
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='7' transform=' rotate(180)' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23a69876' stroke-width='0.5'/%3E%3C/svg%3E%0A");
+      background-position: 100% 50%;
+      background-color: none;
+      background-repeat: no-repeat;
+    }
+
+    .select__backdrop {
+      display: block;
+    }
+  }
+}
+
+.select__backdrop {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  display: none;
+}
+
+.select__input {
+  @include btn-reset;
+  @include hover;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 100%;
   width: 100%;
-  margin-bottom: 5px;
+  padding: 0 24px 0 12px;
+  box-sizing: border-box;
+
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%231B1A17' stroke-width='0.5'/%3E%3C/svg%3E%0A");
+  background-color: none;
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+}
+
+.select__dropdown {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  display: none;
+
+  max-height: 200px;
+  overflow-y: auto;
+
+  background-color: $select-background-color;
+}
+
+.select__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.select__btn {
+  @include btn-reset;
+  @include hover;
+
+  width: 100%;
+
+  padding: 12px 24px 6px 12px;
+  box-sizing: border-box;
 
   text-align: left;
-
-  &:hover,
-  &:focus {
-    background-color: $select-background;
-    opacity: 0.7;
-  }
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
 }
