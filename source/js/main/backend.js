@@ -1,9 +1,9 @@
-import dbBody from '../../../conguest.db.json';
+import dbBody from '../../../conquest.db.json';
 
 const createUrl = 'https://api.jsonbin.io/b/';
 const secretKey =
   '$2b$10$HuivVX41ooUZrHpYIU477.qlnAD.19SW.NTvQa1cuKcpwPyR0DiDe';
-const dbId = '5f25d1e2dddf413f95ba4eff';
+const dbId = '5f2904eedddf413f95bc43e0';
 const readUrl = `${createUrl}${dbId}`;
 
 function createDbRequest(method, url, body = null) {

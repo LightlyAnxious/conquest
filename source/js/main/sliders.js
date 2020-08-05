@@ -5,7 +5,6 @@ import {
   Autoplay,
   EffectFade
 } from 'swiper/core';
-import { createRangeSlider } from '../../components/js/range-slider.js';
 const promo = document.querySelector('.promo');
 const slides = document.querySelectorAll('.card__image');
 
@@ -151,5 +150,3 @@ if (promo) {
 }
 
 renderPaginationImages('card__bullet-media');
-
-createRangeSlider();

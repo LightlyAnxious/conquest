@@ -148,7 +148,7 @@
               <!-- Item 1 -->
               <li class="filters__item">
                 <label class="check filters__checkbox">
-                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-brand="Techne" checked="">
+                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-brand="Techne" data-filter="brand">
                   <span class="check__body"></span>
                   Techne
                 </label>
@@ -156,7 +156,7 @@
               <!-- Item 2 -->
               <li class="filters__item">
                 <label class="check filters__checkbox">
-                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-brand="Rado" checked="">
+                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-brand="Rado" data-filter="brand">
                   <span class="check__body"></span>
                   Rado
                 </label>
@@ -164,7 +164,7 @@
               <!-- Item 3 -->
               <li class="filters__item">
                 <label class="check filters__checkbox">
-                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-brand="Bvlgari" checked="">
+                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-brand="Bvlgari" data-filter="brand">
                   <span class="check__body"></span>
                   Bvlgari
                 </label>
@@ -172,7 +172,7 @@
               <!-- Item 4 -->
               <li class="filters__item">
                 <label class="check filters__checkbox">
-                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-brand="Tissot">
+                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-brand="Tissot" data-filter="brand">
                   <span class="check__body"></span>
                   Tissot
                 </label>
@@ -180,7 +180,7 @@
               <!-- Item 5 -->
               <li class="filters__item">
                 <label class="check filters__checkbox">
-                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-brand="Omega">
+                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-brand="Omega" data-filter="brand">
                   <span class="check__body"></span>
                   Omega
                 </label>
@@ -188,7 +188,7 @@
               <!-- Item 6 -->
               <li class="filters__item">
                 <label class="check filters__checkbox">
-                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-brand="Montblanc">
+                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-brand="Montblanc" data-filter="brand">
                   <span class="check__body"></span>
                   Montblanc
                 </label>
@@ -206,7 +206,7 @@
               <!-- Item 1 -->
               <li class="filters__item">
                 <label class="check filters__checkbox">
-                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-mechanism="Механика" checked="">
+                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-mechanism="Механика" data-filter="mech">
                   <span class="check__body"></span>
                   Механика
                 </label>
@@ -214,7 +214,7 @@
               <!-- Item 2 -->
               <li class="filters__item">
                 <label class="check filters__checkbox">
-                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-mechanism="Кварц">
+                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-mechanism="Кварц" data-filter="mech">
                   <span class="check__body"></span>
                   Кварц
                 </label>
@@ -232,7 +232,7 @@
               <!-- Item 1 -->
               <li class="filters__item">
                 <label class="check filters__checkbox">
-                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-material="Сталь" checked="">
+                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-material="Сталь" data-filter="material">
                   <span class="check__body"></span>
                   Сталь
                 </label>
@@ -240,7 +240,7 @@
               <!-- Item 2 -->
               <li class="filters__item">
                 <label class="check filters__checkbox">
-                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-material="Керамика">
+                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-material="Керамика" data-filter="material">
                   <span class="check__body"></span>
                   Керамика
                 </label>
@@ -248,7 +248,7 @@
               <!-- Item 3 -->
               <li class="filters__item">
                 <label class="check filters__checkbox">
-                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-material="Золото">
+                  <input class="check__input" type="checkbox" name="filter-checkbox-input" data-material="Золото" data-filter="material">
                   <span class="check__body"></span>
                   Золото
                 </label>
@@ -257,43 +257,52 @@
           </fieldset>
 
           <!-- Сolor -->
-          <fieldset class="accordion filters__set filters__set--material">
+          <fieldset class="accordion filters__set filters__set--color">
             <legend class="filters__title">
               <button id="filters-accordion-header-5" class="filters__toggle accordion__button accordion__button--filters" aria-controls="filters-accordion-panel-5" aria-expanded="false" data-accordion-header="">Цвет</button>
             </legend>
 
-            <!-- List -->
-            <div id="filters-accordion-panel-5" class="accordion__panel accordion__panel--filters">
-              <input id="color-picker" class="filters__input visually-hidden" type="color" name="filter-color-input">
-              <ul class="filters__list filters__list--colors" aria-labelledby="filters-accordion-header-5">
-                <!-- Item 1 -->
-                <li class="filters__item">
-                  <button class="filters__color-btn filters__color-btn--active" data-color="#000000" aria-label="Выбрать цвет: чёрный"></button>
-                </li>
+            <ul id="filters-accordion-panel-5" class="filters__list accordion__panel accordion__panel--color accordion__panel--filters" aria-labelledby="filters-accordion-header-5">
+              <!-- Item 1 -->
+              <li class="filters__item">
+                <label class="check check--color filters__checkbox">
+                  <input class="check__input check__input--color" type="checkbox" name="filter-checkbox-input" data-color="#000000" data-filter="color" aria-label="Выбрать цвет: чёрный">
+                  <span class="check__body check__body--color"></span>
+                </label>
+              </li>
 
-                <!-- Item 2 -->
-                <li class="filters__item">
-                  <button class="filters__color-btn" data-color="#dee1d8" aria-label="Выбрать цвет: алебастр"></button>
-                </li>
+              <!-- Item 2 -->
+              <li class="filters__item">
+                <label class="check check--color filters__checkbox">
+                  <input class="check__input check__input--color" type="checkbox" name="filter-checkbox-input" data-color="#dee1d8" data-filter="color" aria-label="Выбрать цвет: алебастр">
+                  <span class="check__body check__body--color"></span>
+                </label>
+              </li>
 
-                <!-- Item 3 -->
-                <li class="filters__item">
-                  <button class="filters__color-btn" data-color="#5c7457" aria-label="Выбрать цвет:
-                  зеленый папоротник"></button>
-                </li>
+              <!-- Item 3 -->
+              <li class="filters__item">
+                <label class="check check--color filters__checkbox">
+                  <input class="check__input check__input--color" type="checkbox" name="filter-checkbox-input" data-color="#694c40" data-filter="color" aria-label="Выбрать цвет: Медь">
+                  <span class="check__body check__body--color"></span>
+                </label>
+              </li>
 
-                <!-- Item 4 -->
-                <li class="filters__item">
-                  <button class="filters__color-btn" data-color="#92918c" aria-label="Выбрать цвет: графит"></button>
-                </li>
+              <!-- Item 4 -->
+              <li class="filters__item">
+                <label class="check check--color filters__checkbox">
+                  <input class="check__input check__input--color" type="checkbox" name="filter-checkbox-input" data-color="#92918c" data-filter="color" aria-label="Выбрать цвет: графит">
+                  <span class="check__body check__body--color"></span>
+                </label>
+              </li>
 
-                <!-- Item 5 -->
-                <li class="filters__item">
-                  <button class="filters__color-btn" data-color="#e7e5e6" aria-label="Выбрать цвет: хром"></button>
-                </li>
-              </ul>
-            </div>
-          </fieldset>
+              <!-- Item 5 -->
+              <li class="filters__item">
+                <label class="check check--color filters__checkbox">
+                  <input class="check__input check__input--color" type="checkbox" name="filter-checkbox-input" data-color="#e7e5e6" data-filter="color" aria-label="Выбрать цвет: хром">
+                  <span class="check__body check__body--color"></span>
+                </label>
+              </li>
+          </ul></fieldset>
           <button class="filters__reset-btn btn" type="reset">Сбросить фильтр</button>
         </form>
       </div>
@@ -772,7 +781,7 @@
           <div class="cart__counter">
             <button type="button" class="cart__count-btn cart__count-btn--minus" aria-label="Уменьшить количество">
             </button>
-
+            
             <input inputmode="number" class="cart__count-input">
             <button type="button" class="cart__count-btn cart__count-btn--plus" aria-label="Увеличить количество">
           </button></div>

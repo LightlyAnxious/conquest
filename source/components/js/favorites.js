@@ -1,4 +1,3 @@
-import { turnOffListener } from '../../js/main/utils.js';
 import { Counter, Item } from '../../js/main/class.js';
 import { removeActiveClass } from '../../js/main/utils.js';
 
@@ -58,6 +57,8 @@ class Favorites extends Counter {
     super(params);
     this.container = document.querySelector('.favorites');
     this.counterField = document.querySelector('#favorites-counter');
+
+    this.bindToggle();
   }
 
   // Функции увеличения и показа количества товаров в избранном
