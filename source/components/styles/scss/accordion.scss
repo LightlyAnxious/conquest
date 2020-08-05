@@ -84,18 +84,31 @@
 }
 
 .accordion__panel {
-  transition: $trans;
+  display: block;
+  overflow: hidden;
+
+  transition: all 0.09s linear;
 
   &--filters {
-    display: none;
+    max-height: 0;
+    padding: 0;
     opacity: 0;
   }
 
-  &--expanded {
-    display: block;
-
-    max-height: unset;
+  &.accordion__panel--expanded {
+    padding: 20px 0 28px;
+    max-height: 1000px;
     opacity: 1;
+  }
+
+  &--color {
+    display: flex;
+    flex-wrap: wrap;
+
+    &.accordion__panel--expanded {
+      max-height: 1000px;
+      opacity: 1;
+    }
   }
 }
 

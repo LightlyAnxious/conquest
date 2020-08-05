@@ -40,15 +40,19 @@ class Select {
 
   render() {
     const { placeholder, data } = this.options;
-    this.$el.classList.add('select');
-    this.$el.innerHTML = getTemplate(data, placeholder, this.selectedId);
+    if (this.$el) {
+      this.$el.classList.add('select');
+      this.$el.innerHTML = getTemplate(data, placeholder, this.selectedId);
+    }
   }
 
   setup() {
-    this.clickHandler = this.clickHandler.bind(this);
-    this.$el.addEventListener('click', this.clickHandler);
-    this.$value = this.$el.querySelector('[data-type="value"]');
-    this.$el.setAttribute('aria-role', 'select');
+    if (this.$el) {
+      this.clickHandler = this.clickHandler.bind(this);
+      this.$el.addEventListener('click', this.clickHandler);
+      this.$value = this.$el.querySelector('[data-type="value"]');
+      this.$el.setAttribute('aria-role', 'select');
+    }
   }
 
   ally() {

@@ -1,10 +1,10 @@
-import { sortItems, getSortOption } from './filter.js';
 import { Item } from './class.js';
 import { readDbRequest, readUrl } from './backend.js';
 import { PageInterface } from '../../components/js/pagination.js';
 
 const catalogItemTemplate = document.querySelector('#catalog-item-template');
 const eventsTrigger = document.querySelector('[data-type="trigger"]');
+const catalogItemType = 'watch';
 
 class CatalogItem extends Item {
   constructor(params) {
@@ -78,6 +78,7 @@ class CatalogItem extends Item {
   }
 }
 
+// * Функция создания единицы товара
 const renderCatalogItem = (itemData, container, productType) => {
   const catalogFragment = document.createDocumentFragment();
   const catalogItem = new CatalogItem({
@@ -99,21 +100,38 @@ const renderCatalogItem = (itemData, container, productType) => {
   return container;
 };
 
-async function initCatalog() {
+// ! Получение, сортировка и фильтрация базы данных
+async function processDb(itemType, sortCb, filterCb) {
   const responceData = await readDbRequest('GET', readUrl);
-  const db = responceData.slice().sort(sortItems);
+  const db = responceData
+    .slice()
+    .sort(sortCb)
+    .filter(filterCb);
 
-  const getTotalLength = type => {
-    return db.map(item => item[type]);
+  const getFinalDb = () => {
+    const total = [];
+    db.forEach(item => {
+      if (item.type === itemType) total.push(item);
+    });
+
+    return total;
   };
 
+  return getFinalDb(itemType);
+}
+
+// ! Функция генерации интерфейса и товаров каталога
+async function initCatalog(itemType, sortCb, filterCb) {
+  const rejectTip = 'По заданным параметрам ничего не найдено';
+  const catalogDb = await processDb(itemType, sortCb, filterCb);
+
   const catalogOptions = {
-    dataBase: db,
+    dataBase: catalogDb,
     renderCb: renderCatalogItem,
-    productType: 'watch',
+    productType: itemType,
     pagingContainerClass: 'pagination',
     itemsContainerClass: '.catalog__list',
-    totalItems: getTotalLength('watch'),
+    totalItems: catalogDb.length,
     itemsPerPage: 12,
     visiblePages: 6,
     initialPage: 1,
@@ -130,10 +148,7 @@ async function initCatalog() {
   const catalogInterface = new PageInterface(catalogOptions);
   catalogInterface.clear();
 
-  return catalogInterface.init(db, renderCatalogItem);
+  return catalogInterface.init(catalogDb, renderCatalogItem);
 }
 
-initCatalog();
-eventsTrigger.addEventListener('input', () => {
-  initCatalog();
-});
+export { initCatalog, catalogItemType };

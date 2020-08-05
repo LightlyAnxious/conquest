@@ -97,7 +97,8 @@
                     type="checkbox"
                     name="filter-checkbox-input"
                     data-brand="Techne"
-                    checked
+                    data-filter="brand"
+
                   >
                   <span class="check__body"></span>
                   Techne
@@ -111,7 +112,8 @@
                     type="checkbox"
                     name="filter-checkbox-input"
                     data-brand="Rado"
-                    checked
+                    data-filter="brand"
+
                   >
                   <span class="check__body"></span>
                   Rado
@@ -125,7 +127,8 @@
                     type="checkbox"
                     name="filter-checkbox-input"
                     data-brand="Bvlgari"
-                    checked
+                    data-filter="brand"
+
                   >
                   <span class="check__body"></span>
                   Bvlgari
@@ -139,6 +142,7 @@
                     type="checkbox"
                     name="filter-checkbox-input"
                     data-brand="Tissot"
+                    data-filter="brand"
                   >
                   <span class="check__body"></span>
                   Tissot
@@ -152,6 +156,7 @@
                     type="checkbox"
                     name="filter-checkbox-input"
                     data-brand="Omega"
+                    data-filter="brand"
                   >
                   <span class="check__body"></span>
                   Omega
@@ -165,6 +170,7 @@
                     type="checkbox"
                     name="filter-checkbox-input"
                     data-brand="Montblanc"
+                    data-filter="brand"
                   >
                   <span class="check__body"></span>
                   Montblanc
@@ -198,7 +204,8 @@
                     type="checkbox"
                     name="filter-checkbox-input"
                     data-mechanism="Механика"
-                    checked
+                    data-filter="mech"
+
                   >
                   <span class="check__body"></span>
                   Механика
@@ -212,6 +219,7 @@
                     type="checkbox"
                     name="filter-checkbox-input"
                     data-mechanism="Кварц"
+                    data-filter="mech"
                   >
                   <span class="check__body"></span>
                   Кварц
@@ -245,7 +253,8 @@
                     type="checkbox"
                     name="filter-checkbox-input"
                     data-material="Сталь"
-                    checked
+                    data-filter="material"
+
                   >
                   <span class="check__body"></span>
                   Сталь
@@ -259,6 +268,7 @@
                     type="checkbox"
                     name="filter-checkbox-input"
                     data-material="Керамика"
+                    data-filter="material"
                   >
                   <span class="check__body"></span>
                   Керамика
@@ -272,6 +282,7 @@
                     type="checkbox"
                     name="filter-checkbox-input"
                     data-material="Золото"
+                    data-filter="material"
                   >
                   <span class="check__body"></span>
                   Золото
@@ -281,7 +292,7 @@
           </fieldset>
 
           <!-- Сolor -->
-          <fieldset class="accordion filters__set filters__set--material">
+          <fieldset class="accordion filters__set filters__set--color">
             <legend class="filters__title">
               <button
                 id="filters-accordion-header-5"
@@ -292,68 +303,86 @@
               >Цвет</button>
             </legend>
 
-            <!-- List -->
-            <div
+            <ul
               id="filters-accordion-panel-5"
-              class="accordion__panel accordion__panel--filters"
+              class="filters__list accordion__panel accordion__panel--color accordion__panel--filters"
+              aria-labelledby="filters-accordion-header-5"
             >
-              <input
-                id="color-picker"
-                class="filters__input visually-hidden"
-                type="color"
-                name="filter-color-input"
-              >
-              <ul
-                class="filters__list filters__list--colors"
-                aria-labelledby="filters-accordion-header-5"
-              >
-                <!-- Item 1 -->
-                <li class="filters__item">
-                  <button
-                    class="filters__color-btn filters__color-btn--active"
+              <!-- Item 1 -->
+              <li class="filters__item">
+                <label class="check check--color filters__checkbox">
+                  <input
+                    class="check__input check__input--color"
+                    type="checkbox"
+                    name="filter-checkbox-input"
                     data-color="#000000"
+                    data-filter="color"
                     aria-label="Выбрать цвет: чёрный"
-                  ></button>
-                </li>
 
-                <!-- Item 2 -->
-                <li class="filters__item">
-                  <button
-                    class="filters__color-btn"
+                  >
+                  <span class="check__body check__body--color"></span>
+                </label>
+              </li>
+
+              <!-- Item 2 -->
+              <li class="filters__item">
+                <label class="check check--color filters__checkbox">
+                  <input
+                    class="check__input check__input--color"
+                    type="checkbox"
+                    name="filter-checkbox-input"
                     data-color="#dee1d8"
+                    data-filter="color"
                     aria-label="Выбрать цвет: алебастр"
-                  ></button>
-                </li>
+                  >
+                  <span class="check__body check__body--color"></span>
+                </label>
+              </li>
 
-                <!-- Item 3 -->
-                <li class="filters__item">
-                  <button
-                    class="filters__color-btn"
-                    data-color="#5c7457"
-                    aria-label="Выбрать цвет:
-                  зеленый папоротник"
-                  ></button>
-                </li>
+              <!-- Item 3 -->
+              <li class="filters__item">
+                <label class="check check--color filters__checkbox">
+                  <input
+                    class="check__input check__input--color"
+                    type="checkbox"
+                    name="filter-checkbox-input"
+                    data-color="#694c40"
+                    data-filter="color"
+                    aria-label="Выбрать цвет: Медь"
+                  >
+                  <span class="check__body check__body--color"></span>
+                </label>
+              </li>
 
-                <!-- Item 4 -->
-                <li class="filters__item">
-                  <button
-                    class="filters__color-btn"
+              <!-- Item 4 -->
+              <li class="filters__item">
+                <label class="check check--color filters__checkbox">
+                  <input
+                    class="check__input check__input--color"
+                    type="checkbox"
+                    name="filter-checkbox-input"
                     data-color="#92918c"
+                    data-filter="color"
                     aria-label="Выбрать цвет: графит"
-                  ></button>
-                </li>
+                  >
+                  <span class="check__body check__body--color"></span>
+                </label>
+              </li>
 
-                <!-- Item 5 -->
-                <li class="filters__item">
-                  <button
-                    class="filters__color-btn"
+              <!-- Item 5 -->
+              <li class="filters__item">
+                <label class="check check--color filters__checkbox">
+                  <input
+                    class="check__input check__input--color"
+                    type="checkbox"
+                    name="filter-checkbox-input"
                     data-color="#e7e5e6"
+                    data-filter="color"
                     aria-label="Выбрать цвет: хром"
-                  ></button>
-                </li>
-              </ul>
-            </div>
+                  >
+                  <span class="check__body check__body--color"></span>
+                </label>
+              </li>
           </fieldset>
           <button class="filters__reset-btn btn" type="reset">Сбросить фильтр</button>
         </form>

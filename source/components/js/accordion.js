@@ -1,4 +1,4 @@
-import { setExpanded, breakpointChecker, debounce } from '../../js/main/utils';
+import { setExpanded } from '../../js/main/utils';
 // import webAnimations from 'web-animations-js';
 
 const footerAccordionHeaders = document.querySelectorAll(
@@ -30,27 +30,10 @@ const accordionInit = (controls, media = false) => {
 
     const onClickControlAccordion = evt => {
       setExpanded(evt.target);
-      target.classList.toggle('accordion__panel--expanded');
 
-      // * Анимация аккордеона
-
-      target.animate(
-        [
-          {
-            transformOrigin: 'top left',
-            transform: `scaleY(0)`
-          },
-          {
-            transformOrigin: 'top left',
-            transform: `scaleY(1)`
-          }
-        ],
-        {
-          duration: 125,
-          easing: 'ease-in-out',
-          fill: 'both'
-        }
-      );
+      if (target) {
+        target.classList.toggle('accordion__panel--expanded');
+      }
     };
 
     accordionHeader.addEventListener('click', evt => {

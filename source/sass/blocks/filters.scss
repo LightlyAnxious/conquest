@@ -9,6 +9,16 @@
   &:last-of-type {
     margin-bottom: 35px;
   }
+
+  &--color {
+    & .filters__list {
+      flex-wrap: wrap;
+    }
+
+    & .filters__item {
+      margin-right: 12px;
+    }
+  }
 }
 
 .filters__title {
@@ -22,7 +32,6 @@
 }
 
 .filters__scale {
-  padding: 20px 0 28px;
   box-sizing: content-box;
 }
 
@@ -48,12 +57,7 @@
 .filters__list {
   @include list-reset;
 
-  padding: 27px 0;
-
-  &--colors {
-    display: flex;
-    flex-wrap: wrap;
-  }
+  padding: 0;
 }
 
 .filters__item {

@@ -78,11 +78,9 @@ class PageInterface {
 
   renderItems() {
     const indexIndent = 1;
-    const targetPages = this.currentPage + this.itemsPerPage - indexIndent;
-    const targetData = this._dataBase.slice(
-      this.currentPage - indexIndent,
-      targetPages
-    );
+    const startIndex = (this.currentPage - indexIndent) * this.itemsPerPage;
+    const endIndex = this.itemsPerPage * this.currentPage;
+    const targetData = this._dataBase.slice(startIndex, endIndex);
 
     targetData.forEach(itemData => {
       return this._renderCb(itemData, this.itemsContainer, this.productType);
@@ -99,7 +97,7 @@ class PageInterface {
         this.bindPaging();
       }
       cart.init();
-      favorites.bindAll();
+      favorites.bindItemBtn();
 
       return this.itemsContainer;
     }

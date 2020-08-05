@@ -120,6 +120,8 @@ class Cart extends Counter {
     this.cartContainer = document.querySelector(params.cartContainerSelector);
     this.cartToggle = document.querySelector(params.cartToggleSelector);
     this.counterContainer = document.querySelector(params.counterSelector);
+
+    this.bindMenu();
   }
   // Возвращает коллекцию всех добавленных элементов
   collectItems() {
@@ -249,14 +251,9 @@ class Cart extends Counter {
     return this.cartContainer;
   }
 
-  bindAll() {
-    this.bindMenu();
-    this.bindItems();
-  }
-
   init() {
     this.displayCartTip();
-    this.bindAll();
+    this.bindItems();
   }
 
   // Метод вычисляющий сумму всех товаров в корзине
